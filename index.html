@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLUEZ' BAKERY — Artisan Breads & Fresh Pastry</title>
+  <meta name="description" content="Nikmati aneka roti artisanal, choux pastry segar, savory bun lembut, dan sourdough fermentasi alami dari Bluezi Bakery. Pesan mudah langsung via WhatsApp.">
+  
+  <!-- Fonts: Unified Plus Jakarta Sans for clean, harmonious typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="scrapbook-theme">
+  <!-- Navy Paper Ambient Background -->
+  <div class="bg-paper-noise" aria-hidden="true"></div>
+  <div class="ambient-glow ambient-glow-1" aria-hidden="true"></div>
+  <div class="ambient-glow ambient-glow-2" aria-hidden="true"></div>
+
+  <!-- Header / Nav -->
+  <header class="site-header" id="mainHeader">
+    <div class="header-checker-strip" aria-hidden="true"></div>
+    <div class="container header-inner">
+      <div class="brand-cluster">
+        <a href="#hero" class="brand-logo-card">
+          <div class="brand-mascot-wrap">
+            <img src="assets/brand/cat_cream.png" alt="Bluezi Cat Mascot" class="brand-cat-img">
+            <span class="sparkle sparkle-1" aria-hidden="true">✦</span>
+          </div>
+          <div class="brand-text">
+            <h1 class="brand-title">BLUEZ' BAKERY</h1>
+            <span class="brand-sub">ブルーエ・ベーカリー • Studio Artisan Breads</span>
+          </div>
+        </a>
+      </div>
+
+      <nav class="nav-actions">
+        <div class="filter-pills-nav" role="tablist" aria-label="Product Categories">
+          <button class="pill-btn active" data-filter="all" role="tab" aria-selected="true" id="filter-all">Semua Roti</button>
+          <button class="pill-btn" data-filter="savory" role="tab" aria-selected="false" id="filter-savory">Savory</button>
+          <button class="pill-btn" data-filter="sweet" role="tab" aria-selected="false" id="filter-sweet">Sweet Cream</button>
+          <button class="pill-btn" data-filter="sourdough" role="tab" aria-selected="false" id="filter-sourdough">Artisan Loaf</button>
+        </div>
+
+        <a href="order.html" class="nav-order-btn" title="Buka Halaman Pemesanan Roti">
+          <span class="order-btn-icon">📝</span>
+          <span class="order-btn-text">Pesan Sekarang</span>
+        </a>
+
+        <button class="cart-trigger-btn" id="openCartBtn" onclick="openCart()" aria-label="Buka Keranjang Belanja">
+          <span class="cart-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span class="cart-count-badge" id="cartCountBadge">0</span>
+          </span>
+          <span class="cart-btn-label">Keranjang</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section with Floating Breads Showcase -->
+  <section class="hero-section" id="hero">
+    <div class="container hero-layout">
+      <!-- Left Editorial Paper Column -->
+      <div class="hero-paper-card paper-torn-edge">
+        <div class="washi-tape washi-tape-top" aria-hidden="true"></div>
+        <div class="hero-badge-tag">FRESH FROM THE OVEN TODAY</div>
+        
+        <h2 class="hero-heading">
+          Roti Hangat & Fluffy,<br>
+          <span class="hero-heading-highlight">Melayang Manis</span> di Harimu
+        </h2>
+        
+        <p class="hero-desc">
+          Setiap roti dipanggang segar dengan cinta di Bluezi Studio. Dari kelezatan <em>Pizza Bread</em> yang gurih, <em>Roti Abon</em> ayam bertabur creamy mayo, hingga lembutnya <em>Choux Strawberry</em> dan <em>Cranberry Cheese Sourdough</em>.
+        </p>
+
+        <!-- Quick Facts -->
+        <div class="hero-doodle-tags">
+          <span class="scrapbook-tag blue-check-tag">100% Fresh Daily</span>
+          <span class="scrapbook-tag yellow-tag">Premium Butter & Cheese</span>
+          <span class="scrapbook-tag pink-tag">Real Fresh Fruit Filling</span>
+        </div>
+
+        <div class="hero-cta-group">
+          <a href="#gallery" class="btn-primary-3d">
+            <span class="btn-shine"></span>
+            <span>Jelajahi Menu Pilihan</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <polyline points="19 12 12 19 5 12"></polyline>
+            </svg>
+          </a>
+          <a href="order.html" class="btn-secondary-scrapbook" id="heroQuickOrderBtn" title="Buka Halaman Pemesanan Roti">
+            <span>Pesan Sekarang (Form)</span>
+            <span class="wa-dot"></span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right 3D Interactive Stage: Big Interactive Bluezi Cat Mascot -->
+      <div class="hero-3d-stage" id="hero3dStage" data-tilt-active="true">
+        <div class="hero-stage-inner preserve-3d" id="heroStageInner">
+          
+          <!-- Background Ambient Glow & Pedestal Ring -->
+          <div class="depth-layer layer-mascot-backdrop" data-depth="20">
+            <div class="cat-pedestal-glow"></div>
+            <div class="cat-pedestal-ring">
+              <span class="pedestal-stamp">BLUEZ' STUDIO MASCOT</span>
+            </div>
+          </div>
+
+          <!-- Realistic Soft Ground Shadow -->
+          <div class="depth-layer layer-mascot-shadow" data-depth="40">
+            <div class="cat-ground-shadow" id="catGroundShadow"></div>
+          </div>
+
+          <!-- Main Interactive Big Cat Mascot Layer -->
+          <div class="depth-layer layer-mascot-main float-anim-main" data-depth="95">
+            <div class="interactive-cat-card" id="interactiveCatCard" role="button" tabindex="0" aria-label="Maskot Kucing Bluezi — Klik untuk berinteraksi!">
+              
+              <!-- Dynamic Speech Bubble -->
+              <div class="cat-dialog-bubble" id="catDialogBubble">
+                <span class="bubble-tail"></span>
+                <span class="bubble-text" id="catBubbleText">Meow! Selamat datang di Bluez' Bakery! 🐾</span>
+                <span class="bubble-counter" id="catPetCounter">Disapa 0x</span>
+              </div>
+
+              <!-- Big HD Cat Mascot Image -->
+              <div class="cat-sprite-wrapper" id="catSpriteWrapper">
+                <img src="assets/brand/cat_cream.png" alt="Maskot Kucing Bluezi" class="interactive-cat-img" id="interactiveCatImg">
+                <!-- Particle burst container -->
+                <div class="cat-particles-container" id="catParticles"></div>
+              </div>
+
+              <!-- Interactive Call-To-Action Pill -->
+              <div class="cat-interact-badge">
+                <span class="paw-icon">🐾</span>
+                <span class="badge-label">Klik aku untuk sapa & dengar suara!</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky Sub-Nav & Scrapbook Controls Banner -->
+  <div class="scrapbook-filter-bar" id="galleryControls">
+    <div class="container filter-bar-inner">
+      <div class="gallery-heading-wrap">
+        <h2 class="gallery-title">
+          <span class="checker-dot"></span>
+          MENU ROTI PILIHAN
+        </h2>
+        <span class="gallery-subtitle">Sensory Bakery Gallery — Dipanggang Fresh Setiap Hari</span>
+      </div>
+
+      <div class="gallery-controls-tools">
+        <div class="search-box-scrapbook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="breadSearchInput" placeholder="Cari roti favoritmu..." aria-label="Cari roti">
+        </div>
+
+        <div class="view-toggles">
+          <button class="view-btn active" id="viewModeScrapbook" title="Scrapbook Layout">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+            <span>Scrapbook</span>
+          </button>
+          <button class="view-btn" id="viewModeGrid" title="Compact Showcase Grid">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="8" y1="6" x2="21" y2="6"></line>
+              <line x1="8" y1="12" x2="21" y2="12"></line>
+              <line x1="8" y1="18" x2="21" y2="18"></line>
+              <line x1="3" y1="6" x2="3.01" y2="6"></line>
+              <line x1="3" y1="12" x2="3.01" y2="12"></line>
+              <line x1="3" y1="18" x2="3.01" y2="18"></line>
+            </svg>
+            <span>Daftar Menu</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main 3D Floating Bakery Product Gallery -->
+  <main class="gallery-section" id="gallery">
+    <div class="container">
+      <div class="products-editorial-grid" id="productsGrid">
+        <!-- Products will be dynamically rendered and enriched via JS with 3D cards -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Editorial Story Scrapbook Strip: Bluezi Bakery Craftsmanship -->
+  <section class="bakery-story-section" id="story">
+    <div class="container">
+      <div class="story-scrapbook-board paper-torn-edge">
+        <div class="washi-tape washi-tape-left" aria-hidden="true"></div>
+        <div class="washi-tape washi-tape-right" aria-hidden="true"></div>
+        
+        <div class="story-grid">
+          <!-- Left: 4-Photo Scrapbook Gallery -->
+          <div class="story-photo-stack">
+            <!-- Photo 1: Sourdough Tray -->
+            <div class="photo-card photo-card-1">
+              <div class="card-pin" aria-hidden="true">📌</div>
+              <img src="assets/editorial/cranberry_sourdough_tray.jpg" alt="Artisan Cranberry Sourdough" class="story-img">
+              <span class="photo-caption">24h Wild Sourdough</span>
+            </div>
+
+            <!-- Photo 2: Fresh Pizza Breads Oven Tray -->
+            <div class="photo-card photo-card-2">
+              <div class="card-pin" aria-hidden="true">📌</div>
+              <img src="assets/editorial/pizza_tray.jpg" alt="Loyang Roti Pizza Segar" class="story-img">
+              <span class="photo-caption">Stone Oven Pizza • 06.00</span>
+            </div>
+
+            <!-- Photo 3: Choux Pastry Display -->
+            <div class="photo-card photo-card-3">
+              <div class="card-pin" aria-hidden="true">📌</div>
+              <img src="assets/editorial/choux_display.jpg" alt="Choux Pastry Showcase" class="story-img">
+              <span class="photo-caption">Strawberry & Mango Choux</span>
+            </div>
+
+            <!-- Photo 4: Dark Cocoa Artisan Tray -->
+            <div class="photo-card photo-card-4">
+              <div class="card-pin" aria-hidden="true">📌</div>
+              <img src="assets/editorial/choco_tray.jpg" alt="Dark Cocoa Sourdough Tray" class="story-img">
+              <span class="photo-caption">Artisan Dark Cocoa Loaf</span>
+            </div>
+
+            <!-- Bluezi Cat Baker Mascot Stamp -->
+            <div class="cat-peek-stamp" aria-hidden="true">
+              <img src="assets/brand/cat_navy.png" alt="Bluezi Cat" class="cat-stamp-img">
+              <span class="stamp-handwritten">Bluezi Cat Approved! 🐾</span>
+            </div>
+          </div>
+
+          <!-- Right: Story Narrative -->
+          <div class="story-content">
+            <div class="story-tag">THE BLUEZI STORY</div>
+            <h3 class="story-heading">Baking Joy, One Fluffy Bite at a Time</h3>
+            <p class="story-p">
+              Di <strong>BLUEZ' BAKERY</strong>, kami percaya bahwa roti bukan sekadar makanan, melainkan momen kebahagiaan kecil. Resep kami memadukan teknik artisanal sourdough tradisional dengan kelembutan roti khas Asia yang super fluffy.
+            </p>
+            <div class="story-checklist">
+              <div class="check-item">
+                <span class="check-bullet">✔</span>
+                <span><strong>Natural Fermentation:</strong> Adonan difermentasi perlahan 24 jam dengan ragi alami untuk rasa asam-gurih yang kaya dan ramah pencernaan.</span>
+              </div>
+              <div class="check-item">
+                <span class="check-bullet">✔</span>
+                <span><strong>No Preservatives:</strong> 100% tanpa pengawet buatan — murni mentega Selandia Baru, tepung pilihan, & buah segar.</span>
+              </div>
+              <div class="check-item">
+                <span class="check-bullet">✔</span>
+                <span><strong>Handcrafted Daily:</strong> Dibentuk dan dihias satu per satu dengan ketelitian tinggi oleh baker kami setiap pagi jam 06.00.</span>
+              </div>
+            </div>
+
+            <div class="signature-stamp">
+              <span class="handwritten-signature">Warm regards from Bluezi Studio & Bakery team</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dedicated Order Page Call-to-Action Section -->
+  <section class="order-cta-section" id="order-cta">
+    <div class="container">
+      <div class="order-cta-card paper-torn-edge">
+        <div class="washi-tape washi-tape-order-left" aria-hidden="true"></div>
+        <div class="washi-tape washi-tape-order-right" aria-hidden="true"></div>
+
+        <div class="order-cta-content">
+          <div class="order-cta-badge">HALAMAN PEMESANAN RESMI</div>
+          <h2 class="order-cta-title">Siap Menikmati Kehangatan Roti Bluezi? 🍞✨</h2>
+          <p class="order-cta-subtitle">
+            Kunjungi halaman pemesanan khusus kami untuk memilih 9 varian roti fresh favoritmu, atur jumlah pesanan, pilih kurir instan/sameday, dan kirimkan rincian pesanan langsung ke WhatsApp kami!
+          </p>
+
+          <div class="order-cta-actions">
+            <a href="order.html" class="btn-primary-order-cta">
+              <span class="btn-shine"></span>
+              <span>Buka Halaman Pemesanan (Order Page)</span>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 5"></polyline>
+              </svg>
+            </a>
+          </div>
+
+          <div class="order-cta-perks">
+            <span>🥖 Dipanggang Segar Tiap Pagi</span> • 
+            <span>🥐 100% Bahan Pilihan & Fermentasi Alami</span> • 
+            <span>🛵 Kurir Instan & Same Day</span> • 
+            <span>💬 Konfirmasi WhatsApp Cepat</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3D Interactive Product Detail Modal (Pop-out Depth Experience) -->
+  <div class="modal-backdrop" id="productModalBackdrop" aria-hidden="true">
+    <div class="modal-dialog-3d" id="modalDialog3d" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Tutup jendela detail roti">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="modal-content-stage preserve-3d" id="modal3dStage">
+        <!-- 3D Layer: Background Paper Panel -->
+        <div class="modal-layer modal-paper-bg" data-depth="10">
+          <div class="modal-washi-tape"></div>
+          <div class="modal-checker-strip"></div>
+        </div>
+
+        <div class="modal-inner-grid">
+          <!-- Left: 3D Floating Bakery Visual Stage -->
+          <div class="modal-visual-column">
+            <div class="modal-floating-viewport preserve-3d" id="modalBreadViewport">
+              <!-- Soft Realistic Cast Ground Shadow -->
+              <div class="modal-ground-shadow" id="modalGroundShadow"></div>
+
+              <!-- Main Floating Cutout Bread -->
+              <div class="modal-bread-wrapper" id="modalBreadWrapper">
+                <img src="" alt="" class="modal-floating-image" id="modalProductImage">
+              </div>
+
+              <!-- Floating Depth Annotations / Arrows -->
+              <div class="modal-annotations-layer" id="modalAnnotations">
+                <!-- Injected via JS based on product ingredients -->
+              </div>
+
+              <!-- Floating Sparkle Elements -->
+              <span class="modal-sparkle sparkle-tl" aria-hidden="true">✦</span>
+              <span class="modal-sparkle sparkle-br" aria-hidden="true">✨</span>
+            </div>
+
+            <!-- View Switcher (Cutout Floating vs Editorial Context Photo) -->
+            <div class="modal-view-switcher" id="modalViewSwitcher">
+              <!-- Switcher buttons injected via JS -->
+            </div>
+          </div>
+
+          <!-- Right: Product Info & Bag Actions -->
+          <div class="modal-info-column">
+            <div class="modal-header-meta">
+              <span class="modal-badge-category" id="modalCategoryBadge">Savory</span>
+              <span class="modal-badge-fresh">Baking Fresh</span>
+            </div>
+
+            <h3 class="modal-product-title" id="modalTitle">Product Title</h3>
+            <div class="modal-price-row">
+              <span class="modal-price-idr" id="modalPrice">Rp 0</span>
+              <span class="modal-price-note">/ pcs (Fresh Baked)</span>
+            </div>
+
+            <p class="modal-description" id="modalDescription">Product full description...</p>
+
+            <!-- Ingredients & Highlights Chips -->
+            <div class="modal-highlights-section">
+              <h4 class="meta-section-title">Highlight & Topping:</h4>
+              <div class="modal-chips-wrap" id="modalChipsWrap">
+                <!-- Chips injected via JS -->
+              </div>
+            </div>
+
+            <!-- Bread Storage & Serving Advice -->
+            <div class="modal-tips-card">
+              <div class="tip-icon">💡</div>
+              <div class="tip-content">
+                <strong>Tips Menikmati:</strong>
+                <p id="modalServingTip">Nikmati hangat! Panaskan di toaster/oven 160°C selama 2-3 menit untuk kerenyahan maksimal.</p>
+              </div>
+            </div>
+
+            <!-- Purchase Controls & Quantity Selector -->
+            <div class="modal-purchase-controls">
+              <div class="qty-selector-group">
+                <span class="qty-label">Jumlah:</span>
+                <div class="qty-stepper">
+                  <button type="button" class="qty-btn" id="qtyMinusBtn" aria-label="Kurangi jumlah">−</button>
+                  <span class="qty-value" id="qtyValue" aria-live="polite">1</span>
+                  <button type="button" class="qty-btn" id="qtyPlusBtn" aria-label="Tambah jumlah">+</button>
+                </div>
+              </div>
+
+              <div class="modal-actions-row">
+                <button type="button" class="btn-add-bag-3d" id="modalAddBagBtn">
+                  <span class="btn-shine"></span>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                  </svg>
+                  <span>Tambah ke Keranjang</span>
+                </button>
+
+                <button type="button" class="btn-instant-wa" id="modalInstantWaBtn" title="Pesan sekarang langsung via WhatsApp">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.652c1.746.953 3.71 1.456 5.711 1.458h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                  </svg>
+                  <span>Chat WhatsApp</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Cart Launcher Button (Always visible on all screens) -->
+  <button class="floating-cart-btn" id="floatingCartBtn" onclick="openCart()" aria-label="Buka Keranjang Belanja">
+    <div class="floating-cart-inner">
+      <div class="floating-cart-icon-wrap">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <span class="floating-cart-badge" id="floatingCartBadge">0</span>
+      </div>
+      <span class="floating-cart-text">Keranjang (<span id="floatingCartSubtotal">Rp 0</span>)</span>
+    </div>
+  </button>
+
+  <!-- Shopping Cart Slide-out Drawer -->
+  <aside class="cart-drawer-backdrop" id="cartBackdrop" aria-hidden="true">
+    <div class="cart-drawer-panel" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartDrawerTitle">
+      <div class="cart-drawer-checker-strip"></div>
+      
+      <div class="cart-drawer-header">
+        <div class="cart-title-wrap">
+          <h3 class="cart-drawer-title" id="cartDrawerTitle">Keranjang Roti Bluezi</h3>
+          <span class="cart-subtitle-count" id="cartSubtitleCount">0 item dipilih</span>
+        </div>
+        <button class="cart-close-btn" id="closeCartBtn" onclick="closeCart()" aria-label="Tutup keranjang">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Cart Item List -->
+      <div class="cart-body" id="cartBody">
+        <div class="cart-empty-state" id="cartEmptyState">
+          <div class="empty-cat-sticker">
+            <img src="assets/brand/cat_navy.png" alt="Bluezi Cat" class="empty-cat-img">
+          </div>
+          <h4>Keranjangmu masih kosong nih!</h4>
+          <p>Pilih roti favoritmu yang melayang di atas dan klik <em>Tambah ke Keranjang</em>.</p>
+          <button class="btn-primary-3d btn-sm" id="emptyCartCtaBtn">Mulai Belanja 🍞</button>
+        </div>
+
+        <ul class="cart-items-list" id="cartItemsList">
+          <!-- Injected dynamically via JS -->
+        </ul>
+      </div>
+
+      <!-- Cart Footer / Checkout -->
+      <div class="cart-footer" id="cartFooter">
+        <div class="cart-subtotal-row">
+          <span class="subtotal-label">Subtotal Roti:</span>
+          <span class="subtotal-amount" id="cartSubtotal">Rp 0</span>
+        </div>
+        <p class="cart-tax-note">*Harga belum termasuk ongkir kurir (dikonfirmasi via WhatsApp)</p>
+
+        <!-- Customer Details in Cart Drawer -->
+        <div class="cart-customer-box">
+          <div class="cart-field-row">
+            <label for="cartCustName" class="cart-field-label">Nama Pemesan <span class="required-star">*</span></label>
+            <input type="text" id="cartCustName" placeholder="Contoh: Amanda Putri" class="cart-input-scrapbook">
+          </div>
+          <div class="cart-field-row">
+            <label for="cartCustPhone" class="cart-field-label">No. WhatsApp <span class="required-star">*</span></label>
+            <input type="tel" id="cartCustPhone" placeholder="Contoh: 081234567890" class="cart-input-scrapbook">
+          </div>
+          <div class="cart-field-row">
+            <label for="cartCustAddress" class="cart-field-label">Alamat Pengiriman <span class="required-star">*</span></label>
+            <textarea id="cartCustAddress" rows="2" placeholder="Jalan, kelurahan, patokan alamat..." class="cart-textarea-scrapbook"></textarea>
+          </div>
+          <div class="cart-field-row">
+            <label for="orderNoteInput" class="cart-field-label">Catatan Pesanan (opsional):</label>
+            <input type="text" id="orderNoteInput" placeholder="Contoh: Titip di pos satpam / Minta dipotong..." class="cart-input-scrapbook">
+          </div>
+        </div>
+
+        <button type="button" class="btn-checkout-wa" id="cartCheckoutWaBtn">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.652c1.746.953 3.71 1.456 5.711 1.458h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          <span>Pesan Sekarang via WhatsApp</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Toast Notification System -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-checker-strip" aria-hidden="true"></div>
+    <div class="container footer-content">
+      <div class="footer-mascot-row">
+        <img src="assets/brand/cat_cream.png" alt="Bluezi Cat" class="footer-cat-mascot">
+        <div class="footer-speech">
+          <p class="handwritten-footer">"Terima kasih sudah mampir ke Bluez' Bakery! Semoga harimu semanis dan sehangat roti kami!" 🥐✨</p>
+        </div>
+      </div>
+      <div class="footer-bottom-info">
+        <p>© 2026 BLUEZ' BAKERY by Bluezi Studio. All artisan recipes handcrafted with passion.</p>
+        <p class="footer-links">
+          <span>Jakarta & Surabaya Delivery</span> • 
+          <span>WhatsApp Orders: +62 813-9830-1616</span> • 
+          <span>Instagram: @bluezistudio</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

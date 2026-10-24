@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pemesanan Roti — BLUEZ' BAKERY | Artisan Bakery & Sourdough</title>
+  <meta name="description" content="Pesan roti artisanal favoritmu dari Bluezi Bakery. Pilih roti, atur jumlahnya, dan kirimkan pesananmu langsung via WhatsApp resmi Bluezi.">
+  <link rel="icon" type="image/png" href="assets/brand/cat_navy.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="order.css">
+</head>
+<body class="order-page-body">
+  <div class="order-page-wrapper">
+
+    <!-- Top Sticky Header -->
+    <header class="order-site-header">
+      <div class="order-header-inner">
+        <!-- Back Link to Landing Page -->
+        <a href="index.html" class="order-back-link" title="Kembali ke halaman utama bakery">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Kembali ke Bakery</span>
+        </a>
+
+        <!-- Brand Centerpiece -->
+        <a href="index.html" class="order-brand-center" title="Bluez' Bakery">
+          <img src="assets/brand/cat_cream.png" alt="Bluezi Cat Mascot" class="order-brand-cat">
+          <div class="order-brand-text">
+            <span class="order-brand-title">BLUEZ' BAKERY</span>
+            <span class="order-brand-sub">ARTISAN STUDIO</span>
+          </div>
+        </a>
+
+        <!-- Shopping Bag Counter -->
+        <div class="order-header-cart" id="orderHeaderCart" title="Klik untuk lihat ringkasan pesanan">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="order-header-cart-badge" id="headerCartCount">0 roti</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Introduction Banner -->
+    <section class="order-hero-banner">
+      <div class="order-hero-paper">
+        <div class="washi-tape-top-left" aria-hidden="true"></div>
+        <div class="washi-tape-top-right" aria-hidden="true"></div>
+
+        <div class="order-hero-meta">
+          <span class="order-hero-tag">FORMULIR PESANAN RESMI</span>
+          <span class="order-hero-handwrite">fresh baked every morning ~</span>
+        </div>
+
+        <h1 class="order-hero-title">Let's Order Something Delicious</h1>
+        <p class="order-hero-desc">
+          Pilih roti favoritmu, tentukan jumlahnya, dan kami akan membantu menyiapkan pesananmu. Rincian pesanan akan otomatis terangkum rapi dan diteruskan langsung ke WhatsApp kami! 🍞✨
+        </p>
+
+        <div class="order-perks-row">
+          <div class="order-perk-item">
+            <span class="order-perk-icon">🥖</span>
+            <span>Dipanggang Segar Tiap Hari (Fresh Daily Oven)</span>
+          </div>
+          <div class="order-perk-item">
+            <span class="order-perk-icon">🥐</span>
+            <span>100% Mentega & Fermentasi Alami</span>
+          </div>
+          <div class="order-perk-item">
+            <span class="order-perk-icon">🛵</span>
+            <span>Kirim via GoSend / GrabExpress / Sameday</span>
+          </div>
+          <div class="order-perk-item">
+            <span class="order-perk-icon">💬</span>
+            <span>Konfirmasi Cepat via WhatsApp</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Two-Column Layout -->
+    <main class="order-main-container">
+      
+      <!-- LEFT COLUMN: Customer Info Form + Product Selection -->
+      <div class="order-left-column">
+
+        <!-- 01 — Data Pemesan Section -->
+        <section class="order-card-section" id="sectionDataPemesan">
+          <div class="order-section-header">
+            <div class="order-section-title-wrap">
+              <span class="order-step-num">01</span>
+              <h2 class="order-section-title">Data Pemesan</h2>
+            </div>
+            <span class="order-section-hint">*Wajib diisi</span>
+          </div>
+
+          <form class="order-form-fields" onsubmit="event.preventDefault()">
+            <!-- Full Name -->
+            <div class="order-form-group">
+              <label for="custName" class="order-field-label">
+                Nama Lengkap <span class="required-star">*</span>
+              </label>
+              <input 
+                type="text" 
+                id="custName" 
+                class="order-field-input" 
+                placeholder="Masukkan nama lengkap" 
+                required 
+                autocomplete="name"
+              >
+              <div class="field-error-msg" id="errorName"></div>
+            </div>
+
+            <!-- WhatsApp Number -->
+            <div class="order-form-group">
+              <label for="custPhone" class="order-field-label">
+                Nomor WhatsApp / HP <span class="required-star">*</span>
+              </label>
+              <input 
+                type="tel" 
+                id="custPhone" 
+                class="order-field-input" 
+                placeholder="08xxxxxxxxxx" 
+                required 
+                autocomplete="tel"
+              >
+              <div class="field-error-msg" id="errorPhone"></div>
+            </div>
+
+            <!-- Full Address -->
+            <div class="order-form-group">
+              <label for="custAddress" class="order-field-label">
+                Alamat Lengkap Pengiriman <span class="required-star">*</span>
+              </label>
+              <textarea 
+                id="custAddress" 
+                class="order-field-textarea" 
+                rows="3" 
+                placeholder="Nama jalan, nomor rumah, RT/RW, kelurahan, kecamatan (sertakan patokan bila perlu)" 
+                required 
+                autocomplete="street-address"
+              ></textarea>
+              <div class="field-error-msg" id="errorAddress"></div>
+            </div>
+
+            <!-- Delivery Method Selection -->
+            <div class="order-form-group">
+              <label class="order-field-label">
+                Metode Pengiriman <span class="required-star">*</span>
+              </label>
+
+              <div class="delivery-options-grid">
+                <!-- Option 1: Kurir Instan -->
+                <div class="delivery-card selected" data-value="Kurir Instan (GoSend / GrabExpress)">
+                  <input type="radio" name="orderDelivery" value="Kurir Instan (GoSend / GrabExpress)" checked>
+                  <div class="delivery-card-left">
+                    <div class="delivery-icon-box">🛵</div>
+                    <div class="delivery-text-info">
+                      <span class="delivery-name">Kurir Instan</span>
+                      <span class="delivery-desc">GoSend / GrabExpress langsung diantar saat roti selesai dipanggang</span>
+                    </div>
+                  </div>
+                  <div class="delivery-card-right">
+                    <span class="delivery-badge-tag">Paling Cepat</span>
+                    <div class="custom-radio-circle"></div>
+                  </div>
+                </div>
+
+                <!-- Option 2: Sameday -->
+                <div class="delivery-card" data-value="Kurir Sameday (Paxel / AnterAja)">
+                  <input type="radio" name="orderDelivery" value="Kurir Sameday (Paxel / AnterAja)">
+                  <div class="delivery-card-left">
+                    <div class="delivery-icon-box">📦</div>
+                    <div class="delivery-text-info">
+                      <span class="delivery-name">Same Day Delivery</span>
+                      <span class="delivery-desc">Paxel / AnterAja hemat untuk rute Jabodetabek & sekitarnya</span>
+                    </div>
+                  </div>
+                  <div class="delivery-card-right">
+                    <span class="delivery-badge-tag">Hemat</span>
+                    <div class="custom-radio-circle"></div>
+                  </div>
+                </div>
+
+                <!-- Option 3: Ambil di Toko -->
+                <div class="delivery-card" data-value="Ambil di Toko (Self Pick-up)">
+                  <input type="radio" name="orderDelivery" value="Ambil di Toko (Self Pick-up)">
+                  <div class="delivery-card-left">
+                    <div class="delivery-icon-box">🏪</div>
+                    <div class="delivery-text-info">
+                      <span class="delivery-name">Ambil di Toko (Self Pick-up)</span>
+                      <span class="delivery-desc">Ambil pesanan langsung di kitchen studio bakery Bluezi</span>
+                    </div>
+                  </div>
+                  <div class="delivery-card-right">
+                    <span class="delivery-badge-tag">Bebas Ongkir</span>
+                    <div class="custom-radio-circle"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Notes -->
+            <div class="order-form-group">
+              <label for="custNotes" class="order-field-label">
+                Catatan Tambahan (Opsional)
+              </label>
+              <input 
+                type="text" 
+                id="custNotes" 
+                class="order-field-input" 
+                placeholder="Contoh: tanpa tambahan topping / minta dipotong 8 slice / jam tiba"
+              >
+            </div>
+          </form>
+        </section>
+
+        <!-- 02 — Pilih Roti Favoritmu Section -->
+        <section class="order-card-section" id="sectionPilihRoti">
+          <div class="order-section-header">
+            <div class="order-section-title-wrap">
+              <span class="order-step-num">02</span>
+              <h2 class="order-section-title">Pilih Roti Favoritmu</h2>
+            </div>
+            <span class="order-section-hint">Tentukan jumlah pesananmu</span>
+          </div>
+
+          <!-- Category Filter Pills Toolbar -->
+          <div class="order-products-toolbar">
+            <div class="order-filter-pills" role="tablist" aria-label="Kategori Roti">
+              <button type="button" class="order-filter-pill active" data-filter="all">Semua Roti (9)</button>
+              <button type="button" class="order-filter-pill" data-filter="savory">Savory (3)</button>
+              <button type="button" class="order-filter-pill" data-filter="sweet">Sweet Cream (4)</button>
+              <button type="button" class="order-filter-pill" data-filter="sourdough">Artisan Loaf (2)</button>
+            </div>
+          </div>
+
+          <!-- Dynamic Products List -->
+          <div class="products-selection-list" id="productsListContainer">
+            <!-- Populated via order.js -->
+          </div>
+        </section>
+
+      </div>
+
+      <!-- RIGHT COLUMN: Sticky Order Summary Card -->
+      <aside class="order-right-column">
+        <div class="order-summary-card">
+          <div class="summary-corner-badge">fresh checkout ♡</div>
+
+          <div class="summary-header">
+            <h2 class="summary-title">
+              <span>Ringkasan Pesanan</span>
+            </h2>
+            <span class="summary-badge-pill" id="summaryHeaderBadge">0 item</span>
+          </div>
+
+          <!-- Empty State (Shown when 0 items) -->
+          <div class="summary-empty-state" id="summaryEmptyState">
+            <img src="assets/brand/cat_navy.png" alt="Bluezi Cat" class="summary-empty-cat">
+            <h3 class="summary-empty-title">Belum ada roti yang dipilih</h3>
+            <p class="summary-empty-desc">Yuk, pilih roti favoritmu di daftar samping untuk memulai pesanan hangatmu!</p>
+          </div>
+
+          <!-- Selected Products List (Shown when items > 0) -->
+          <div class="summary-items-list" id="summaryItemsList" style="display: none;">
+            <!-- Populated via order.js -->
+          </div>
+
+          <!-- Selected Delivery Pill -->
+          <div class="summary-delivery-pill-box" id="summaryDeliveryPill">
+            <span>🛵</span>
+            <span>Metode: <strong>Kurir Instan</strong></span>
+          </div>
+
+          <!-- Price Calculations Breakdown -->
+          <div class="summary-calc-breakdown">
+            <div class="summary-calc-row">
+              <span>Total Roti:</span>
+              <strong id="summaryTotalCount">0 item</strong>
+            </div>
+            <div class="summary-calc-row">
+              <span>Subtotal Produk:</span>
+              <strong id="summarySubtotal">Rp 0</strong>
+            </div>
+            <div class="summary-calc-row">
+              <span>Ongkos Kirim:</span>
+              <strong style="color: #64748b; font-size: 0.88rem;">Dikonfirmasi via WA</strong>
+            </div>
+
+            <div class="summary-calc-row total-row">
+              <span class="summary-total-label">Estimasi Subtotal:</span>
+              <span class="summary-total-amount" id="summaryTotalEstimate">Rp 0</span>
+            </div>
+          </div>
+
+          <p class="summary-disclaimer">
+            *Total di atas adalah harga produk roti murni. Biaya ongkir kurir akan dikonfirmasi baker via WhatsApp sesuai titik alamat tujuanmu.
+          </p>
+
+          <!-- WhatsApp Order Submit Button -->
+          <button type="button" class="btn-whatsapp-order" id="btnSubmitOrder" title="Kirim rincian pesanan ke WhatsApp Bluezi Bakery">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.652c1.746.953 3.71 1.456 5.711 1.458h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            <span>Pesan via WhatsApp</span>
+          </button>
+        </div>
+
+        <!-- Trust Badges Container -->
+        <div class="summary-trust-box">
+          <div class="trust-item">
+            <span class="trust-icon">🥖</span>
+            <span>Dipanggang Segar Tiap Hari (Fresh Daily Oven)</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">🌿</span>
+            <span>100% Halal, Tanpa Pengawet Buatan</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">💬</span>
+            <span>Konfirmasi Stok & Pengiriman Langsung via WA</span>
+          </div>
+        </div>
+      </aside>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="order-footer">
+      <div class="order-footer-inner">
+        <img src="assets/brand/cat_cream.png" alt="Bluezi Cat" class="order-footer-cat">
+        <p class="order-footer-quote">"Terima kasih sudah memesan di Bluez' Bakery! Semoga harimu semanis dan sehangat roti kami!" 🥐✨</p>
+        <p class="order-footer-copy">
+          © 2026 BLUEZ' BAKERY by Bluezi Studio • WhatsApp: +62 813-9830-1616 • Jakarta & Surabaya
+        </p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="order-toast-container" id="orderToastContainer"></div>
+
+  <!-- Order Page Logic Script -->
+  <script src="order.js"></script>
+</body>
+</html>

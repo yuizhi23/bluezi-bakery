@@ -1,0 +1,14 @@
+# Operating System
+.DS_Store
+Thumbs.db
+
+# Archives & Binaries
+*.zip
+batch_lift
+lift_extra
+test_lift
+
+# Temporary scratch & build artifacts
+scratch/
+__pycache__/
+*.pyc
