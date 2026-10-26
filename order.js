@@ -28,6 +28,16 @@ const BAKERY_PRODUCTS = [
     image: 'public/images/products/enhanced/roti-abon.png?v=photoreal_v5'
   },
   {
+    id: 'floss-roll',
+    name: 'Floss Roll',
+    category: 'savory',
+    categoryLabel: 'Savory',
+    price: 7000,
+    priceFormatted: 'Rp 7.000',
+    shortDesc: 'Roti gulung empuk bertabur abon gurih melimpah di kedua ujungnya, dipadu creamy mayo, irisan cabai, dan daun bawang.',
+    image: 'public/images/products/enhanced/floss-roll.png?v=photoreal_v5'
+  },
+  {
     id: 'creamy-mushroom',
     name: 'Creamy Mushroom',
     category: 'savory',
@@ -88,6 +98,56 @@ const BAKERY_PRODUCTS = [
     image: 'public/images/products/enhanced/double-choco.png?v=photoreal_v5'
   },
   {
+    id: 'choux-craquelin',
+    name: 'Choux Craquelin',
+    category: 'sweet',
+    categoryLabel: 'Sweet Cream',
+    price: 8000,
+    priceFormatted: 'Rp 8.000',
+    shortDesc: 'Kulit soes choux garing keemasan dengan lapisan craquelin renyah dan isian silky vanilla custard dingin lembut.',
+    image: 'public/images/products/enhanced/choux-craquelin.png'
+  },
+  {
+    id: 'cookie-classic-chocochip',
+    name: 'Choco Chip Cookie',
+    category: 'cookies',
+    categoryLabel: 'Cookies',
+    price: 12000,
+    priceFormatted: 'Rp 12.000',
+    shortDesc: 'Cookies empuk soft-baked ala New York bertabur dark chocolate chunks melimpah dan renyahnya biskuit Oreo.',
+    image: 'public/images/products/enhanced/cookie-classic-chocochip.png'
+  },
+  {
+    id: 'cookie-red-velvet',
+    name: 'Red Velvet Cookie',
+    category: 'cookies',
+    categoryLabel: 'Cookies',
+    price: 12000,
+    priceFormatted: 'Rp 12.000',
+    shortDesc: 'Adonan red velvet ruby khas Bluezi dengan topping biskuit Oreo utuh dan dark chocolate chunks meleleh.',
+    image: 'public/images/products/enhanced/cookie-red-velvet.png'
+  },
+  {
+    id: 'cookie-tiramisu',
+    name: 'Tiramisu Cookie',
+    category: 'cookies',
+    categoryLabel: 'Cookies',
+    price: 12000,
+    priceFormatted: 'Rp 12.000',
+    shortDesc: 'Espresso aromatik berpadu swirl mascarpone cream lembut dan taburan cocoa powder murni di atas cookie soft-baked.',
+    image: 'public/images/products/enhanced/cookie-tiramisu.png'
+  },
+  {
+    id: 'cookie-double-dark',
+    name: 'Double Dark Cookie',
+    category: 'cookies',
+    categoryLabel: 'Cookies',
+    price: 12000,
+    priceFormatted: 'Rp 12.000',
+    shortDesc: 'Adonan double dark cocoa pekat berpadu isian lelehan molten chocolate lava premium yang lumer saat digigit.',
+    image: 'public/images/products/enhanced/cookie-double-dark.png'
+  },
+  {
     id: 'double-choco-loaf',
     name: 'Double Choco Loaf',
     category: 'sourdough',
@@ -96,6 +156,30 @@ const BAKERY_PRODUCTS = [
     priceFormatted: 'Rp 15.000',
     shortDesc: 'Roti sourdough artisan cokelat pekat berlimpah dark chocolate chips dengan kerak renyah istimewa.',
     image: 'public/images/products/enhanced/double-choco-loaf.png?v=photoreal_v5'
+  },
+  {
+    id: 'bluezi-hampers',
+    name: 'Hampers & Parcel',
+    category: 'hampers',
+    categoryLabel: 'Hampers (45k+)',
+    price: 45000,
+    priceFormatted: 'Start from Rp 45.000',
+    shortDesc: 'Paket hampers cantik pilihan toples cookies jar, tas ransel 2D, pouch kelinci, & snack tower mewah lengkap dengan pita satin dan greeting card elegan.',
+    image: 'public/images/hampers/hamper-cookie-box.jpg',
+    gallery: [
+      'public/images/hampers/hamper-cookie-box.jpg',
+      'public/images/hampers/hamper-bunny-pouch.jpg',
+      'public/images/hampers/hamper-mini-basket.jpg',
+      'public/images/hampers/hamper-2d-backpack.jpg',
+      'public/images/hampers/hamper-dome-basket.jpg',
+      'public/images/hampers/hamper-woven-handle.jpg',
+      'public/images/hampers/hamper-eid-compact.jpg',
+      'public/images/hampers/hamper-eid-classic.jpg',
+      'public/images/hampers/hamper-eid-mid.jpg',
+      'public/images/hampers/hamper-eid-tower-large.jpg',
+      'public/images/hampers/hamper-eid-garland.jpg',
+      'public/images/hampers/hamper-eid-floral.jpg'
+    ]
   }
 ];
 
@@ -181,6 +265,37 @@ function loadSavedCart() {
       if (Array.isArray(parsed)) {
         // Re-map with current product data to guarantee up-to-date pricing
         orderState.cart = parsed.map(item => {
+          if (item && item.isBox) {
+            return {
+              id: item.id,
+              isBox: true,
+              name: 'Bakery Box',
+              breads: item.breads || [],
+              hasSpecialPackaging: Boolean(item.hasSpecialPackaging),
+              packagingFee: item.packagingFee || (item.hasSpecialPackaging ? 2000 : 0),
+              breadSubtotal: item.breadSubtotal || ((item.breads?.[0]?.price || 0) + (item.breads?.[1]?.price || 0)),
+              price: item.price,
+              image: item.thumb || item.breads?.[0]?.thumb || 'public/images/products/enhanced/roti-abon.png',
+              qty: Math.max(1, parseInt(item.qty, 10) || 1)
+            };
+          }
+          if (item && (item.isHamper || (item.id && item.id.startsWith('hamper-')))) {
+            let shortHamperName = item.name || 'Hampers';
+            if (shortHamperName.length > 25) {
+              shortHamperName = shortHamperName.replace(/^Hampers:\s*/i, 'Hampers ').slice(0, 24).trim();
+            }
+            return {
+              id: item.id,
+              name: shortHamperName,
+              price: item.price || 45000,
+              image: item.thumb || item.image || 'public/images/hampers/hamper-cookie-box.jpg',
+              qty: Math.max(1, parseInt(item.qty, 10) || 1),
+              isHamper: true
+            };
+          }
+          if (item && item.id === 'artisan-soft-cookie') {
+            item.id = 'cookie-classic-chocochip';
+          }
           const matched = BAKERY_PRODUCTS.find(p => p.id === item.id);
           if (matched) {
             return {
@@ -251,6 +366,25 @@ function saveCustomerData() {
 // 4. RENDERING & UI UPDATES
 // ==========================================
 
+const orderThumbIndices = {};
+
+function slideOrderProductThumb(productId, delta) {
+  const product = BAKERY_PRODUCTS.find(p => p.id === productId);
+  if (!product || !product.gallery || product.gallery.length === 0) return;
+  if (orderThumbIndices[productId] === undefined) {
+    orderThumbIndices[productId] = 0;
+  }
+  const total = product.gallery.length;
+  orderThumbIndices[productId] = (orderThumbIndices[productId] + delta + total) % total;
+  const currentIdx = orderThumbIndices[productId];
+
+  const imgEl = document.getElementById(`orderThumb-${productId}`);
+  const counterEl = document.getElementById(`orderThumbCount-${productId}`);
+  if (imgEl) imgEl.src = product.gallery[currentIdx];
+  if (counterEl) counterEl.textContent = `${currentIdx + 1}/${total}`;
+  soundFX.playPop();
+}
+
 // Render Product Selection List
 function renderProductsList() {
   const container = document.getElementById('productsListContainer');
@@ -268,14 +402,31 @@ function renderProductsList() {
 
     let badgeClass = 'badge-savory';
     if (p.category === 'sweet') badgeClass = 'badge-sweet';
+    if (p.category === 'cookies') badgeClass = 'badge-cookies';
     if (p.category === 'sourdough') badgeClass = 'badge-sourdough';
+    if (p.category === 'hampers') badgeClass = 'badge-hampers';
+
+    const currentSlideIdx = orderThumbIndices[p.id] || 0;
+    const currentImg = p.gallery && p.gallery.length > 0 ? p.gallery[currentSlideIdx] : p.image;
+    const thumbHtml = p.gallery && p.gallery.length > 1 ? `
+      <div class="order-thumb-slider">
+        <img src="${currentImg}" alt="${p.name}" class="order-product-thumb" id="orderThumb-${p.id}" loading="lazy">
+        <div class="order-thumb-nav">
+          <button type="button" class="order-thumb-arrow prev" onclick="event.stopPropagation(); slideOrderProductThumb('${p.id}', -1)" aria-label="Foto Sebelumnya">‹</button>
+          <span class="order-thumb-counter" id="orderThumbCount-${p.id}">${currentSlideIdx + 1}/${p.gallery.length}</span>
+          <button type="button" class="order-thumb-arrow next" onclick="event.stopPropagation(); slideOrderProductThumb('${p.id}', 1)" aria-label="Foto Berikutnya">›</button>
+        </div>
+      </div>
+    ` : `
+      <div class="order-product-thumb-box">
+        <img src="${p.image}" alt="${p.name}" class="order-product-thumb" loading="lazy">
+      </div>
+    `;
 
     return `
       <div class="order-product-card ${hasQty ? 'has-qty' : ''}" id="prod-card-${p.id}">
         <div class="order-product-left">
-          <div class="order-product-thumb-box">
-            <img src="${p.image}" alt="${p.name}" class="order-product-thumb" loading="lazy">
-          </div>
+          ${thumbHtml}
           <div class="order-product-details">
             <div class="order-product-title-row">
               <span class="order-product-name">${p.name}</span>
@@ -298,9 +449,6 @@ function renderProductsList() {
 // Modify Product Quantity
 function modifyProductQty(productId, delta) {
   soundFX.playPop();
-  const product = BAKERY_PRODUCTS.find(p => p.id === productId);
-  if (!product) return;
-
   const existingIndex = orderState.cart.findIndex(item => item.id === productId);
 
   if (existingIndex > -1) {
@@ -311,6 +459,8 @@ function modifyProductQty(productId, delta) {
       orderState.cart[existingIndex].qty = newQty;
     }
   } else if (delta > 0) {
+    const product = BAKERY_PRODUCTS.find(p => p.id === productId);
+    if (!product) return;
     orderState.cart.push({
       id: product.id,
       name: product.name,
@@ -379,11 +529,7 @@ function updateOrderSummary() {
 
   // Delivery method indicator
   if (deliveryPillEl) {
-    let icon = '🛵';
-    if (orderState.deliveryMethod.includes('Sameday')) icon = '📦';
-    if (orderState.deliveryMethod.includes('Ambil')) icon = '🏪';
     deliveryPillEl.innerHTML = `
-      <span>${icon}</span>
       <span>Metode: <strong>${orderState.deliveryMethod}</strong></span>
     `;
   }
@@ -399,24 +545,56 @@ function updateOrderSummary() {
     if (emptyStateEl) emptyStateEl.style.display = 'none';
     if (itemsListEl) {
       itemsListEl.style.display = 'flex';
-      itemsListEl.innerHTML = orderState.cart.map(item => `
-        <div class="summary-item-row">
-          <div class="summary-item-info">
-            <img src="${item.image}" alt="${item.name}" class="summary-item-img">
-            <div class="summary-item-title-group">
-              <span class="summary-item-name">${item.name}</span>
-              <span class="summary-item-calc">${item.qty}x @ ${formatIDR(item.price)}</span>
+      itemsListEl.innerHTML = orderState.cart.map(item => {
+        if (item.isBox && item.breads && item.breads.length >= 2) {
+          const b1 = item.breads[0];
+          const b2 = item.breads[1];
+          return `
+            <div class="summary-item-row summary-item-box-row">
+              <div class="summary-item-info">
+                <div class="mini-box-thumbs">
+                  <img src="${b1.thumb || b1.image}" alt="${b1.name}">
+                  <img src="${b2.thumb || b2.image}" alt="${b2.name}">
+                </div>
+                <div class="summary-item-title-group">
+                  <span class="summary-item-name">${item.isBox ? 'Bakery Box' : item.name}</span>
+                  <span class="summary-box-sub">• 1x ${b1.name} (${formatIDR(b1.price)}) + 1x ${b2.name} (${formatIDR(b2.price)})</span>
+                  <span class="summary-box-pkg ${item.hasSpecialPackaging ? 'special' : ''}">
+                    ${item.hasSpecialPackaging ? 'Special Packaging (+Rp 2.000)' : 'Standard Packaging (Rp 0)'}
+                  </span>
+                  <span class="summary-item-calc">${item.qty} box @ ${formatIDR(item.price)}</span>
+                </div>
+              </div>
+              <span class="summary-item-subtotal">${formatIDR(item.price * item.qty)}</span>
+              <button type="button" class="summary-item-remove-btn" onclick="modifyProductQty('${item.id}', -${item.qty})" title="Hapus box dari pesanan" aria-label="Hapus ${item.name}">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
             </div>
+          `;
+        }
+
+        return `
+          <div class="summary-item-row">
+            <div class="summary-item-info">
+              <img src="${item.image}" alt="${item.name}" class="summary-item-img">
+              <div class="summary-item-title-group">
+                <span class="summary-item-name">${item.name}</span>
+                <span class="summary-item-calc">${item.qty}x @ ${formatIDR(item.price)}</span>
+              </div>
+            </div>
+            <span class="summary-item-subtotal">${formatIDR(item.price * item.qty)}</span>
+            <button type="button" class="summary-item-remove-btn" onclick="modifyProductQty('${item.id}', -${item.qty})" title="Hapus dari pesanan" aria-label="Hapus ${item.name}">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
           </div>
-          <span class="summary-item-subtotal">${formatIDR(item.price * item.qty)}</span>
-          <button type="button" class="summary-item-remove-btn" onclick="modifyProductQty('${item.id}', -${item.qty})" title="Hapus dari pesanan" aria-label="Hapus ${item.name}">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </button>
-        </div>
-      `).join('');
+        `;
+      }).join('');
     }
   }
 }
@@ -429,7 +607,7 @@ function showOrderToast(message, isError = false) {
   const toast = document.createElement('div');
   toast.className = `order-toast ${isError ? 'toast-error' : 'toast-success'}`;
   toast.innerHTML = `
-    <span>${isError ? '⚠️' : '🍞'}</span>
+    <span class="toast-check">${isError ? '!' : '✓'}</span>
     <span>${message}</span>
   `;
 
@@ -528,33 +706,49 @@ function validateAndSubmitOrder() {
   // Calculate totals
   const subtotal = orderState.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
 
-  // Compose Beautiful WhatsApp Message
-  let message = `🍞 *PESANAN BARU — BLUEZ' BAKERY* 🍞\n`;
+  // Compose WhatsApp Message
+  const hasHampers = orderState.cart.some(item => item.id === 'bluezi-hampers' || item.isHamper);
+  let message = `*PESANAN BARU — BLUEZ' BAKERY & STUDIO*\n`;
   message += `━━━━━━━━━━━━━━━━━━━━━\n`;
-  message += `👤 *DATA PEMESAN:*\n`;
+  message += `*DATA PEMESAN:*\n`;
   message += `• *Nama:* ${name}\n`;
   message += `• *No. WhatsApp:* ${phone}\n`;
   message += `• *Alamat Pengiriman:* ${address}\n`;
   message += `• *Metode Pengiriman:* ${orderState.deliveryMethod}\n`;
   message += `━━━━━━━━━━━━━━━━━━━━━\n`;
-  message += `📦 *DAFTAR ROTI YANG DIPESAN (${totalCount} item):*\n`;
+  message += `*DAFTAR ITEM YANG DIPESAN (${totalCount} item):*\n`;
 
   orderState.cart.forEach((item, index) => {
-    message += `${index + 1}. ${item.name} (${item.qty}x @ ${formatIDR(item.price)}) = ${formatIDR(item.price * item.qty)}\n`;
+    if (item.isBox && item.breads && item.breads.length >= 2) {
+      const b1 = item.breads[0];
+      const b2 = item.breads[1];
+      message += `\n*${item.name}* (Box #${index + 1})\n`;
+      message += `  • 1x ${b1.name} — ${formatIDR(b1.price)}\n`;
+      message += `  • 1x ${b2.name} — ${formatIDR(b2.price)}\n`;
+      message += `  • Special Packaging — ${item.hasSpecialPackaging ? formatIDR(item.packagingFee || 2000) : 'Rp 0'}\n`;
+      message += `  Total per box: ${formatIDR(item.price)}\n`;
+      message += `  Jumlah box: ${item.qty}\n`;
+      message += `  Total pesanan box: ${formatIDR(item.price * item.qty)}\n`;
+    } else {
+      message += `${index + 1}. ${item.name} (${item.qty}x @ ${formatIDR(item.price)}) = ${formatIDR(item.price * item.qty)}\n`;
+    }
   });
 
   message += `━━━━━━━━━━━━━━━━━━━━━\n`;
-  message += `💰 *ESTIMASI SUBTOTAL ROTI: ${formatIDR(subtotal)}*\n`;
-  if (orderState.customer.notes) {
-    message += `📝 *Catatan Khusus:* ${orderState.customer.notes}\n`;
+  message += `*ESTIMASI SUBTOTAL: ${formatIDR(subtotal)}*\n`;
+  if (hasHampers) {
+    message += `*Catatan Hampers:* Paket hampers start from 45k (mohon info ketersediaan varian toples cookies / box / snack)\n`;
   }
-  message += `\nHalo min, saya mau pesan roti-roti di atas ya. Mohon konfirmasi ketersediaan stok fresh dan total biaya pengiriman ke alamat saya. Terima kasih! ✨`;
+  if (orderState.customer.notes) {
+    message += `*Catatan Khusus:* ${orderState.customer.notes}\n`;
+  }
+  message += `\nHalo min, saya mau pesan item di atas ya. Mohon konfirmasi ketersediaan stok fresh dan total biaya pengiriman ke alamat saya. Terima kasih!`;
 
   const encoded = encodeURIComponent(message);
   const waUrl = `https://api.whatsapp.com/send?phone=${BAKERY_WA_PHONE}&text=${encoded}`;
 
   soundFX.playSuccess();
-  showOrderToast('Rincian pesanan telah siap! Mengalihkan ke WhatsApp... 💬');
+  showOrderToast('Rincian pesanan telah siap! Mengalihkan ke WhatsApp...');
 
   // Open WhatsApp in new tab / app
   setTimeout(() => {
@@ -570,6 +764,19 @@ document.addEventListener('DOMContentLoaded', () => {
   loadSavedCustomerData();
   renderProductsList();
   updateOrderSummary();
+
+  // Check URL category parameter (e.g. order.html?category=hampers)
+  const urlParams = new URLSearchParams(window.location.search);
+  const catParam = urlParams.get('category');
+  if (catParam) {
+    const targetPill = document.querySelector(`.order-filter-pill[data-filter="${catParam}"]`);
+    if (targetPill) {
+      document.querySelectorAll('.order-filter-pill').forEach(p => p.classList.remove('active'));
+      targetPill.classList.add('active');
+      orderState.selectedCategory = catParam;
+      renderProductsList();
+    }
+  }
 
   // Category Filter Buttons (Delegated for 100% Reliability)
   document.addEventListener('click', (e) => {
@@ -645,3 +852,4 @@ function scrollToOrderSummary() {
 window.modifyProductQty = modifyProductQty;
 window.validateAndSubmitOrder = validateAndSubmitOrder;
 window.scrollToOrderSummary = scrollToOrderSummary;
+window.slideOrderProductThumb = slideOrderProductThumb;

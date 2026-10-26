@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bluezi Studio 🥐 | Cakes, Pastries & Sweet Surprises ♡</title>
-  <meta name="description" content="Bluezi Studio 🥐 | a little studio for cakes, pastries & sweet surprises ♡. Artisan breads, fresh choux, fluffy buns & sourdough dipanggang fresh daily di Bandung.">
+  <title>Bluezi Studio | Cakes, Pastries & Sweet Surprises</title>
+  <meta name="description" content="Bluezi Studio | a little studio for cakes, pastries & sweet surprises. Artisan breads, fresh choux, fluffy buns & sourdough dipanggang fresh daily di Bandung.">
   
   <!-- Fonts: Unified Plus Jakarta Sans for clean, harmonious typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,7 +37,7 @@
           </div>
           <div class="brand-text">
             <h1 class="brand-title">BLUEZ' BAKERY</h1>
-            <span class="brand-sub">Bluezi Studio 🥐 • Cakes, Pastries & Sweet Surprises ♡</span>
+            <span class="brand-sub">Bluezi Studio • Cakes, Pastries & Sweet Surprises</span>
           </div>
         </a>
       </div>
@@ -47,13 +47,15 @@
           <button type="button" class="pill-btn active" data-filter="all" onclick="applyCategoryFilter('all', true)" role="tab" aria-selected="true" id="filter-all">Semua Roti</button>
           <button type="button" class="pill-btn" data-filter="savory" onclick="applyCategoryFilter('savory', true)" role="tab" aria-selected="false" id="filter-savory">Savory</button>
           <button type="button" class="pill-btn" data-filter="sweet" onclick="applyCategoryFilter('sweet', true)" role="tab" aria-selected="false" id="filter-sweet">Sweet Cream</button>
+          <button type="button" class="pill-btn pill-btn-cookies" data-filter="cookies" onclick="applyCategoryFilter('cookies', true)" role="tab" aria-selected="false" id="filter-cookies">Cookies</button>
           <button type="button" class="pill-btn" data-filter="sourdough" onclick="applyCategoryFilter('sourdough', true)" role="tab" aria-selected="false" id="filter-sourdough">Artisan Loaf</button>
+          <button type="button" class="pill-btn pill-btn-box" data-filter="box" onclick="applyCategoryFilter('box', true)" role="tab" id="filter-box-builder">Bakery Box</button>
+          <button type="button" class="pill-btn pill-btn-hampers" data-filter="hampers" onclick="applyCategoryFilter('hampers', true)" role="tab" aria-selected="false" id="filter-hampers">Hampers</button>
         </div>
       </nav>
 
       <div class="header-quick-actions">
         <a href="order.html" class="nav-order-btn" title="Buka Halaman Pemesanan Roti">
-          <span class="order-btn-icon">📝</span>
           <span class="order-btn-text">Pesan</span>
         </a>
 
@@ -86,18 +88,18 @@
         </h2>
         
         <p class="hero-desc">
-          <strong>Bluezi Studio 🥐</strong> — <em>a little studio for cakes, pastries & sweet surprises ♡</em>. Setiap roti dipanggang segar penuh cinta di Bandung. Dari kelezatan <em>Pizza Bread</em> yang gurih, <em>Roti Abon</em> ayam bertabur creamy mayo, hingga lembutnya <em>Choux Strawberry</em> dan <em>Cranberry Cheese Sourdough</em>.
+          <strong>Bluezi Studio</strong> — <em>a little studio for cakes, pastries & sweet surprises</em>. Setiap roti dipanggang segar penuh cinta di Bandung. Dari kelezatan <em>Pizza Bread</em> yang gurih, <em>Roti Abon</em> ayam bertabur creamy mayo, hingga lembutnya <em>Choux Strawberry</em> dan <em>Cranberry Cheese Sourdough</em>.
         </p>
 
         <!-- Quick Facts -->
         <div class="hero-doodle-tags">
           <a href="https://www.instagram.com/bluezistudio/" target="_blank" rel="noopener" class="scrapbook-tag ig-tag" style="background:#fdf2f8; color:#db2777; border-color:#f472b6; font-weight:800; text-decoration:none; display:inline-flex; align-items:center; gap:0.35rem;" title="Kunjungi Instagram Bluezi Studio">
-            <span>📸 @Bluezistudio</span>
+            <span>@Bluezistudio</span>
           </a>
-          <span class="scrapbook-tag" style="background:#fef3c7; color:#92400e; border-color:#fde68a; font-weight:800;">📍 Sunday at GBLA</span>
-          <span class="scrapbook-tag" style="background:#ecfdf5; color:#065f46; border-color:#a7f3d0; font-weight:800;">🗓️ Pre-order every week</span>
+          <span class="scrapbook-tag" style="background:#fef3c7; color:#92400e; border-color:#fde68a; font-weight:800;">Sunday at GBLA</span>
+          <span class="scrapbook-tag" style="background:#ecfdf5; color:#065f46; border-color:#a7f3d0; font-weight:800;">Pre-order every week</span>
           <span class="scrapbook-tag blue-check-tag">100% Fresh Daily</span>
-          <span class="scrapbook-tag" style="background:#e0f2fe; color:#0369a1; border-color:#7dd3fc; font-weight:800;">🛵 Delivery Bandung (Luar Kota Chat Admin)</span>
+          <span class="scrapbook-tag" style="background:#e0f2fe; color:#0369a1; border-color:#7dd3fc; font-weight:800;">Delivery Bandung (Luar Kota Chat Admin)</span>
         </div>
 
         <div class="hero-cta-group">
@@ -186,7 +188,10 @@
         <button type="button" class="pill-btn active" data-filter="all" onclick="applyCategoryFilter('all', false)">Semua Roti</button>
         <button type="button" class="pill-btn" data-filter="savory" onclick="applyCategoryFilter('savory', false)">Savory</button>
         <button type="button" class="pill-btn" data-filter="sweet" onclick="applyCategoryFilter('sweet', false)">Sweet Cream</button>
+        <button type="button" class="pill-btn pill-btn-cookies" data-filter="cookies" onclick="applyCategoryFilter('cookies', false)">Cookies</button>
         <button type="button" class="pill-btn" data-filter="sourdough" onclick="applyCategoryFilter('sourdough', false)">Artisan Loaf</button>
+        <button type="button" class="pill-btn pill-btn-box" data-filter="box" onclick="applyCategoryFilter('box', false)" role="tab" id="gallery-filter-box-builder">Bakery Box</button>
+        <button type="button" class="pill-btn pill-btn-hampers" data-filter="hampers" onclick="applyCategoryFilter('hampers', false)">Hampers</button>
       </div>
 
       <div class="gallery-controls-tools">
@@ -233,6 +238,408 @@
     </div>
   </main>
 
+  <!-- ================================================================= -->
+  <!-- BUILD YOUR OWN BAKERY BOX (EXACTLY 2 BREADS PER BOX)             -->
+  <!-- ================================================================= -->
+  <section class="box-builder-section" id="box-builder">
+    <div class="container">
+      <div class="box-builder-board paper-torn-edge">
+        <div class="washi-tape washi-tape-left" aria-hidden="true"></div>
+        <div class="washi-tape washi-tape-right" aria-hidden="true"></div>
+
+        <!-- Section Header -->
+        <div class="box-builder-header">
+          <div class="box-builder-pill-badge">CUSTOM 2-BREAD BOX PACKAGING</div>
+          <h2 class="box-builder-title">Build Your Own Bakery Box</h2>
+          <p class="box-builder-subtitle">Pick any 2 breads to create your perfect little box</p>
+          <div class="box-builder-status-bar">
+            <span class="box-status-pill" id="boxSelectionCounter">
+              <span class="box-status-dot" id="boxStatusDot"></span>
+              <span id="boxCountLabel">0/2 breads selected</span>
+            </span>
+            <span class="box-spec-rule">Maksimal tepat 2 roti per box • Bisa 2 roti beda atau 2 roti sama</span>
+          </div>
+        </div>
+
+        <!-- Interactive 2-Column Builder Layout -->
+        <div class="box-builder-grid">
+
+          <!-- Left Column: Realistic Physical Packaging Preview -->
+          <div class="box-preview-col">
+            <div class="box-preview-sticky">
+              <div class="box-preview-title-row">
+                <span class="box-preview-tag">LIVE PACKAGING PREVIEW</span>
+                <span class="box-packaging-indicator" id="previewPackagingBadge">Standard Packaging (Rp 0)</span>
+              </div>
+
+              <!-- Realistic Bakery Box Packaging Stage -->
+              <div class="bakery-box-card" id="bakeryBoxVisual">
+                <div class="kraft-box-outer">
+                  <!-- Classic Blue-and-White Checkered Liner Trim -->
+                  <div class="box-gingham-trim" aria-hidden="true"></div>
+
+                  <!-- Inner Tray with 2 Baking Paper Liners & Slots -->
+                  <div class="box-inner-tray">
+                    
+                    <!-- Slot 0: Bread 1 -->
+                    <div class="box-slot empty" id="boxSlot0" data-slot="0">
+                      <div class="box-fluted-liner" aria-hidden="true">
+                        <div class="flute-ring flute-ring-outer"></div>
+                        <div class="flute-ring flute-ring-inner"></div>
+                      </div>
+                      <div class="slot-body" id="slotBody0">
+                        <div class="slot-empty-content">
+                          <div class="slot-plus-circle">+</div>
+                          <span class="slot-slot-label">Slot 1</span>
+                          <span class="slot-slot-hint">Pilih roti pertama</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Slot 1: Bread 2 -->
+                    <div class="box-slot empty" id="boxSlot1" data-slot="1">
+                      <div class="box-fluted-liner" aria-hidden="true">
+                        <div class="flute-ring flute-ring-outer"></div>
+                        <div class="flute-ring flute-ring-inner"></div>
+                      </div>
+                      <div class="slot-body" id="slotBody1">
+                        <div class="slot-empty-content">
+                          <div class="slot-plus-circle">+</div>
+                          <span class="slot-slot-label">Slot 2</span>
+                          <span class="slot-slot-hint">Pilih roti kedua</span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <!-- Transparent Plastic Dome Lid with Specular Reflection & Bluez Stickers -->
+                  <div class="box-plastic-lid" id="boxPlasticLid" aria-hidden="true">
+                    <div class="lid-specular-shine"></div>
+                    <div class="lid-glass-border"></div>
+
+                    <!-- BLUEZ' Official Branding Stickers on Packaging Lid -->
+                    <div class="box-stickers-layer" id="boxStickersLayer">
+                      <div class="box-seal-sticker sticker-cat" title="BLUEZ' Studio Cat Seal">
+                        <img src="assets/brand/cat_navy_box.png" alt="Bluez Cat Seal" class="sticker-img">
+                      </div>
+                      <div class="box-seal-sticker sticker-logo" title="BLUEZ' Bakery Official Arched Label">
+                        <img src="assets/brand/logo_cream_box.png" alt="Bluez Bakery Label" class="sticker-img">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Ground Shadow Under Physical Box -->
+                <div class="box-ambient-shadow"></div>
+              </div>
+
+              <!-- Packaging Reference Info Note -->
+              <div class="packaging-ref-note">
+                <span class="ref-note-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+                <span>Kemasan asli <strong>Souvenir Roti BLUEZ'</strong> (kraft tray, fluted cup liner, & clear dome lid)</span>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Right Column: Product Picker, Special Packaging Option & Price Breakdown -->
+          <div class="box-controls-col">
+
+            <!-- Special Packaging Toggle Option -->
+            <div class="special-packaging-toggle-card" id="specialPackagingCard">
+              <label class="packaging-option-label" for="boxSpecialPackagingCheckbox">
+                <div class="custom-checkbox-wrapper">
+                  <input type="checkbox" id="boxSpecialPackagingCheckbox" class="packaging-real-checkbox" onchange="toggleBoxPackaging(this.checked)">
+                  <span class="custom-checkbox-styled">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </span>
+                </div>
+                <div class="packaging-option-info">
+                  <div class="packaging-title-row">
+                    <span class="packaging-title-text">Use Special Bakery Box Packaging (+Rp2,000)</span>
+                    <span class="packaging-badge">Pilihan Favorit</span>
+                  </div>
+                  <p class="packaging-description">
+                    Lengkap dengan kraft box packaging, clear dome lid, alas cupcake fluted, pita, & stiker segel resmi BLUEZ' Studio (+Rp 2.000 per box).
+                  </p>
+                </div>
+              </label>
+            </div>
+
+            <!-- Bread Catalog Picker (Real Catalog Breads) -->
+            <div class="bread-picker-container">
+              <div class="bread-picker-header">
+                <h3 class="bread-picker-title">Pilih Roti Favoritmu (Maksimal 2):</h3>
+                <span class="bread-picker-subtitle">Klik <strong>+ Tambah Roti</strong> untuk memasukkan ke dalam slot box</span>
+              </div>
+
+              <div class="box-breads-grid" id="boxBreadsGrid">
+                <!-- Dynamically rendered via app.js using PRODUCTS_DATA -->
+              </div>
+            </div>
+
+            <!-- Live Price Summary & Breakdown Card -->
+            <div class="box-order-summary-card">
+              <h4 class="summary-card-title">Rincian Box & Harga</h4>
+              
+              <div class="box-calc-list">
+                <div class="box-calc-row" id="calcBread1Row">
+                  <span class="calc-label" id="calcBread1Label">• Roti 1:</span>
+                  <span class="calc-price" id="calcBread1Price"><em>Belum dipilih</em></span>
+                </div>
+                <div class="box-calc-row" id="calcBread2Row">
+                  <span class="calc-label" id="calcBread2Label">• Roti 2:</span>
+                  <span class="calc-price" id="calcBread2Price"><em>Belum dipilih</em></span>
+                </div>
+                <div class="box-calc-row subtotal-row">
+                  <span class="calc-label">Subtotal Roti:</span>
+                  <strong class="calc-price" id="calcBreadSubtotal">Rp 0</strong>
+                </div>
+                <div class="box-calc-row packaging-row" id="calcPackagingRow">
+                  <span class="calc-label">Special Packaging:</span>
+                  <span class="calc-price" id="calcPackagingFee">Rp 0</span>
+                </div>
+                <div class="box-calc-divider"></div>
+                <div class="box-calc-row grand-total-row">
+                  <span class="calc-grand-label">Total Harga Box:</span>
+                  <span class="calc-grand-price" id="calcBoxTotal">Rp 0</span>
+                </div>
+              </div>
+
+              <!-- Add Box To Cart Button -->
+              <button type="button" class="btn-add-box-to-cart" id="btnAddBoxToCart" onclick="addCustomBoxToCart()" disabled>
+                <span id="btnAddBoxBtnLabel">Pilih 2 Roti Dahulu</span>
+              </button>
+
+              <p class="box-cart-hint" id="boxCartValidationHint">
+                Kamu harus memilih tepat 2 roti untuk dapat menambahkan box ini ke keranjang.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================= -->
+  <!-- ARTISAN SOFT COOKIES SHOWCASE SECTION (12K EACH)                 -->
+  <!-- ================================================================= -->
+  <section class="cookies-showcase-section" id="cookies">
+    <div class="container">
+      <div class="cookies-board paper-torn-edge">
+        <div class="washi-tape washi-tape-left" aria-hidden="true"></div>
+        <div class="washi-tape washi-tape-right" aria-hidden="true"></div>
+
+        <!-- Section Header -->
+        <div class="cookies-header">
+          <div class="cookies-pill-badge">ARTISAN SOFT-BAKED COOKIE BAR</div>
+          <h2 class="cookies-title">Koleksi Artisan Soft Cookies Bluezi</h2>
+          
+          <div class="cookies-price-banner">
+            <span class="price-start-text">SEMUA VARIAN</span>
+            <span class="price-highlight">Rp 12.000 / pcs</span>
+          </div>
+
+          <p class="cookies-subtitle">
+            Dipanggang fresh dengan 100% mentega pilihan dan brown sugar harum. Bertekstur soft-baked renyah di tepi dan empuk chewy di tengah.
+          </p>
+        </div>
+
+        <!-- 4-Card Cookies Grid -->
+        <div class="cookies-grid">
+          
+          <!-- Cookie 1: Classic Choco Chip -->
+          <article class="cookie-card" id="cookie-card-classic">
+            <div class="cookie-badge-tag">Classic Favorite</div>
+            <div class="cookie-img-box" onclick="openProductModal('cookie-classic-chocochip')" role="button" tabindex="0" title="Lihat Detail Choco Chip Cookie">
+              <div class="cookie-shadow"></div>
+              <img src="public/images/products/enhanced/cookie-classic-chocochip.png" alt="Choco Chip Cookie" class="cookie-thumb" loading="eager">
+            </div>
+            <div class="cookie-info">
+              <h3 class="cookie-name">Choco Chip Cookie</h3>
+              <p class="cookie-desc">Dark chocolate chunks meleleh melimpah dengan renyahnya topping biskuit Oreo & mentega harum.</p>
+              <div class="cookie-footer">
+                <span class="cookie-price">Rp 12.000</span>
+                <div class="cookie-btn-group">
+                  <button type="button" class="btn-cookie-detail" onclick="openProductModal('cookie-classic-chocochip')" title="Detail">Detail</button>
+                  <button type="button" class="btn-cookie-add" onclick="addCookieDirect('cookie-classic-chocochip')" title="Tambah ke Keranjang">+ Keranjang</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Cookie 2: Red Velvet Oreo -->
+          <article class="cookie-card" id="cookie-card-redvelvet">
+            <div class="cookie-badge-tag badge-redvelvet">Best Seller</div>
+            <div class="cookie-img-box" onclick="openProductModal('cookie-red-velvet')" role="button" tabindex="0" title="Lihat Detail Red Velvet Cookie">
+              <div class="cookie-shadow"></div>
+              <img src="public/images/products/enhanced/cookie-red-velvet.png" alt="Red Velvet Cookie" class="cookie-thumb" loading="eager">
+            </div>
+            <div class="cookie-info">
+              <h3 class="cookie-name">Red Velvet Cookie</h3>
+              <p class="cookie-desc">Adonan ruby red velvet harum bertabur dark choco chunks dan topping biskuit Oreo utuh renyah.</p>
+              <div class="cookie-footer">
+                <span class="cookie-price">Rp 12.000</span>
+                <div class="cookie-btn-group">
+                  <button type="button" class="btn-cookie-detail" onclick="openProductModal('cookie-red-velvet')" title="Detail">Detail</button>
+                  <button type="button" class="btn-cookie-add" onclick="addCookieDirect('cookie-red-velvet')" title="Tambah ke Keranjang">+ Keranjang</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Cookie 3: Tiramisu Cream -->
+          <article class="cookie-card" id="cookie-card-tiramisu">
+            <div class="cookie-badge-tag badge-tiramisu">Specialty</div>
+            <div class="cookie-img-box" onclick="openProductModal('cookie-tiramisu')" role="button" tabindex="0" title="Lihat Detail Tiramisu Cookie">
+              <div class="cookie-shadow"></div>
+              <img src="public/images/products/enhanced/cookie-tiramisu.png" alt="Tiramisu Cookie" class="cookie-thumb" loading="eager">
+            </div>
+            <div class="cookie-info">
+              <h3 class="cookie-name">Tiramisu Cookie</h3>
+              <p class="cookie-desc">Aroma espresso aromatik berpadu swirl mascarpone cream lembut dan taburan cocoa powder murni.</p>
+              <div class="cookie-footer">
+                <span class="cookie-price">Rp 12.000</span>
+                <div class="cookie-btn-group">
+                  <button type="button" class="btn-cookie-detail" onclick="openProductModal('cookie-tiramisu')" title="Detail">Detail</button>
+                  <button type="button" class="btn-cookie-add" onclick="addCookieDirect('cookie-tiramisu')" title="Tambah ke Keranjang">+ Keranjang</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Cookie 4: Double Dark Lava -->
+          <article class="cookie-card" id="cookie-card-doubledark">
+            <div class="cookie-badge-tag badge-doubledark">Molten Lava</div>
+            <div class="cookie-img-box" onclick="openProductModal('cookie-double-dark')" role="button" tabindex="0" title="Lihat Detail Double Dark Cookie">
+              <div class="cookie-shadow"></div>
+              <img src="public/images/products/enhanced/cookie-double-dark.png" alt="Double Dark Cookie" class="cookie-thumb" loading="eager">
+            </div>
+            <div class="cookie-info">
+              <h3 class="cookie-name">Double Dark Cookie</h3>
+              <p class="cookie-desc">Double dark cocoa pekat berpadu isian lelehan molten chocolate lava premium yang lumer saat digigit.</p>
+              <div class="cookie-footer">
+                <span class="cookie-price">Rp 12.000</span>
+                <div class="cookie-btn-group">
+                  <button type="button" class="btn-cookie-detail" onclick="openProductModal('cookie-double-dark')" title="Detail">Detail</button>
+                  <button type="button" class="btn-cookie-add" onclick="addCookieDirect('cookie-double-dark')" title="Tambah ke Keranjang">+ Keranjang</button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Cookie Mix-and-match Callout -->
+        <div class="cookies-mix-callout">
+          <div class="cookies-callout-content">
+            <div class="cookies-callout-text">
+              <strong>Mau padukan cookie dengan roti favoritmu?</strong>
+              <span>Kamu bisa kombinasikan cookie & roti di Bakery Box isi 2 atau pesan langsung di form!</span>
+            </div>
+            <div class="cookies-callout-actions">
+              <a href="#box-builder" class="btn-callout-link" onclick="scrollToBoxBuilder()">Rangkai di Bakery Box ➔</a>
+              <a href="order.html" class="btn-callout-link btn-callout-alt">Form Pemesanan ➔</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================= -->
+  <!-- SPECIAL HAMPERS & GIFT PARCEL SHOWCASE SECTION (PHOTO SLIDER)   -->
+  <!-- ================================================================= -->
+  <section class="hampers-showcase-section" id="hampers">
+    <div class="container">
+      <div class="hampers-board paper-torn-edge">
+        <div class="washi-tape washi-tape-left" aria-hidden="true"></div>
+        <div class="washi-tape washi-tape-right" aria-hidden="true"></div>
+
+        <!-- Section Header -->
+        <div class="hampers-header">
+          <div class="hampers-pill-badge">SPECIAL GIFT & PARCEL BY BLUEZI</div>
+          <h2 class="hampers-title">Koleksi Hampers & Parcel Spesial Bluezi</h2>
+          
+          <div class="hampers-price-banner">
+            <span class="price-start-text">START FROM</span>
+            <span class="price-highlight">Rp 45.000</span>
+          </div>
+
+          <p class="hampers-subtitle">
+            Rayakan momen istimewa dan hari raya dengan koleksi hampers eksklusif Bluezi Bakery.
+            Pilihan kemasan toples cookies jar motif gingham, pouch kuping kelinci imut, tas ransel 2D unik, keranjang anyam estetik, hingga parcel tower bertingkat mewah. Lengkap dengan pita satin premium & custom greeting card!
+          </p>
+        </div>
+
+        <!-- Interactive Photo Slider (Carousel) -->
+        <div class="hamper-slider-wrapper" id="hamperSliderWrap" aria-label="Galeri Foto Hampers">
+          <button type="button" class="hamper-nav-btn prev-btn" id="hamperPrevBtn" aria-label="Foto Hamper Sebelumnya">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+
+          <div class="hamper-slider-viewport" id="hamperViewport">
+            <div class="hamper-slider-track" id="hamperTrack">
+              <!-- Injected via JavaScript from PRODUCTS_DATA / HAMPERS_DATA (12 slides) -->
+            </div>
+          </div>
+
+          <button type="button" class="hamper-nav-btn next-btn" id="hamperNextBtn" aria-label="Foto Hamper Berikutnya">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Slider Navigation Controls: Counter & Dots -->
+        <div class="hamper-slider-controls">
+          <div class="hamper-counter" id="hamperCounter">01 / 12</div>
+          <div class="hamper-dots" id="hamperDots" role="tablist" aria-label="Pilih Slide Hamper">
+            <!-- Populated via JS -->
+          </div>
+          <div class="hamper-auto-badge">
+            <span class="auto-pulse-dot"></span>
+            <span>Geser / Auto-slide (4.5s)</span>
+          </div>
+        </div>
+
+        <!-- Interactive Thumbnail Strip (Click to Jump Directly) -->
+        <div class="hamper-thumb-strip-wrap">
+          <div class="hamper-thumb-strip-label">PILIH VARIAN HAMPERS:</div>
+          <div class="hamper-thumb-strip" id="hamperThumbStrip">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+        <!-- Bottom Action CTA Strip -->
+        <div class="hampers-footer-actions">
+          <a href="https://api.whatsapp.com/send?phone=6281398301616&text=Halo%20Bluezi%20Bakery!%20Saya%20mau%20pesan%20Hampers%20Spesial%20(start%20from%2045k).%20Boleh%20minta%20info%20pilihan%20varian%20dan%20cara%20pemesanannya%3F%20%E2%9C%A8" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="btn-hampers-wa">
+            <span>Konsultasi & Pesan via WhatsApp (0813-9830-1616)</span>
+          </a>
+          <a href="order.html?category=hampers" class="btn-hampers-order">
+            <span>Pesan di Order Page</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- Editorial Story Scrapbook Strip: Bluezi Bakery Craftsmanship -->
   <section class="bakery-story-section" id="story">
     <div class="container">
@@ -245,28 +652,28 @@
           <div class="story-photo-stack">
             <!-- Photo 1: Sourdough Tray -->
             <div class="photo-card photo-card-1">
-              <div class="card-pin" aria-hidden="true">📌</div>
+              <div class="card-pin" aria-hidden="true"></div>
               <img src="assets/editorial/cranberry_sourdough_tray.jpg" alt="Artisan Cranberry Sourdough" class="story-img">
               <span class="photo-caption">24h Wild Sourdough</span>
             </div>
 
             <!-- Photo 2: Fresh Pizza Breads Oven Tray -->
             <div class="photo-card photo-card-2">
-              <div class="card-pin" aria-hidden="true">📌</div>
+              <div class="card-pin" aria-hidden="true"></div>
               <img src="assets/editorial/pizza_tray.jpg" alt="Loyang Roti Pizza Segar" class="story-img">
               <span class="photo-caption">Stone Oven Pizza • 06.00</span>
             </div>
 
             <!-- Photo 3: Choux Pastry Display -->
             <div class="photo-card photo-card-3">
-              <div class="card-pin" aria-hidden="true">📌</div>
+              <div class="card-pin" aria-hidden="true"></div>
               <img src="assets/editorial/choux_display.jpg" alt="Choux Pastry Showcase" class="story-img">
               <span class="photo-caption">Strawberry & Mango Choux</span>
             </div>
 
             <!-- Photo 4: Dark Cocoa Artisan Tray -->
             <div class="photo-card photo-card-4">
-              <div class="card-pin" aria-hidden="true">📌</div>
+              <div class="card-pin" aria-hidden="true"></div>
               <img src="assets/editorial/choco_tray.jpg" alt="Dark Cocoa Sourdough Tray" class="story-img">
               <span class="photo-caption">Artisan Dark Cocoa Loaf</span>
             </div>
@@ -318,7 +725,7 @@
 
         <div class="order-cta-content">
           <div class="order-cta-badge">HALAMAN PEMESANAN RESMI</div>
-          <h2 class="order-cta-title">Siap Menikmati Kehangatan Roti Bluezi? 🍞✨</h2>
+          <h2 class="order-cta-title">Siap Menikmati Kehangatan Roti Bluezi?</h2>
           <p class="order-cta-subtitle">
             Kunjungi halaman pemesanan khusus kami untuk memilih 9 varian roti fresh favoritmu, atur jumlah pesanan, pilih kurir instan/sameday, dan kirimkan rincian pesanan langsung ke WhatsApp kami!
           </p>
@@ -335,10 +742,10 @@
           </div>
 
           <div class="order-cta-perks">
-            <span>🥖 Dipanggang Segar Tiap Pagi</span> • 
-            <span>🥐 100% Bahan Pilihan & Fermentasi Alami</span> • 
-            <span>🛵 Kurir Instan & Same Day</span> • 
-            <span>💬 Konfirmasi WhatsApp Cepat</span>
+            <span>Dipanggang Segar Tiap Pagi</span> • 
+            <span>100% Bahan Pilihan & Fermentasi Alami</span> • 
+            <span>Kurir Instan & Same Day</span> • 
+            <span>Konfirmasi WhatsApp Cepat</span>
           </div>
         </div>
       </div>
@@ -415,7 +822,9 @@
 
             <!-- Bread Storage & Serving Advice -->
             <div class="modal-tips-card">
-              <div class="tip-icon">💡</div>
+              <div class="tip-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+              </div>
               <div class="tip-content">
                 <strong>Tips Menikmati:</strong>
                 <p id="modalServingTip">Nikmati hangat! Panaskan di toaster/oven 160°C selama 2-3 menit untuk kerenyahan maksimal.</p>
@@ -505,7 +914,7 @@
           </div>
           <h4>Keranjangmu masih kosong nih!</h4>
           <p>Pilih roti favoritmu yang melayang di atas dan klik <em>Tambah ke Keranjang</em>.</p>
-          <button class="btn-primary-3d btn-sm" id="emptyCartCtaBtn">Mulai Belanja 🍞</button>
+          <button class="btn-primary-3d btn-sm" id="emptyCartCtaBtn">Mulai Belanja</button>
         </div>
 
         <ul class="cart-items-list" id="cartItemsList">
@@ -561,16 +970,16 @@
       <div class="footer-mascot-row">
         <img src="assets/brand/cat_cream.png" alt="Bluezi Cat" class="footer-cat-mascot">
         <div class="footer-speech">
-          <p class="handwritten-footer">"Bluezi Studio 🥐 | a little studio for cakes, pastries & sweet surprises ♡"</p>
+          <p class="handwritten-footer">"Bluezi Studio | a little studio for cakes, pastries & sweet surprises"</p>
         </div>
       </div>
       <div class="footer-bottom-info">
-        <p>© 2026 Bluezi Studio 🥐 — All artisan recipes handcrafted with sweet surprises ♡</p>
+        <p>© 2026 Bluezi Studio — All artisan recipes handcrafted with sweet surprises</p>
         <p class="footer-links">
-          <span>📍 Sunday at GBLA</span> • 
-          <span>🗓️ Pre-order every week</span> • 
-          <span>🛵 Delivery Bandung (Luar Kota Chat Admin)</span> • 
-          <a href="https://www.instagram.com/bluezistudio/" target="_blank" rel="noopener" style="color:var(--brand-cream); font-weight:800; text-decoration:underline;">📸 @Bluezistudio</a> • 
+          <span>Sunday at GBLA</span> • 
+          <span>Pre-order every week</span> • 
+          <span>Delivery Bandung (Luar Kota Chat Admin)</span> • 
+          <a href="https://www.instagram.com/bluezistudio/" target="_blank" rel="noopener" style="color:var(--brand-cream); font-weight:800; text-decoration:underline;">@Bluezistudio</a> • 
           <span>WA: +62 813-9830-1616</span>
         </p>
       </div>

@@ -6,6 +6,7 @@ mapping = {
     'pizza-bread.png': 'assets/final/pizza_bread.png',
     'pizza-box-floating.png': 'assets/final/pizza_box_floating.png',
     'roti-abon.png': 'assets/final/roti_abon.png',
+    'floss-roll.png': 'assets/final/floss_roll.png',
     'creamy-mushroom.png': 'assets/crops/creamy_mushroom_lifted.png',
     'strawberry-cream-bun.png': 'assets/final/strawberry_choux.png',
     'strawberry-cheese-bun.png': 'assets/final/strawberry_cheese_bun.png',
