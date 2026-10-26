@@ -363,6 +363,20 @@ function updateOrderSummary() {
   if (subtotalEl) subtotalEl.textContent = formatIDR(subtotal);
   if (totalEstimateEl) totalEstimateEl.textContent = formatIDR(subtotal);
 
+  // Update Mobile Sticky Checkout Bar
+  const mobileBar = document.getElementById('orderMobileBar');
+  const mobileBarCount = document.getElementById('mobileBarCount');
+  const mobileBarTotal = document.getElementById('mobileBarTotal');
+  if (mobileBarCount) mobileBarCount.textContent = `${totalQty} Roti`;
+  if (mobileBarTotal) mobileBarTotal.textContent = formatIDR(subtotal);
+  if (mobileBar) {
+    if (totalQty > 0) {
+      mobileBar.classList.add('visible');
+    } else {
+      mobileBar.classList.remove('visible');
+    }
+  }
+
   // Delivery method indicator
   if (deliveryPillEl) {
     let icon = '🛵';
@@ -620,6 +634,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+function scrollToOrderSummary() {
+  const summaryCard = document.querySelector('.order-summary-card');
+  if (summaryCard) {
+    summaryCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
 // Expose globals for onclick handlers
 window.modifyProductQty = modifyProductQty;
 window.validateAndSubmitOrder = validateAndSubmitOrder;
+window.scrollToOrderSummary = scrollToOrderSummary;

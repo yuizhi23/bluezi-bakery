@@ -151,8 +151,8 @@ body.scrapbook-theme {
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 100;
-  background: rgba(11, 20, 38, 0.88);
+  z-index: 250;
+  background: rgba(11, 20, 38, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 2px solid rgba(255, 255, 255, 0.08);
@@ -173,12 +173,25 @@ body.scrapbook-theme {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   gap: 1.5rem;
+  position: relative;
+  z-index: 10;
 }
 
-/* Brand Cluster */
+.header-main-row {
+  display: contents;
+}
+
 .brand-cluster {
   display: flex;
   align-items: center;
+  order: 1;
+}
+
+.header-quick-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  order: 3;
 }
 
 .brand-logo-card {
@@ -205,7 +218,8 @@ body.scrapbook-theme {
 
 .brand-cat-img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: contain;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
   transition: transform 0.3s ease;
 }
@@ -251,6 +265,7 @@ body.scrapbook-theme {
   display: flex;
   align-items: center;
   gap: 1rem;
+  order: 2;
 }
 
 .filter-pills-nav {
@@ -905,9 +920,144 @@ body.scrapbook-theme {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
 }
 
-@keyframes bobBubble {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
+/* ==========================================================================
+   CAT ANGRY & POOP SEMBARANGAN (EASTER EGG STYLES)
+   ========================================================================== */
+.interactive-cat-img.cat-angry-rage {
+  filter: drop-shadow(0 0 35px rgba(239, 68, 68, 0.95)) hue-rotate(-30deg) saturate(2.4) brightness(1.1) !important;
+  animation: angrySpasm 0.09s infinite alternate !important;
+}
+
+@keyframes angrySpasm {
+  0% { transform: scale(1.08) rotate(-4deg) translate(-3px, -2px); }
+  50% { transform: scale(1.15) rotate(0deg) translate(0px, 3px); }
+  100% { transform: scale(1.1) rotate(4deg) translate(3px, -2px); }
+}
+
+.cat-dialog-bubble.bubble-angry-mode {
+  background: #dc2626 !important;
+  color: #ffffff !important;
+  border-color: #fef08a !important;
+  box-shadow: 0 14px 40px rgba(220, 38, 38, 0.6) !important;
+  animation: angryBubbleShake 0.18s infinite alternate !important;
+}
+
+.cat-dialog-bubble.bubble-angry-mode .bubble-text {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+}
+
+.cat-dialog-bubble.bubble-angry-mode .bubble-tail {
+  border-top-color: #dc2626 !important;
+}
+
+.cat-dialog-bubble.bubble-angry-mode .bubble-counter {
+  background: #7f1d1d !important;
+  color: #fef08a !important;
+  border-color: #fef08a !important;
+}
+
+@keyframes angryBubbleShake {
+  0% { transform: scale(1) rotate(-1.5deg); }
+  100% { transform: scale(1.04) rotate(1.5deg); }
+}
+
+/* Dropped Poops on Floor */
+.cat-poop-ground-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 15;
+  overflow: visible;
+}
+
+.dropped-poop-item {
+  position: absolute;
+  font-size: 2.3rem;
+  line-height: 1;
+  pointer-events: none;
+  animation: dropPoopPlop 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
+  user-select: none;
+}
+
+@keyframes dropPoopPlop {
+  0% { transform: scale(0.2) translateY(-70px); opacity: 0; }
+  60% { transform: scale(1.3) translateY(8px); opacity: 1; }
+  80% { transform: scale(0.9) translateY(-4px); }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.dropped-poop-item.cleanup {
+  animation: sweepPoop 0.45s ease-out forwards;
+}
+
+@keyframes sweepPoop {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0) translateY(-25px); opacity: 0; }
+}
+
+/* Calm / Apologize Button */
+.btn-calm-cat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #f59e0b;
+  color: #121c38;
+  font-family: var(--font-primary);
+  font-weight: 800;
+  font-size: 0.82rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1.5px solid #ffffff;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.45);
+  transition: all 0.2s ease;
+  animation: pulseCalmBtn 1.2s infinite ease-in-out;
+  margin-top: 0.35rem;
+}
+
+.btn-calm-cat:hover {
+  background: #fbbf24;
+  transform: scale(1.06);
+}
+
+@keyframes pulseCalmBtn {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+/* In-Gallery Filter Pills */
+.filter-pills-gallery {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.filter-pills-gallery .pill-btn {
+  background: rgba(238, 220, 196, 0.1);
+  border: 1px solid rgba(238, 220, 196, 0.25);
+  color: var(--brand-cream);
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  font-weight: 700;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-pills-gallery .pill-btn:hover {
+  background: rgba(238, 220, 196, 0.2);
+  color: #ffffff;
+}
+
+.filter-pills-gallery .pill-btn.active {
+  background: var(--brand-cream);
+  color: var(--brand-navy);
+  border-color: var(--brand-cream);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 /* ==========================================================================
@@ -2731,76 +2881,239 @@ body.scrapbook-theme {
 }
 
 @media (max-width: 768px) {
+  /* Prevent horizontal scrolling & body shifting */
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  /* Header Mobile: 2-Row Sleek Layout */
+  .site-header {
+    padding: 0.2rem 0;
+  }
+
   .header-inner {
-    flex-wrap: wrap;
-    gap: 0.8rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.45rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .header-main-row {
+    display: flex;
+    align-items: center;
     justify-content: space-between;
+    width: 100%;
+  }
+
+  .brand-logo-card {
+    gap: 0.6rem;
+  }
+
+  .brand-mascot-wrap {
+    width: 38px;
+    height: 38px;
+  }
+
+  .brand-title {
+    font-size: 1.15rem;
+  }
+
+  .brand-sub {
+    display: none; /* Hide secondary subtitle on small phone screens to keep header sleek */
+  }
+
+  .header-quick-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .nav-order-btn {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.8rem;
+    font-weight: 800;
+    padding: 0.42rem 0.8rem;
+    border-radius: 999px;
+  }
+
+  .cart-trigger-btn {
+    padding: 0.42rem 0.75rem;
+    font-size: 0.82rem;
+    border-radius: 999px;
+    gap: 0.35rem;
+  }
+
+  .cart-btn-label {
+    display: none; /* Hide label on mobile to keep button compact */
   }
 
   .nav-actions {
     width: 100%;
-    justify-content: space-between;
+    margin: 0;
   }
 
   .filter-pills-nav {
+    width: 100%;
     overflow-x: auto;
     white-space: nowrap;
-    padding: 0.35rem 0.6rem;
-    flex: 1;
-    min-width: 0;
+    padding: 0.2rem 0.15rem;
+    display: flex;
+    gap: 0.35rem;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 10px;
   }
 
-  .hero-heading {
-    font-size: 2rem;
+  .filter-pills-nav::-webkit-scrollbar {
+    display: none;
   }
 
-  .handwritten-accent {
-    font-size: 2.5rem;
+  .pill-btn {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.78rem;
+    flex-shrink: 0;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    padding: 1.5rem 0 2.2rem;
+  }
+
+  .hero-layout {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
   }
 
   .hero-paper-card {
-    padding: 2rem 1.5rem 1.8rem;
+    padding: 1.7rem 1.15rem 1.4rem;
+    transform: none;
+    border-radius: 14px;
   }
 
+  .hero-paper-card:hover {
+    transform: none;
+  }
+
+  .washi-tape-top {
+    left: 25%;
+    width: 100px;
+    height: 20px;
+  }
+
+  .hero-heading {
+    font-size: clamp(1.65rem, 6.8vw, 2.15rem);
+    line-height: 1.2;
+    margin-bottom: 0.85rem;
+  }
+
+  .hero-desc {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-doodle-tags {
+    gap: 0.4rem;
+    margin-bottom: 1.3rem;
+  }
+
+  .scrapbook-tag {
+    font-size: 0.75rem;
+    padding: 0.28rem 0.65rem;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.65rem;
+    margin-bottom: 1rem;
+  }
+
+  .btn-primary-3d,
+  .btn-secondary-scrapbook {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 0.85rem 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  /* Hero 3D Stage & Interactive Cat Mascot */
   .hero-3d-stage {
-    height: 420px;
+    height: 340px;
+    perspective: none;
+    overflow: hidden;
   }
 
-  .interactive-cat-img {
-    width: 250px;
+  .hero-stage-inner {
+    transform: none !important;
+  }
+
+  .layer-mascot-main {
+    transform: none !important;
+  }
+
+  .cat-pedestal-glow {
+    width: 290px;
+    height: 290px;
+    max-width: 85vw;
+    max-height: 85vw;
   }
 
   .cat-pedestal-ring {
-    width: 290px;
-    height: 290px;
-  }
-
-  .cat-dialog-bubble {
-    max-width: 300px;
-    padding: 0.65rem 1rem;
-    font-size: 0.85rem;
-  }
-
-  .products-editorial-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .card-floating-stage {
+    width: 240px;
     height: 240px;
   }
 
-  .card-bread-img {
-    max-height: 82%;
+  .interactive-cat-img {
+    width: 205px;
+    max-width: 72vw;
+  }
+
+  .cat-dialog-bubble {
+    max-width: 90%;
+    padding: 0.55rem 0.85rem;
+    font-size: 0.8rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .cat-interact-badge {
+    font-size: 0.78rem;
+    padding: 0.35rem 0.85rem;
+  }
+
+  /* Gallery Controls & Search Banner */
+  .scrapbook-filter-bar {
+    padding: 0.9rem 0;
   }
 
   .filter-bar-inner {
     flex-direction: column;
     align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .gallery-title {
+    font-size: 1.15rem;
+  }
+
+  .gallery-subtitle {
+    font-size: 0.78rem;
   }
 
   .gallery-controls-tools {
     flex-direction: column;
     width: 100%;
+    gap: 0.6rem;
   }
 
   .search-box-scrapbook {
@@ -2809,24 +3122,401 @@ body.scrapbook-theme {
 
   .search-box-scrapbook input {
     width: 100% !important;
+    font-size: 16px !important; /* Prevents auto-zoom in iOS Safari */
+    padding: 0.6rem 1rem 0.6rem 2.4rem;
   }
 
   .view-toggles {
-    align-self: flex-start;
+    display: flex;
+    width: 100%;
   }
 
+  .view-btn {
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.82rem;
+    padding: 0.48rem 0.75rem;
+  }
+
+  /* Products Editorial Gallery */
+  .gallery-section {
+    padding: 2rem 0 3.5rem;
+  }
+
+  .products-editorial-grid {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+
+  .product-3d-card {
+    perspective: none;
+  }
+
+  .card-3d-inner {
+    padding: 1.2rem 1.1rem 1.05rem;
+    transform: none !important;
+    border-radius: 14px;
+  }
+
+  .product-3d-card:hover .card-3d-inner {
+    transform: none !important;
+  }
+
+  .card-washi {
+    width: 70px;
+    height: 18px;
+  }
+
+  .card-floating-stage {
+    height: 190px;
+    margin-bottom: 0.2rem;
+  }
+
+  .card-bread-img {
+    max-height: 85%;
+    transform: none !important;
+  }
+
+  .product-3d-card:hover .card-bread-img {
+    transform: translateY(-4px) scale(1.02) !important;
+  }
+
+  .card-title {
+    font-size: 1.15rem;
+  }
+
+  .card-desc {
+    font-size: 0.88rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .card-bottom-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+    padding-top: 0.75rem;
+  }
+
+  .card-price-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .price-val {
+    font-size: 1.25rem;
+  }
+
+  .card-actions {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .btn-card-detail,
+  .btn-add-bag {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 0.6rem 0.65rem;
+    font-size: 0.85rem;
+    min-height: 42px;
+    border-radius: 8px;
+  }
+
+  /* Story Section: Gorgeous 2x2 Photo Collage Grid */
+  .bakery-story-section {
+    padding: 1.5rem 0 3.5rem;
+  }
+
+  .story-scrapbook-board {
+    padding: 1.8rem 1.15rem 1.5rem;
+    transform: none;
+    border-radius: 14px;
+  }
+
+  .story-grid {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
+
+  .story-photo-stack {
+    height: auto !important;
+    max-width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+    margin: 0 0 1.2rem !important;
+    position: static !important;
+  }
+
+  .photo-card {
+    position: static !important;
+    width: 100% !important;
+    transform: none !important;
+    padding: 8px 8px 14px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
+  }
+
+  .photo-card:hover {
+    transform: scale(1.02) !important;
+  }
+
+  .card-pin {
+    top: -6px;
+    font-size: 0.85rem;
+  }
+
+  .story-img {
+    height: 105px !important;
+  }
+
+  .photo-caption {
+    font-size: 0.78rem !important;
+    margin-top: 4px;
+  }
+
+  .cat-peek-stamp {
+    position: static !important;
+    grid-column: 1 / -1 !important;
+    transform: none !important;
+    margin: 0.4rem auto 0 !important;
+    width: 85px !important;
+    padding: 5px !important;
+  }
+
+  .cat-stamp-img {
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  .story-heading {
+    font-size: clamp(1.35rem, 5.5vw, 1.8rem);
+  }
+
+  .story-p {
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  /* Order CTA Card */
+  .order-cta-section {
+    padding: 1.8rem 0 3.5rem;
+  }
+
+  .order-cta-card {
+    padding: 2rem 1.15rem 1.6rem;
+    border-radius: 16px;
+  }
+
+  .washi-tape-order-left,
+  .washi-tape-order-right {
+    display: none;
+  }
+
+  .order-cta-title {
+    font-size: clamp(1.4rem, 5.5vw, 1.9rem);
+  }
+
+  .order-cta-subtitle {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1.4rem;
+  }
+
+  .btn-primary-order-cta {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.98rem;
+    padding: 0.95rem 1.2rem;
+  }
+
+  .order-cta-perks {
+    gap: 0.4rem 0.75rem;
+    font-size: 0.78rem;
+  }
+
+  /* Product Modal */
   .modal-dialog-3d {
-    margin: 1rem;
-    max-height: 92vh;
+    margin: 0.75rem auto;
+    width: calc(100% - 1.5rem);
+    max-height: 90vh;
     overflow-y: auto;
+    transform: none !important;
+  }
+
+  .modal-close-btn {
+    top: 10px;
+    right: 10px;
+    width: 38px;
+    height: 38px;
+    z-index: 80;
+    background: #ffffff;
+    border: 2px solid var(--cream-border);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   }
 
   .modal-content-stage {
-    padding: 1.8rem 1.4rem;
+    padding: 2.2rem 1.15rem 1.5rem;
+    border-radius: 16px;
+    transform: none !important;
   }
 
+  .modal-washi-tape {
+    left: 20%;
+    width: 90px;
+    height: 18px;
+  }
+
+  .modal-inner-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .modal-floating-viewport {
+    height: 180px;
+  }
+
+  .modal-floating-image {
+    max-height: 160px !important;
+  }
+
+  .modal-product-title {
+    font-size: 1.35rem;
+  }
+
+  .modal-price-idr {
+    font-size: 1.35rem;
+  }
+
+  .modal-purchase-controls {
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .qty-selector-group {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .modal-actions-row {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.65rem;
+  }
+
+  .btn-add-bag-3d,
+  .btn-instant-wa {
+    width: 100%;
+    justify-content: center;
+    padding: 0.85rem 1.2rem;
+    font-size: 0.95rem;
+    min-height: 44px;
+  }
+
+  /* Shopping Cart Drawer */
   .cart-drawer-panel {
     max-width: 100%;
+    width: 100%;
+  }
+
+  .cart-drawer-header {
+    padding: 1rem 1.15rem;
+  }
+
+  .cart-drawer-title {
+    font-size: 1.18rem;
+  }
+
+  .cart-body {
+    padding: 1rem 1.15rem;
+  }
+
+  .cart-item-row {
+    padding: 0.75rem;
+    gap: 0.75rem;
+  }
+
+  .cart-item-thumb-box {
+    width: 52px;
+    height: 52px;
+  }
+
+  .cart-footer {
+    padding: 1rem 1.15rem calc(1.2rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .cart-customer-box {
+    padding: 0.75rem;
+    gap: 0.45rem;
+  }
+
+  .cart-input-scrapbook,
+  .cart-textarea-scrapbook {
+    font-size: 16px !important; /* Prevents auto-zoom in iOS Safari */
+  }
+
+  /* Toast Notification */
+  .toast-container {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  /* Floating Cart Button */
+  .floating-cart-btn {
+    bottom: 16px;
+    right: 16px;
+    padding: 0.55rem 0.95rem;
+    font-size: 0.85rem;
+  }
+
+  .floating-cart-text {
+    font-size: 0.82rem;
+  }
+
+  /* Site Footer */
+  .site-footer {
+    padding: 2.2rem 0 1.8rem;
+  }
+
+  .footer-mascot-row {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-3d-stage {
+    height: 310px;
+  }
+  .interactive-cat-img {
+    width: 185px;
+  }
+  .cat-pedestal-ring {
+    width: 215px;
+    height: 215px;
+  }
+  .card-floating-stage {
+    height: 175px;
+  }
+  .card-actions {
+    grid-template-columns: 1fr;
+  }
+  .story-img {
+    height: 95px !important;
   }
 }
 
@@ -3378,9 +4068,6 @@ body.scrapbook-theme {
   }
   .order-form-sheet {
     padding: 2.5rem 1.5rem;
-  }
-  .nav-order-btn {
-    display: none;
   }
 }
 

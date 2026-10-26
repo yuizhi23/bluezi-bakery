@@ -273,6 +273,84 @@ class SoundFX {
       osc.stop(t + 0.45);
     } catch (e) {}
   }
+  playAngryHiss() {
+    try {
+      this.init();
+      if (!this.ctx) return;
+      const t = this.ctx.currentTime;
+      const bufferSize = Math.floor(this.ctx.sampleRate * 0.3);
+      const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = Math.random() * 2 - 1;
+      }
+      const noise = this.ctx.createBufferSource();
+      noise.buffer = buffer;
+
+      const filter = this.ctx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.frequency.setValueAtTime(3400, t);
+      filter.frequency.exponentialRampToValueAtTime(1200, t + 0.3);
+      filter.Q.setValueAtTime(2.5, t);
+
+      const gain = this.ctx.createGain();
+      gain.gain.setValueAtTime(0.28, t);
+      gain.gain.exponentialRampToValueAtTime(0.001, t + 0.3);
+
+      noise.connect(filter);
+      filter.connect(gain);
+      gain.connect(this.ctx.destination);
+      noise.start(t);
+      noise.stop(t + 0.31);
+    } catch (e) {}
+  }
+  playPoop() {
+    try {
+      this.init();
+      if (!this.ctx) return;
+      const t = this.ctx.currentTime;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(190, t);
+      osc.frequency.exponentialRampToValueAtTime(50, t + 0.22);
+
+      const filter = this.ctx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(420, t);
+      filter.frequency.exponentialRampToValueAtTime(140, t + 0.22);
+
+      gain.gain.setValueAtTime(0.32, t);
+      gain.gain.exponentialRampToValueAtTime(0.01, t + 0.22);
+
+      osc.connect(filter);
+      filter.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start(t);
+      osc.stop(t + 0.23);
+    } catch (e) {}
+  }
+  playMunch() {
+    try {
+      this.init();
+      if (!this.ctx) return;
+      const t = this.ctx.currentTime;
+      for (let i = 0; i < 3; i++) {
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        const offset = i * 0.08;
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(360 + i * 80, t + offset);
+        osc.frequency.exponentialRampToValueAtTime(160, t + offset + 0.06);
+        gain.gain.setValueAtTime(0.18, t + offset);
+        gain.gain.exponentialRampToValueAtTime(0.01, t + offset + 0.06);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(t + offset);
+        osc.stop(t + offset + 0.07);
+      }
+    } catch (e) {}
+  }
 }
 const sfx = new SoundFX();
 
@@ -292,9 +370,16 @@ function init3DPhysics() {
     let heroBounds = heroStage.getBoundingClientRect();
     window.addEventListener('resize', () => {
       heroBounds = heroStage.getBoundingClientRect();
+      if (window.innerWidth <= 768) {
+        heroInner.style.transform = 'none';
+      }
     });
 
     heroStage.addEventListener('pointermove', (e) => {
+      // Prevent tilt glitching during finger touch scrolling on mobile
+      if (e.pointerType && e.pointerType !== 'mouse') return;
+      if (window.innerWidth <= 768) return;
+
       const x = (e.clientX - heroBounds.left) / heroBounds.width - 0.5;
       const y = (e.clientY - heroBounds.top) / heroBounds.height - 0.5;
 
@@ -323,6 +408,10 @@ function attachCardsTilt() {
     if (!inner) return;
 
     card.addEventListener('pointermove', (e) => {
+      // Prevent tilt glitching during finger touch scrolling on mobile
+      if (e.pointerType && e.pointerType !== 'mouse') return;
+      if (window.innerWidth <= 768) return;
+
       const rect = card.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width - 0.5;
       const y = (e.clientY - rect.top) / rect.height - 0.5;
@@ -347,6 +436,10 @@ function attachModalTilt() {
   if (prefersReducedMotion || !modalStage || !modalDialog) return;
 
   modalDialog.addEventListener('pointermove', (e) => {
+    // Prevent tilt glitching during finger touch scrolling on mobile
+    if (e.pointerType && e.pointerType !== 'mouse') return;
+    if (window.innerWidth <= 768) return;
+
     const rect = modalDialog.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;
@@ -378,6 +471,19 @@ const CAT_DIALOGS = [
   "Nyam nyam! Aroma roti di Bluez' Studio wangi banget hari ini~ 🥐"
 ];
 
+const CAT_WARNING_DIALOGS = [
+  "Duh, jangan dipencet-pencet terus dong, ntar aku ngambek lho! 😾",
+  "Meoowww! Ekor aku kesenggol nih, udah yaa! 💢",
+  "Awas ya kalau toel sekali lagi! Bakal pup sembarangan beneran nih! 💥😾"
+];
+
+const CAT_ANGRY_DIALOGS = [
+  "MEOOOWWW!! UDAH DIBILANGIN JANGAN DIUSIK! 💥 BRRR-PLOP!! 💩",
+  "GRRRRR! NGESELIN BANGET DEH!! NIH TERIMA PUP AKU!! 💥💩💩",
+  "HUWAARGH!! AKU NGAMBEK BERAT!! PLOP-PLOP-PLOP!! 💢💩",
+  "POOP EXPLOSION!! 💥 Jangan colek-colek lagi atau aku pup satu toko!! 😾💩"
+];
+
 const CAT_PARTICLE_ICONS = ['🐾', '💙', '✨', '🥖', '🥐', '🍞', '🍕', '🍓', '❤️'];
 
 function initInteractiveCat() {
@@ -387,59 +493,36 @@ function initInteractiveCat() {
   const bubbleText = document.getElementById('catBubbleText');
   const petCounter = document.getElementById('catPetCounter');
   const particlesContainer = document.getElementById('catParticles');
+  const poopGround = document.getElementById('catPoopGround');
+  const btnCalmCat = document.getElementById('btnCalmCat');
 
   if (!catCard || !catImg) return;
 
   let petCount = 0;
+  let streakCount = 0;
+  let poopDropCount = 0;
   let dialogIdx = 0;
+  let isAngry = false;
+  let streakResetTimer = null;
 
-  function handleCatInteraction(e) {
-    petCount++;
-    sfx.playMeow();
-
-    // 1. Cat Bounce Animation
-    catImg.classList.remove('cat-bounce-active');
-    void catImg.offsetWidth; // Force reflow
-    catImg.classList.add('cat-bounce-active');
-
-    // 2. Cycle Speech Bubble Text
-    dialogIdx = (dialogIdx + 1) % CAT_DIALOGS.length;
-    if (bubbleText) {
-      bubbleText.textContent = CAT_DIALOGS[dialogIdx];
-    }
-    if (petCounter) {
-      petCounter.textContent = `Disapa ${petCount}x 🐾`;
-    }
-
-    // Retrigger bubble pop animation
-    if (bubble) {
-      bubble.style.animation = 'none';
-      void bubble.offsetWidth;
-      bubble.style.animation = 'popBubble 0.35s var(--ease-elastic)';
-    }
-
-    // 3. Spawn Burst Particles
-    if (particlesContainer) {
-      spawnCatParticles(particlesContainer, 5);
-    }
-  }
-
-  function spawnCatParticles(container, count) {
+  function spawnCatParticles(container, count, customIcons = null) {
+    if (!container) return;
+    const icons = customIcons || CAT_PARTICLE_ICONS;
     for (let i = 0; i < count; i++) {
       const particle = document.createElement('span');
       particle.className = 'cat-particle';
-      const icon = CAT_PARTICLE_ICONS[Math.floor(Math.random() * CAT_PARTICLE_ICONS.length)];
+      const icon = icons[Math.floor(Math.random() * icons.length)];
       particle.textContent = icon;
 
-      const tx = (Math.random() - 0.5) * 160;
-      const ty = -60 - Math.random() * 80;
-      const rot = (Math.random() - 0.5) * 60;
+      const tx = (Math.random() - 0.5) * 180;
+      const ty = -60 - Math.random() * 90;
+      const rot = (Math.random() - 0.5) * 70;
 
       particle.style.setProperty('--tx', `${tx}px`);
       particle.style.setProperty('--ty', `${ty}px`);
       particle.style.setProperty('--rot', `${rot}deg`);
-      particle.style.left = `${50 + (Math.random() - 0.5) * 30}%`;
-      particle.style.top = `${50 + (Math.random() - 0.5) * 20}%`;
+      particle.style.left = `${50 + (Math.random() - 0.5) * 35}%`;
+      particle.style.top = `${50 + (Math.random() - 0.5) * 25}%`;
 
       container.appendChild(particle);
 
@@ -448,6 +531,171 @@ function initInteractiveCat() {
           particle.parentNode.removeChild(particle);
         }
       }, 1200);
+    }
+  }
+
+  function dropPoopOnFloor() {
+    if (!poopGround) return;
+    const poop = document.createElement('span');
+    poop.className = 'dropped-poop-item';
+    poop.textContent = '💩';
+    
+    // Spread around the cat's bottom area / pedestal
+    const left = 15 + Math.random() * 70;
+    const top = 30 + Math.random() * 55;
+    const rot = (Math.random() - 0.5) * 50;
+    const scale = 0.85 + Math.random() * 0.45;
+    
+    poop.style.left = `${left}%`;
+    poop.style.top = `${top}%`;
+    poop.style.transform = `scale(${scale}) rotate(${rot}deg)`;
+    poopGround.appendChild(poop);
+
+    // Keep max 16 poops to prevent clutter
+    const existing = poopGround.querySelectorAll('.dropped-poop-item:not(.cleanup)');
+    if (existing.length > 16) {
+      existing[0].remove();
+    }
+  }
+
+  function calmCatDown(e) {
+    if (e) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
+    isAngry = false;
+    streakCount = 0;
+    poopDropCount = 0;
+
+    sfx.playMunch();
+
+    catImg.classList.remove('cat-angry-rage');
+    if (bubble) bubble.classList.remove('bubble-angry-mode');
+    if (btnCalmCat) btnCalmCat.style.display = 'none';
+
+    // Sweep clean all dropped poops
+    if (poopGround) {
+      const poops = poopGround.querySelectorAll('.dropped-poop-item');
+      poops.forEach((p, idx) => {
+        p.classList.add('cleanup');
+        setTimeout(() => {
+          if (p.parentNode) p.parentNode.removeChild(p);
+        }, 350 + idx * 30);
+      });
+    }
+
+    if (bubbleText) {
+      bubbleText.textContent = "Nyam nyam nyam... 🥐 Rotinya enak banget! Maaf ya tadi ngambek & pup sembarangan hehe~ 🐾💙";
+    }
+    if (petCounter) {
+      petCounter.textContent = `Sudah baikan! 🥐 Disapa ${petCount}x 🐾`;
+    }
+
+    if (particlesContainer) {
+      spawnCatParticles(particlesContainer, 8, ['🥐', '💙', '✨', '🥖', '❤️']);
+    }
+
+    catImg.classList.remove('cat-bounce-active');
+    void catImg.offsetWidth;
+    catImg.classList.add('cat-bounce-active');
+  }
+
+  // Hook calm button
+  if (btnCalmCat) {
+    btnCalmCat.addEventListener('click', calmCatDown);
+    btnCalmCat.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      calmCatDown(e);
+    });
+  }
+  window.calmCatDown = calmCatDown;
+
+  function handleCatInteraction(e) {
+    // If click originated from the calm button, do not anger cat
+    if (e.target && e.target.closest('#btnCalmCat')) {
+      return;
+    }
+
+    petCount++;
+    streakCount++;
+
+    // Reset inactivity timer
+    if (streakResetTimer) clearTimeout(streakResetTimer);
+    if (!isAngry) {
+      streakResetTimer = setTimeout(() => {
+        streakCount = 0;
+      }, 5000);
+    }
+
+    // Retrigger bubble animation
+    if (bubble) {
+      bubble.style.animation = 'none';
+      void bubble.offsetWidth;
+      bubble.style.animation = isAngry ? 'angryBubbleShake 0.18s infinite alternate' : 'popBubble 0.35s var(--ease-elastic)';
+    }
+
+    // STATE 1: Normal Friendly Mascot (Clicks 1 to 4)
+    if (streakCount < 5 && !isAngry) {
+      sfx.playMeow();
+
+      catImg.classList.remove('cat-bounce-active');
+      void catImg.offsetWidth;
+      catImg.classList.add('cat-bounce-active');
+
+      dialogIdx = (dialogIdx + 1) % CAT_DIALOGS.length;
+      if (bubbleText) bubbleText.textContent = CAT_DIALOGS[dialogIdx];
+      if (petCounter) petCounter.textContent = `Disapa ${petCount}x 🐾`;
+
+      if (particlesContainer) {
+        spawnCatParticles(particlesContainer, 5);
+      }
+      return;
+    }
+
+    // STATE 2: Warning Annoyed Cat (Clicks 5 to 7)
+    if (streakCount >= 5 && streakCount < 8 && !isAngry) {
+      sfx.playMeow();
+
+      catImg.classList.remove('cat-bounce-active');
+      void catImg.offsetWidth;
+      catImg.classList.add('cat-bounce-active');
+
+      const warnIdx = Math.min(streakCount - 5, CAT_WARNING_DIALOGS.length - 1);
+      if (bubbleText) bubbleText.textContent = CAT_WARNING_DIALOGS[warnIdx];
+      if (petCounter) petCounter.textContent = `Awas Ngambek! 😾 (${streakCount}/8)`;
+
+      if (particlesContainer) {
+        spawnCatParticles(particlesContainer, 6, ['💢', '⚡', '😾', '🐾']);
+      }
+      return;
+    }
+
+    // STATE 3: ANGRY RAGE & PUP SEMBARANGAN (Clicks 8+)
+    isAngry = true;
+    poopDropCount++;
+
+    catImg.classList.add('cat-angry-rage');
+    if (bubble) bubble.classList.add('bubble-angry-mode');
+
+    // Play angry hiss and funny cartoon plop sound!
+    sfx.playAngryHiss();
+    setTimeout(() => {
+      sfx.playPoop();
+    }, 120);
+
+    const angryMsg = CAT_ANGRY_DIALOGS[Math.floor(Math.random() * CAT_ANGRY_DIALOGS.length)];
+    if (bubbleText) bubbleText.textContent = angryMsg;
+    if (petCounter) petCounter.textContent = `NGAMBEK! 💩 ${poopDropCount} Pup sembarangan!`;
+
+    // Burst poop particles & drop physical poop on floor!
+    if (particlesContainer) {
+      spawnCatParticles(particlesContainer, 7, ['💩', '💨', '💥', '💢']);
+    }
+    dropPoopOnFloor();
+
+    // Show Apology/Calm button
+    if (btnCalmCat) {
+      btnCalmCat.style.display = 'inline-flex';
     }
   }
 
@@ -609,7 +857,7 @@ function openProductModal(productId, initialView = 'cutout') {
     modalImg.style.height = 'auto';
     modalImg.style.aspectRatio = 'auto';
     modalImg.style.maxWidth = '90%';
-    modalImg.style.maxHeight = '320px';
+    modalImg.style.maxHeight = window.innerWidth <= 768 ? '190px' : '320px';
     modalImg.style.borderRadius = '0';
     modalImg.style.border = 'none';
     modalImg.style.boxShadow = 'none';
@@ -1012,20 +1260,30 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCartUI();
   initOrderForm();
 
-  // 2. Category Nav Filters
+  // 2. Category Nav Filters (Header + In-Gallery)
   const filterBtns = document.querySelectorAll('.pill-btn');
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
+      const selectedFilter = btn.dataset.filter || 'all';
       filterBtns.forEach(b => {
-        b.classList.remove('active');
-        b.setAttribute('aria-selected', 'false');
+        const matches = (b.dataset.filter || 'all') === selectedFilter;
+        b.classList.toggle('active', matches);
+        b.setAttribute('aria-selected', matches ? 'true' : 'false');
       });
-      btn.classList.add('active');
-      btn.setAttribute('aria-selected', 'true');
 
-      state.currentFilter = btn.dataset.filter || 'all';
+      state.currentFilter = selectedFilter;
       renderGallery();
       sfx.playPop();
+
+      // Smoothly scroll down to gallery if clicked from header or if user is viewing hero
+      const gallerySection = document.getElementById('galleryControls') || document.querySelector('.scrapbook-filter-bar') || document.getElementById('galleryGrid');
+      if (gallerySection) {
+        const offset = 85;
+        const targetTop = gallerySection.getBoundingClientRect().top + window.pageYOffset - offset;
+        if (btn.closest('.site-header') || window.pageYOffset < targetTop - 50) {
+          window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+        }
+      }
     });
   });
 

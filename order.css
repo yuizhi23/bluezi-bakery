@@ -1224,6 +1224,76 @@ body.order-page-body {
 }
 
 /* ==========================================================================
+   MOBILE STICKY CHECKOUT BAR COMPONENT
+   ========================================================================== */
+.order-mobile-sticky-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 150;
+  background: rgba(255, 249, 240, 0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-top: 2px solid var(--navy-primary);
+  box-shadow: 0 -6px 25px rgba(29, 44, 67, 0.15);
+  padding: 0.75rem 1.15rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.order-mobile-sticky-bar.visible {
+  display: flex;
+  transform: translateY(0);
+}
+
+.mobile-bar-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-bar-count {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--muted-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.mobile-bar-total {
+  font-family: var(--font-primary);
+  font-size: 1.22rem;
+  font-weight: 900;
+  color: var(--navy-primary);
+}
+
+.mobile-bar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: var(--whatsapp-green);
+  color: #ffffff;
+  font-family: var(--font-primary);
+  font-weight: 800;
+  font-size: 0.9rem;
+  padding: 0.65rem 1.15rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+  transition: transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.mobile-bar-btn:active {
+  transform: scale(0.96);
+}
+
+/* ==========================================================================
    RESPONSIVE DESIGN (MOBILE & TABLET BREAKPOINTS)
    ========================================================================== */
 @media (max-width: 960px) {
@@ -1234,7 +1304,7 @@ body.order-page-body {
 
   .order-right-column {
     position: static;
-    order: 2; /* Or sticky at top if desired */
+    order: 2;
   }
 
   .order-hero-paper {
@@ -1251,34 +1321,206 @@ body.order-page-body {
 }
 
 @media (max-width: 640px) {
-  .order-header-inner {
-    padding: 0.75rem 1rem;
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
   }
 
-  .order-brand-title {
-    font-size: 1.1rem;
+  /* Header */
+  .order-header-inner {
+    padding: 0.6rem 0.85rem;
+    gap: 0.45rem;
   }
 
   .order-back-link {
-    font-size: 0.85rem;
-    padding: 0.4rem 0.7rem;
+    font-size: 0.78rem;
+    padding: 0.35rem 0.6rem;
+    gap: 0.3rem;
+  }
+
+  .order-brand-cat {
+    width: 32px;
+    height: 32px;
+  }
+
+  .order-brand-title {
+    font-size: 1rem;
+  }
+
+  .order-brand-sub {
+    display: none;
+  }
+
+  .order-header-cart {
+    padding: 0.35rem 0.6rem;
+    gap: 0.35rem;
+  }
+
+  .order-header-cart-badge {
+    font-size: 0.78rem;
+  }
+
+  /* Hero Paper Banner */
+  .order-hero-banner {
+    padding: 1rem 0.85rem;
+  }
+
+  .order-hero-paper {
+    padding: 1.5rem 1.15rem;
+    border-radius: 14px;
+  }
+
+  .washi-tape-top-left,
+  .washi-tape-top-right {
+    display: none;
+  }
+
+  .order-hero-title {
+    font-size: clamp(1.45rem, 6vw, 1.95rem);
+    line-height: 1.2;
+  }
+
+  .order-hero-desc {
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .order-perks-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  /* Container & Cards */
+  .order-main-container {
+    padding: 0 0.85rem;
+    margin: 1rem auto 5.5rem;
+    gap: 1.5rem;
+  }
+
+  .order-card-section {
+    padding: 1.4rem 1.1rem;
+    border-radius: 14px;
+  }
+
+  .order-field-input,
+  .order-field-textarea {
+    font-size: 16px !important; /* Prevents auto-zoom in iOS Safari */
+    padding: 0.7rem 0.85rem;
+  }
+
+  .delivery-card {
+    padding: 0.75rem 0.85rem;
+  }
+
+  .delivery-icon-box {
+    width: 38px;
+    height: 38px;
+    font-size: 1.2rem;
+  }
+
+  .delivery-name {
+    font-size: 0.9rem;
+  }
+
+  .delivery-desc {
+    font-size: 0.78rem;
+  }
+
+  /* Product Selection Items */
+  .order-products-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.6rem;
+  }
+
+  .order-filter-pills {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .order-filter-pills::-webkit-scrollbar {
+    display: none;
   }
 
   .order-product-card {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.8rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.85rem;
+    border-radius: 12px;
   }
 
   .order-product-left {
-    align-items: flex-start;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .order-product-thumb-box {
+    width: 52px;
+    height: 52px;
+    border-radius: 8px;
+    padding: 2px;
+  }
+
+  .order-product-name {
+    font-size: 0.92rem;
+  }
+
+  .order-product-desc {
+    display: none; /* Hide multi-line desc in mobile list view for clean compact row */
+  }
+
+  .order-product-price-tag {
+    font-size: 0.88rem;
   }
 
   .order-product-controls {
-    align-self: flex-end;
+    align-self: center;
+    flex-shrink: 0;
+  }
+
+  .stepper-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 1.15rem;
+  }
+
+  .stepper-val {
+    min-width: 24px;
+    font-size: 0.95rem;
+  }
+
+  /* Summary Card */
+  .order-summary-card {
+    padding: 1.6rem 1.15rem;
+    border-radius: 16px;
+  }
+
+  .summary-title {
+    font-size: 1.2rem;
   }
 
   .summary-total-amount {
-    font-size: 1.3rem;
+    font-size: 1.35rem;
+  }
+
+  .btn-whatsapp-order {
+    padding: 0.9rem 1.2rem;
+    font-size: 1rem;
+  }
+
+  /* Footer */
+  .order-footer {
+    padding: 2.2rem 1rem 4rem;
   }
 }
