@@ -1889,14 +1889,15 @@ body.scrapbook-theme {
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(6, 12, 24, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  z-index: 200;
+  background: rgba(6, 12, 24, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 9999 !important;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
+  padding: 2rem 1.5rem;
+  overflow-y: auto;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
@@ -1911,6 +1912,7 @@ body.scrapbook-theme {
   position: relative;
   width: 100%;
   max-width: 980px;
+  margin: auto;
   perspective: 1400px;
   transform: translateY(30px) scale(0.95);
   transition: transform 0.35s var(--ease-elastic);
@@ -1922,13 +1924,13 @@ body.scrapbook-theme {
 
 .modal-close-btn {
   position: absolute;
-  top: -18px;
-  right: -18px;
+  top: 14px;
+  right: 14px;
   width: 44px;
   height: 44px;
   background: #ffffff;
   color: var(--navy-deep);
-  border: 2px solid #ffffff;
+  border: 2px solid rgba(20, 31, 46, 0.2);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1936,7 +1938,7 @@ body.scrapbook-theme {
   cursor: pointer;
   z-index: 1000 !important;
   pointer-events: auto !important;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
   transition: all 0.25s var(--ease-elastic);
   -webkit-tap-highlight-color: transparent;
 }
@@ -1948,6 +1950,7 @@ body.scrapbook-theme {
 .modal-close-btn:hover {
   transform: scale(1.15) rotate(90deg);
   background: #ffffff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
 
 /* Secondary Bottom Close Button */
@@ -2473,7 +2476,7 @@ body.scrapbook-theme {
   background: rgba(6, 12, 24, 0.7);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  z-index: 280;
+  z-index: 10000 !important;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
