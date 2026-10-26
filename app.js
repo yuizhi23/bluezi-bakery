@@ -839,8 +839,12 @@ function openProductModal(productId, initialView = 'cutout') {
 
   // Open backdrop
   const backdrop = document.getElementById('productModalBackdrop');
-  backdrop.classList.add('open');
-  backdrop.setAttribute('aria-hidden', 'false');
+  if (backdrop) {
+    backdrop.classList.add('open');
+    backdrop.setAttribute('aria-hidden', 'false');
+  }
+  const modalDialog = document.getElementById('modalDialog3d');
+  if (modalDialog) modalDialog.scrollTop = 0;
   document.body.style.overflow = 'hidden';
 
   sfx.playCrinkle();
@@ -858,10 +862,15 @@ function switchModalView(viewKey) {
 
 function closeProductModal() {
   const backdrop = document.getElementById('productModalBackdrop');
-  backdrop.classList.remove('open');
-  backdrop.setAttribute('aria-hidden', 'true');
+  if (backdrop) {
+    backdrop.classList.remove('open');
+    backdrop.setAttribute('aria-hidden', 'true');
+  }
   document.body.style.overflow = '';
   state.activeModalProduct = null;
+  if (typeof sfx !== 'undefined' && sfx.playPop) {
+    sfx.playPop();
+  }
 }
 
 // ==========================================
@@ -1221,6 +1230,51 @@ function showToast(message) {
   }, 3200);
 }
 
+// Category Nav Filters (Header + In-Gallery) with Bulletproof Event Handling
+function applyCategoryFilter(selectedFilter, shouldScroll = false) {
+  const allPillBtns = document.querySelectorAll('.pill-btn');
+  allPillBtns.forEach(b => {
+    const matches = (b.dataset.filter || 'all') === selectedFilter;
+    b.classList.toggle('active', matches);
+    b.setAttribute('aria-selected', matches ? 'true' : 'false');
+  });
+
+  state.currentFilter = selectedFilter;
+  renderGallery();
+  if (typeof sfx !== 'undefined' && sfx.playPop) sfx.playPop();
+
+  if (shouldScroll) {
+    const gallerySection = document.getElementById('galleryControls') || document.querySelector('.scrapbook-filter-bar') || document.getElementById('productsGrid');
+    if (gallerySection) {
+      const headerHeight = document.querySelector('.site-header')?.offsetHeight || 70;
+      const targetTop = gallerySection.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+      window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+    }
+  }
+}
+
+// Smooth scroll to gallery controls for "Jelajahi Menu Pilihan"
+function scrollToGallery(e) {
+  if (e && typeof e.preventDefault === 'function') e.preventDefault();
+  const target = document.getElementById('galleryControls') || document.getElementById('gallery');
+  if (target) {
+    const headerHeight = document.querySelector('.site-header')?.offsetHeight || 70;
+    const targetTop = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+    window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+  }
+}
+
+// View Mode Toggles (Scrapbook vs Grid)
+function switchViewMode(mode) {
+  state.viewMode = mode;
+  const viewScrapbookBtn = document.getElementById('viewModeScrapbook');
+  const viewGridBtn = document.getElementById('viewModeGrid');
+  if (viewScrapbookBtn) viewScrapbookBtn.classList.toggle('active', mode === 'scrapbook');
+  if (viewGridBtn) viewGridBtn.classList.toggle('active', mode === 'grid');
+  renderGallery();
+  if (typeof sfx !== 'undefined' && sfx.playPop) sfx.playPop();
+}
+
 // ==========================================
 // 7. EVENT LISTENERS & INITIALIZATION
 // ==========================================
@@ -1234,38 +1288,22 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCartUI();
   initOrderForm();
 
-  // 2. Category Nav Filters (Header + In-Gallery) with Bulletproof Event Handling
-  function applyCategoryFilter(selectedFilter, shouldScroll = false) {
-    const allPillBtns = document.querySelectorAll('.pill-btn');
-    allPillBtns.forEach(b => {
-      const matches = (b.dataset.filter || 'all') === selectedFilter;
-      b.classList.toggle('active', matches);
-      b.setAttribute('aria-selected', matches ? 'true' : 'false');
-    });
-
-    state.currentFilter = selectedFilter;
-    renderGallery();
-    sfx.playPop();
-
-    if (shouldScroll) {
-      const gallerySection = document.getElementById('galleryControls') || document.querySelector('.scrapbook-filter-bar') || document.getElementById('productsGrid');
-      if (gallerySection) {
-        const offset = 80;
-        const targetTop = gallerySection.getBoundingClientRect().top + window.pageYOffset - offset;
-        window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
-      }
-    }
-  }
-
-  // Delegated click handler on document to guarantee clicks on all browsers & platforms
+  // Delegated click handler on document for category pills & hero explore button
   document.addEventListener('click', (e) => {
     const btn = e.target.closest('.pill-btn');
-    if (!btn) return;
-    
-    e.preventDefault();
-    const selectedFilter = btn.dataset.filter || 'all';
-    const isFromHeader = Boolean(btn.closest('.site-header'));
-    applyCategoryFilter(selectedFilter, isFromHeader);
+    if (btn) {
+      e.preventDefault();
+      const selectedFilter = btn.dataset.filter || 'all';
+      const isFromHeader = Boolean(btn.closest('.site-header'));
+      applyCategoryFilter(selectedFilter, isFromHeader);
+      return;
+    }
+
+    const heroBtn = e.target.closest('.btn-primary-3d');
+    if (heroBtn) {
+      scrollToGallery(e);
+      return;
+    }
   });
 
   // 3. Search Input
@@ -1280,23 +1318,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. View Mode Toggles (Scrapbook vs Grid)
   const viewScrapbookBtn = document.getElementById('viewModeScrapbook');
   const viewGridBtn = document.getElementById('viewModeGrid');
-
-  if (viewScrapbookBtn && viewGridBtn) {
-    viewScrapbookBtn.addEventListener('click', () => {
-      state.viewMode = 'scrapbook';
-      viewScrapbookBtn.classList.add('active');
-      viewGridBtn.classList.remove('active');
-      renderGallery();
-      sfx.playPop();
-    });
-
-    viewGridBtn.addEventListener('click', () => {
-      state.viewMode = 'grid';
-      viewGridBtn.classList.add('active');
-      viewScrapbookBtn.classList.remove('active');
-      renderGallery();
-      sfx.playPop();
-    });
+  if (viewScrapbookBtn) {
+    viewScrapbookBtn.addEventListener('click', () => switchViewMode('scrapbook'));
+  }
+  if (viewGridBtn) {
+    viewGridBtn.addEventListener('click', () => switchViewMode('grid'));
   }
 
   // 5. Lightweight Route Handler
@@ -1354,12 +1380,41 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalAddBagBtn = document.getElementById('modalAddBagBtn');
   const modalInstantWaBtn = document.getElementById('modalInstantWaBtn');
 
-  if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeProductModal);
-  if (modalBackdrop) {
-    modalBackdrop.addEventListener('click', (e) => {
-      if (e.target === modalBackdrop) closeProductModal();
+  // Robust click and touch handlers for modal closing
+  if (modalCloseBtn) {
+    modalCloseBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      closeProductModal();
+    });
+    modalCloseBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      closeProductModal();
     });
   }
+
+  if (modalBackdrop) {
+    modalBackdrop.addEventListener('click', (e) => {
+      // Close if click occurred outside the white paper content stage
+      if (!e.target.closest('.modal-content-stage')) {
+        closeProductModal();
+      }
+    });
+    modalBackdrop.addEventListener('touchend', (e) => {
+      if (!e.target.closest('.modal-content-stage') && !e.target.closest('.modal-close-btn')) {
+        closeProductModal();
+      }
+    }, { passive: true });
+  }
+
+  // Delegated document click listener for all modal close triggers
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('#modalCloseBtn') || e.target.closest('.btn-modal-close-bottom') || e.target.closest('[data-close-modal]')) {
+      e.preventDefault();
+      closeProductModal();
+    }
+  });
 
   // Escape key closes modal & cart
   document.addEventListener('keydown', (e) => {
@@ -1408,7 +1463,11 @@ window.closeCart = closeCart;
 window.addToBagQuick = addToBagQuick;
 window.addToCart = addToCart;
 window.openProductModal = openProductModal;
+window.closeProductModal = closeProductModal;
 window.switchModalView = switchModalView;
+window.applyCategoryFilter = window.applyCategoryFilter || applyCategoryFilter;
+window.switchViewMode = window.switchViewMode || switchViewMode;
+window.scrollToGallery = window.scrollToGallery || scrollToGallery;
 window.modifyCartItemQty = modifyCartItemQty;
 window.removeCartItem = removeCartItem;
 window.checkoutViaWhatsApp = checkoutViaWhatsApp;

@@ -44,10 +44,10 @@
 
       <nav class="nav-actions">
         <div class="filter-pills-nav" role="tablist" aria-label="Product Categories">
-          <button type="button" class="pill-btn active" data-filter="all" role="tab" aria-selected="true" id="filter-all">Semua Roti</button>
-          <button type="button" class="pill-btn" data-filter="savory" role="tab" aria-selected="false" id="filter-savory">Savory</button>
-          <button type="button" class="pill-btn" data-filter="sweet" role="tab" aria-selected="false" id="filter-sweet">Sweet Cream</button>
-          <button type="button" class="pill-btn" data-filter="sourdough" role="tab" aria-selected="false" id="filter-sourdough">Artisan Loaf</button>
+          <button type="button" class="pill-btn active" data-filter="all" onclick="applyCategoryFilter('all', true)" role="tab" aria-selected="true" id="filter-all">Semua Roti</button>
+          <button type="button" class="pill-btn" data-filter="savory" onclick="applyCategoryFilter('savory', true)" role="tab" aria-selected="false" id="filter-savory">Savory</button>
+          <button type="button" class="pill-btn" data-filter="sweet" onclick="applyCategoryFilter('sweet', true)" role="tab" aria-selected="false" id="filter-sweet">Sweet Cream</button>
+          <button type="button" class="pill-btn" data-filter="sourdough" onclick="applyCategoryFilter('sourdough', true)" role="tab" aria-selected="false" id="filter-sourdough">Artisan Loaf</button>
         </div>
       </nav>
 
@@ -98,7 +98,7 @@
         </div>
 
         <div class="hero-cta-group">
-          <a href="#gallery" class="btn-primary-3d">
+          <a href="#galleryControls" class="btn-primary-3d" id="heroExploreBtn" onclick="scrollToGallery(event)">
             <span class="btn-shine"></span>
             <span>Jelajahi Menu Pilihan</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -180,10 +180,10 @@
 
       <!-- In-Gallery Category Filter Pills -->
       <div class="filter-pills-gallery" role="tablist" aria-label="Gallery Product Categories">
-        <button class="pill-btn active" data-filter="all">Semua Roti</button>
-        <button class="pill-btn" data-filter="savory">Savory</button>
-        <button class="pill-btn" data-filter="sweet">Sweet Cream</button>
-        <button class="pill-btn" data-filter="sourdough">Artisan Loaf</button>
+        <button type="button" class="pill-btn active" data-filter="all" onclick="applyCategoryFilter('all', false)">Semua Roti</button>
+        <button type="button" class="pill-btn" data-filter="savory" onclick="applyCategoryFilter('savory', false)">Savory</button>
+        <button type="button" class="pill-btn" data-filter="sweet" onclick="applyCategoryFilter('sweet', false)">Sweet Cream</button>
+        <button type="button" class="pill-btn" data-filter="sourdough" onclick="applyCategoryFilter('sourdough', false)">Artisan Loaf</button>
       </div>
 
       <div class="gallery-controls-tools">
@@ -196,7 +196,7 @@
         </div>
 
         <div class="view-toggles">
-          <button class="view-btn active" id="viewModeScrapbook" title="Scrapbook Layout">
+          <button type="button" class="view-btn active" id="viewModeScrapbook" onclick="switchViewMode('scrapbook')" title="Scrapbook Layout">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <rect x="3" y="3" width="7" height="7"></rect>
               <rect x="14" y="3" width="7" height="7"></rect>
@@ -205,7 +205,7 @@
             </svg>
             <span>Scrapbook</span>
           </button>
-          <button class="view-btn" id="viewModeGrid" title="Compact Showcase Grid">
+          <button type="button" class="view-btn" id="viewModeGrid" onclick="switchViewMode('grid')" title="Compact Showcase Grid">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="8" y1="6" x2="21" y2="6"></line>
               <line x1="8" y1="12" x2="21" y2="12"></line>
@@ -345,7 +345,7 @@
   <!-- 3D Interactive Product Detail Modal (Pop-out Depth Experience) -->
   <div class="modal-backdrop" id="productModalBackdrop" aria-hidden="true">
     <div class="modal-dialog-3d" id="modalDialog3d" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Tutup jendela detail roti">
+      <button type="button" class="modal-close-btn" id="modalCloseBtn" onclick="closeProductModal()" aria-label="Tutup jendela detail roti">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -448,6 +448,12 @@
                   <span>Chat WhatsApp</span>
                 </button>
               </div>
+
+              <!-- Secondary Close Action for Ease of Dismissal on Mobile -->
+              <button type="button" class="btn-modal-close-bottom" onclick="closeProductModal()" aria-label="Tutup jendela detail roti">
+                <span>✕</span>
+                <span>Tutup Jendela Detail</span>
+              </button>
             </div>
           </div>
         </div>
