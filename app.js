@@ -362,39 +362,13 @@ function init3DPhysics() {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReducedMotion) return;
 
-  // Hero Stage 3D Tilt
-  const heroStage = document.getElementById('hero3dStage');
+  // Keep hero stage cat mascot upright and level — prevent any 3D flipping or distortion
   const heroInner = document.getElementById('heroStageInner');
-
-  if (heroStage && heroInner) {
-    let heroBounds = heroStage.getBoundingClientRect();
-    window.addEventListener('resize', () => {
-      heroBounds = heroStage.getBoundingClientRect();
-      if (window.innerWidth <= 768) {
-        heroInner.style.transform = 'none';
-      }
-    });
-
-    heroStage.addEventListener('pointermove', (e) => {
-      // Prevent tilt glitching during finger touch scrolling on mobile
-      if (e.pointerType && e.pointerType !== 'mouse') return;
-      if (window.innerWidth <= 768) return;
-
-      const x = (e.clientX - heroBounds.left) / heroBounds.width - 0.5;
-      const y = (e.clientY - heroBounds.top) / heroBounds.height - 0.5;
-
-      const rotX = -y * 18; // Max 9 deg
-      const rotY = x * 22;
-
-      heroInner.style.transform = `rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg)`;
-    });
-
-    heroStage.addEventListener('pointerleave', () => {
-      heroInner.style.transform = 'rotateX(0deg) rotateY(0deg)';
-    });
+  if (heroInner) {
+    heroInner.style.transform = 'none';
   }
 
-  // Interactive Card Tilt
+  // Interactive Card Tilt for Product Cards only
   attachCardsTilt();
 }
 
@@ -1260,31 +1234,38 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCartUI();
   initOrderForm();
 
-  // 2. Category Nav Filters (Header + In-Gallery)
-  const filterBtns = document.querySelectorAll('.pill-btn');
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const selectedFilter = btn.dataset.filter || 'all';
-      filterBtns.forEach(b => {
-        const matches = (b.dataset.filter || 'all') === selectedFilter;
-        b.classList.toggle('active', matches);
-        b.setAttribute('aria-selected', matches ? 'true' : 'false');
-      });
-
-      state.currentFilter = selectedFilter;
-      renderGallery();
-      sfx.playPop();
-
-      // Smoothly scroll down to gallery if clicked from header or if user is viewing hero
-      const gallerySection = document.getElementById('galleryControls') || document.querySelector('.scrapbook-filter-bar') || document.getElementById('galleryGrid');
-      if (gallerySection) {
-        const offset = 85;
-        const targetTop = gallerySection.getBoundingClientRect().top + window.pageYOffset - offset;
-        if (btn.closest('.site-header') || window.pageYOffset < targetTop - 50) {
-          window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
-        }
-      }
+  // 2. Category Nav Filters (Header + In-Gallery) with Bulletproof Event Handling
+  function applyCategoryFilter(selectedFilter, shouldScroll = false) {
+    const allPillBtns = document.querySelectorAll('.pill-btn');
+    allPillBtns.forEach(b => {
+      const matches = (b.dataset.filter || 'all') === selectedFilter;
+      b.classList.toggle('active', matches);
+      b.setAttribute('aria-selected', matches ? 'true' : 'false');
     });
+
+    state.currentFilter = selectedFilter;
+    renderGallery();
+    sfx.playPop();
+
+    if (shouldScroll) {
+      const gallerySection = document.getElementById('galleryControls') || document.querySelector('.scrapbook-filter-bar') || document.getElementById('productsGrid');
+      if (gallerySection) {
+        const offset = 80;
+        const targetTop = gallerySection.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+      }
+    }
+  }
+
+  // Delegated click handler on document to guarantee clicks on all browsers & platforms
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.pill-btn');
+    if (!btn) return;
+    
+    e.preventDefault();
+    const selectedFilter = btn.dataset.filter || 'all';
+    const isFromHeader = Boolean(btn.closest('.site-header'));
+    applyCategoryFilter(selectedFilter, isFromHeader);
   });
 
   // 3. Search Input

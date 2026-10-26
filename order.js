@@ -571,16 +571,16 @@ document.addEventListener('DOMContentLoaded', () => {
   renderProductsList();
   updateOrderSummary();
 
-  // Category Filter Buttons
-  const filterPills = document.querySelectorAll('.order-filter-pill');
-  filterPills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      filterPills.forEach(p => p.classList.remove('active'));
+  // Category Filter Buttons (Delegated for 100% Reliability)
+  document.addEventListener('click', (e) => {
+    const pill = e.target.closest('.order-filter-pill');
+    if (pill) {
+      document.querySelectorAll('.order-filter-pill').forEach(p => p.classList.remove('active'));
       pill.classList.add('active');
       orderState.selectedCategory = pill.dataset.filter || 'all';
       renderProductsList();
       soundFX.playPop();
-    });
+    }
   });
 
   // Delivery Method Selection Cards

@@ -29,48 +29,46 @@
   <header class="site-header" id="mainHeader">
     <div class="header-checker-strip" aria-hidden="true"></div>
     <div class="container header-inner">
-      <div class="header-main-row">
-        <div class="brand-cluster">
-          <a href="#hero" class="brand-logo-card">
-            <div class="brand-mascot-wrap">
-              <img src="assets/brand/cat_cream.png" alt="Bluezi Cat Mascot" class="brand-cat-img">
-              <span class="sparkle sparkle-1" aria-hidden="true">✦</span>
-            </div>
-            <div class="brand-text">
-              <h1 class="brand-title">BLUEZ' BAKERY</h1>
-              <span class="brand-sub">ブルーエ・ベーカリー • Studio Artisan Breads</span>
-            </div>
-          </a>
-        </div>
-
-        <div class="header-quick-actions">
-          <a href="order.html" class="nav-order-btn" title="Buka Halaman Pemesanan Roti">
-            <span class="order-btn-icon">📝</span>
-            <span class="order-btn-text">Pesan</span>
-          </a>
-
-          <button class="cart-trigger-btn" id="openCartBtn" onclick="openCart()" aria-label="Buka Keranjang Belanja">
-            <span class="cart-icon-box">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <path d="M16 10a4 4 0 0 1-8 0"></path>
-              </svg>
-              <span class="cart-count-badge" id="cartCountBadge">0</span>
-            </span>
-            <span class="cart-btn-label">Keranjang</span>
-          </button>
-        </div>
+      <div class="brand-cluster">
+        <a href="#hero" class="brand-logo-card">
+          <div class="brand-mascot-wrap">
+            <img src="assets/brand/cat_cream.png" alt="Bluezi Cat Mascot" class="brand-cat-img">
+            <span class="sparkle sparkle-1" aria-hidden="true">✦</span>
+          </div>
+          <div class="brand-text">
+            <h1 class="brand-title">BLUEZ' BAKERY</h1>
+            <span class="brand-sub">ブルーエ・ベーカリー • Studio Artisan Breads</span>
+          </div>
+        </a>
       </div>
 
       <nav class="nav-actions">
         <div class="filter-pills-nav" role="tablist" aria-label="Product Categories">
-          <button class="pill-btn active" data-filter="all" role="tab" aria-selected="true" id="filter-all">Semua Roti</button>
-          <button class="pill-btn" data-filter="savory" role="tab" aria-selected="false" id="filter-savory">Savory</button>
-          <button class="pill-btn" data-filter="sweet" role="tab" aria-selected="false" id="filter-sweet">Sweet Cream</button>
-          <button class="pill-btn" data-filter="sourdough" role="tab" aria-selected="false" id="filter-sourdough">Artisan Loaf</button>
+          <button type="button" class="pill-btn active" data-filter="all" role="tab" aria-selected="true" id="filter-all">Semua Roti</button>
+          <button type="button" class="pill-btn" data-filter="savory" role="tab" aria-selected="false" id="filter-savory">Savory</button>
+          <button type="button" class="pill-btn" data-filter="sweet" role="tab" aria-selected="false" id="filter-sweet">Sweet Cream</button>
+          <button type="button" class="pill-btn" data-filter="sourdough" role="tab" aria-selected="false" id="filter-sourdough">Artisan Loaf</button>
         </div>
       </nav>
+
+      <div class="header-quick-actions">
+        <a href="order.html" class="nav-order-btn" title="Buka Halaman Pemesanan Roti">
+          <span class="order-btn-icon">📝</span>
+          <span class="order-btn-text">Pesan</span>
+        </a>
+
+        <button type="button" class="cart-trigger-btn" id="openCartBtn" onclick="openCart()" aria-label="Buka Keranjang Belanja">
+          <span class="cart-icon-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span class="cart-count-badge" id="cartCountBadge">0</span>
+          </span>
+          <span class="cart-btn-label">Keranjang</span>
+        </button>
+      </div>
     </div>
   </header>
 
