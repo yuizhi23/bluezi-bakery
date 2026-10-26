@@ -677,32 +677,13 @@ body.scrapbook-theme {
 .cat-pedestal-ring {
   width: 380px;
   height: 380px;
-  border: 2px dashed rgba(238, 220, 196, 0.4);
+  border: 2px dashed rgba(238, 220, 196, 0.25);
   border-radius: 50%;
   position: relative;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   padding-bottom: 14px;
-  animation: slowRingSpin 40s linear infinite;
-}
-
-@keyframes slowRingSpin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.pedestal-stamp {
-  background: var(--brand-cream);
-  color: var(--brand-navy);
-  font-family: var(--font-display);
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  padding: 0.25rem 0.65rem;
-  border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  pointer-events: none;
 }
 
 /* Realistic Ground Shadow */
@@ -765,19 +746,23 @@ body.scrapbook-theme {
   position: relative;
   background: var(--brand-cream);
   color: var(--brand-navy);
-  padding: 0.85rem 1.35rem;
-  border-radius: 18px;
+  padding: 0.65rem 0.95rem;
+  border-radius: 16px;
   box-shadow: 
-    0 14px 35px rgba(0, 0, 0, 0.4),
+    0 10px 25px rgba(0, 0, 0, 0.4),
     0 4px 10px rgba(0, 0, 0, 0.15);
   border: 2px solid var(--brand-navy);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.2rem;
-  max-width: 380px;
+  text-align: center;
+  gap: 0.35rem;
+  margin-bottom: 0.8rem;
+  max-width: 320px;
+  width: auto;
   transition: transform 0.25s var(--ease-elastic), box-shadow 0.25s ease;
   animation: popBubble 0.35s var(--ease-elastic);
+  z-index: 30;
 }
 
 @keyframes popBubble {
@@ -799,18 +784,26 @@ body.scrapbook-theme {
 
 .cat-dialog-bubble .bubble-text {
   font-family: var(--font-display);
-  font-size: 0.92rem;
+  font-size: 0.86rem;
   font-weight: 700;
   color: var(--brand-navy);
-  line-height: 1.4;
+  line-height: 1.35;
+}
+
+.bubble-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
 }
 
 .cat-dialog-bubble .bubble-counter {
   background: var(--brand-navy);
   color: var(--brand-cream);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 800;
-  padding: 0.2rem 0.55rem;
+  padding: 0.18rem 0.55rem;
   border-radius: 999px;
   border: 1px solid var(--brand-navy);
   white-space: nowrap;
@@ -1765,37 +1758,39 @@ body.scrapbook-theme {
   left: 48%;
   transform: translate(-50%, -50%);
   z-index: 8;
-  width: 110px;
-  background: rgba(254, 252, 246, 0.95);
-  padding: 8px;
+  width: 130px;
+  height: 130px;
+  background: rgba(254, 252, 246, 0.98);
+  padding: 10px 8px;
   border-radius: 50%;
   border: 2px dashed #1d2c41;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   pointer-events: none;
+  box-sizing: border-box;
 }
 
 .cat-stamp-img {
-  width: 65px;
-  height: 65px;
+  width: 50px;
+  height: 50px;
   object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+  animation: peekWiggle 4s infinite ease-in-out;
 }
 
 .stamp-handwritten {
-  font-family: var(--font-handwritten);
-  font-size: 0.65rem;
+  font-family: var(--font-display);
+  font-size: 0.74rem;
   font-weight: 800;
   color: #1d2c41;
   text-align: center;
-  margin-top: 2px;
-}
-
-.cat-stamp-img {
-  width: 100%;
-  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
-  animation: peekWiggle 4s infinite ease-in-out;
+  line-height: 1.15;
+  margin-top: 3px;
+  max-width: 95px;
+  white-space: normal;
 }
 
 @keyframes peekWiggle {
@@ -2902,9 +2897,9 @@ body.scrapbook-theme {
     padding: 0 1rem;
   }
 
-  /* Header Mobile: 2-Row Sleek Layout */
+  /* Header Mobile: Sleek & Compact */
   .site-header {
-    padding: 0.2rem 0;
+    padding: 0.15rem 0;
   }
 
   .header-inner {
@@ -2912,9 +2907,9 @@ body.scrapbook-theme {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 0.45rem 0.6rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    gap: 0.35rem 0.5rem;
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
   }
 
   .brand-cluster {
@@ -2925,20 +2920,20 @@ body.scrapbook-theme {
     order: 2;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
   }
 
   .brand-logo-card {
-    gap: 0.6rem;
+    gap: 0.45rem;
   }
 
   .brand-mascot-wrap {
-    width: 38px;
-    height: 38px;
+    width: 30px;
+    height: 30px;
   }
 
   .brand-title {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
   }
 
   .brand-sub {
@@ -2948,18 +2943,29 @@ body.scrapbook-theme {
   .nav-order-btn {
     display: inline-flex !important;
     align-items: center;
-    gap: 0.35rem;
-    font-size: 0.8rem;
+    gap: 0.25rem;
+    font-size: 0.76rem;
     font-weight: 800;
-    padding: 0.42rem 0.8rem;
+    padding: 0.32rem 0.65rem;
     border-radius: 999px;
   }
 
   .cart-trigger-btn {
-    padding: 0.42rem 0.75rem;
-    font-size: 0.82rem;
+    padding: 0.32rem 0.65rem;
+    font-size: 0.78rem;
     border-radius: 999px;
-    gap: 0.35rem;
+    gap: 0.3rem;
+  }
+
+  .cart-icon-box svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .cart-count-badge {
+    font-size: 0.68rem;
+    min-width: 17px;
+    height: 17px;
   }
 
   .cart-btn-label {
@@ -2975,21 +2981,17 @@ body.scrapbook-theme {
     width: 100%;
     overflow-x: auto;
     white-space: nowrap;
-    padding: 0.2rem 0.15rem;
+    padding: 0.15rem 0.1rem;
     display: flex;
-    gap: 0.35rem;
+    gap: 0.28rem;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
-    border-radius: 10px;
-  }
-
-  .filter-pills-nav::-webkit-scrollbar {
-    display: none;
+    border-radius: 999px;
   }
 
   .pill-btn {
-    padding: 0.35rem 0.75rem;
-    font-size: 0.78rem;
+    padding: 0.28rem 0.65rem;
+    font-size: 0.74rem;
     flex-shrink: 0;
   }
 
@@ -3090,10 +3092,26 @@ body.scrapbook-theme {
   }
 
   .cat-dialog-bubble {
-    max-width: 90%;
-    padding: 0.55rem 0.85rem;
-    font-size: 0.8rem;
-    margin-bottom: 0.7rem;
+    max-width: 260px !important;
+    padding: 0.4rem 0.65rem !important;
+    margin-bottom: 0.35rem !important;
+    gap: 0.25rem !important;
+  }
+
+  .cat-dialog-bubble .bubble-text {
+    font-size: 0.76rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .cat-dialog-bubble .bubble-counter {
+    font-size: 0.64rem !important;
+    padding: 0.12rem 0.45rem !important;
+  }
+
+  .btn-calm-cat {
+    font-size: 0.72rem !important;
+    padding: 0.22rem 0.6rem !important;
+    margin-top: 0 !important;
   }
 
   .cat-interact-badge {
@@ -3293,14 +3311,25 @@ body.scrapbook-theme {
     position: static !important;
     grid-column: 1 / -1 !important;
     transform: none !important;
-    margin: 0.4rem auto 0 !important;
-    width: 85px !important;
-    padding: 5px !important;
+    margin: 0.5rem auto 0 !important;
+    width: 120px !important;
+    height: 120px !important;
+    padding: 8px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
   .cat-stamp-img {
-    width: 44px !important;
-    height: 44px !important;
+    width: 46px !important;
+    height: 46px !important;
+  }
+
+  .stamp-handwritten {
+    font-size: 0.7rem !important;
+    max-width: 90px !important;
+    line-height: 1.15 !important;
   }
 
   .story-heading {

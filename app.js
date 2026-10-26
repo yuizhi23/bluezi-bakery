@@ -446,16 +446,16 @@ const CAT_DIALOGS = [
 ];
 
 const CAT_WARNING_DIALOGS = [
-  "Duh, jangan dipencet-pencet terus dong, ntar aku ngambek lho! 😾",
-  "Meoowww! Ekor aku kesenggol nih, udah yaa! 💢",
-  "Awas ya kalau toel sekali lagi! Bakal pup sembarangan beneran nih! 💥😾"
+  "Jangan toel terus dong, ntar ngambek lho! 😾",
+  "Meooww! Ekor aku kesenggol nih, udah yaa! 💢",
+  "Awas ya toel sekali lagi, aku pup beneran nih! 💥😾"
 ];
 
 const CAT_ANGRY_DIALOGS = [
-  "MEOOOWWW!! UDAH DIBILANGIN JANGAN DIUSIK! 💥 BRRR-PLOP!! 💩",
-  "GRRRRR! NGESELIN BANGET DEH!! NIH TERIMA PUP AKU!! 💥💩💩",
-  "HUWAARGH!! AKU NGAMBEK BERAT!! PLOP-PLOP-PLOP!! 💢💩",
-  "POOP EXPLOSION!! 💥 Jangan colek-colek lagi atau aku pup satu toko!! 😾💩"
+  "MEOOWW!! Jangan diusik terus dong!! 💥💩",
+  "GRRRR!! Aku ngambek nih!! Nih terima pup!! 💩",
+  "HUWAARGH!! Ngambek berat!! Plop-plop!! 💢💩",
+  "POOP ATTACK!! 💥 Jangan toel-toel lagi!! 😾💩"
 ];
 
 const CAT_PARTICLE_ICONS = ['🐾', '💙', '✨', '🥖', '🥐', '🍞', '🍕', '🍓', '❤️'];
@@ -659,7 +659,7 @@ function initInteractiveCat() {
 
     const angryMsg = CAT_ANGRY_DIALOGS[Math.floor(Math.random() * CAT_ANGRY_DIALOGS.length)];
     if (bubbleText) bubbleText.textContent = angryMsg;
-    if (petCounter) petCounter.textContent = `NGAMBEK! 💩 ${poopDropCount} Pup sembarangan!`;
+    if (petCounter) petCounter.textContent = `Ngambek! 💩 (${poopDropCount} Pup)`;
 
     // Burst poop particles & drop physical poop on floor!
     if (particlesContainer) {
@@ -1103,7 +1103,7 @@ function syncOrderFormUI() {
   if (totalCountEl) totalCountEl.textContent = `${totalItems} item`;
   if (subtotalEl) subtotalEl.textContent = formatIDR(totalPrice);
 
-  PRODUCTS.forEach(p => {
+  PRODUCTS_DATA.forEach(p => {
     const qtyEl = document.getElementById(`order-step-count-${p.id}`);
     const rowEl = document.getElementById(`order-row-${p.id}`);
     const cartItem = state.cart.find(i => i.id === p.id);
@@ -1121,7 +1121,7 @@ function syncOrderFormUI() {
 function initOrderForm() {
   const picker = document.getElementById('orderProductsPicker');
   if (picker) {
-    picker.innerHTML = PRODUCTS.map(p => {
+    picker.innerHTML = PRODUCTS_DATA.map(p => {
       const cartItem = state.cart.find(i => i.id === p.id);
       const qty = cartItem ? cartItem.qty : 0;
       return `

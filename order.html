@@ -162,51 +162,55 @@
                 Metode Pengiriman <span class="required-star">*</span>
               </label>
 
+              <div class="delivery-notice-box" style="background:#eff6ff; border:1.5px solid #93c5fd; padding:0.75rem 1rem; border-radius:12px; margin-bottom:1rem; font-size:0.86rem; color:#1e3a8a; line-height:1.45;">
+                📍 <strong>Area Pengiriman:</strong> Pemesanan reguler diutamakan khusus <strong>Area Kota Bandung</strong> (GoSend / GrabExpress / Self Pick-up). Untuk pemesanan ke <strong>luar kota Bandung</strong>, silakan pilih opsi Luar Kota & chat Admin via WhatsApp ya!
+              </div>
+
               <div class="delivery-options-grid">
-                <!-- Option 1: Kurir Instan -->
-                <div class="delivery-card selected" data-value="Kurir Instan (GoSend / GrabExpress)">
-                  <input type="radio" name="orderDelivery" value="Kurir Instan (GoSend / GrabExpress)" checked>
+                <!-- Option 1: Kurir Instan Bandung -->
+                <div class="delivery-card selected" data-value="Kurir Instan Bandung (GoSend / GrabExpress)">
+                  <input type="radio" name="orderDelivery" value="Kurir Instan Bandung (GoSend / GrabExpress)" checked>
                   <div class="delivery-card-left">
                     <div class="delivery-icon-box">🛵</div>
                     <div class="delivery-text-info">
-                      <span class="delivery-name">Kurir Instan</span>
+                      <span class="delivery-name">Kurir Instan (Kota Bandung)</span>
                       <span class="delivery-desc">GoSend / GrabExpress langsung diantar saat roti selesai dipanggang</span>
                     </div>
                   </div>
                   <div class="delivery-card-right">
-                    <span class="delivery-badge-tag">Paling Cepat</span>
+                    <span class="delivery-badge-tag">Area Bandung</span>
                     <div class="custom-radio-circle"></div>
                   </div>
                 </div>
 
-                <!-- Option 2: Sameday -->
-                <div class="delivery-card" data-value="Kurir Sameday (Paxel / AnterAja)">
-                  <input type="radio" name="orderDelivery" value="Kurir Sameday (Paxel / AnterAja)">
-                  <div class="delivery-card-left">
-                    <div class="delivery-icon-box">📦</div>
-                    <div class="delivery-text-info">
-                      <span class="delivery-name">Same Day Delivery</span>
-                      <span class="delivery-desc">Paxel / AnterAja hemat untuk rute Jabodetabek & sekitarnya</span>
-                    </div>
-                  </div>
-                  <div class="delivery-card-right">
-                    <span class="delivery-badge-tag">Hemat</span>
-                    <div class="custom-radio-circle"></div>
-                  </div>
-                </div>
-
-                <!-- Option 3: Ambil di Toko -->
-                <div class="delivery-card" data-value="Ambil di Toko (Self Pick-up)">
-                  <input type="radio" name="orderDelivery" value="Ambil di Toko (Self Pick-up)">
+                <!-- Option 2: Ambil di Toko -->
+                <div class="delivery-card" data-value="Ambil di Studio (Self Pick-up Bandung)">
+                  <input type="radio" name="orderDelivery" value="Ambil di Studio (Self Pick-up Bandung)">
                   <div class="delivery-card-left">
                     <div class="delivery-icon-box">🏪</div>
                     <div class="delivery-text-info">
-                      <span class="delivery-name">Ambil di Toko (Self Pick-up)</span>
-                      <span class="delivery-desc">Ambil pesanan langsung di kitchen studio bakery Bluezi</span>
+                      <span class="delivery-name">Ambil di Studio (Self Pick-up)</span>
+                      <span class="delivery-desc">Ambil pesanan langsung di kitchen studio bakery Bluezi Bandung</span>
                     </div>
                   </div>
                   <div class="delivery-card-right">
                     <span class="delivery-badge-tag">Bebas Ongkir</span>
+                    <div class="custom-radio-circle"></div>
+                  </div>
+                </div>
+
+                <!-- Option 3: Luar Kota Chat Admin -->
+                <div class="delivery-card" data-value="Luar Kota Bandung (Chat Admin WA)">
+                  <input type="radio" name="orderDelivery" value="Luar Kota Bandung (Chat Admin WA)">
+                  <div class="delivery-card-left">
+                    <div class="delivery-icon-box">💬</div>
+                    <div class="delivery-text-info">
+                      <span class="delivery-name">Luar Kota Bandung</span>
+                      <span class="delivery-desc">Khusus luar kota, chat admin WhatsApp untuk cek ongkir kilat (Paxel/Next Day)</span>
+                    </div>
+                  </div>
+                  <div class="delivery-card-right">
+                    <span class="delivery-badge-tag" style="background:#fee2e2; color:#b91c1c; border-color:#fca5a5;">Chat Admin</span>
                     <div class="custom-radio-circle"></div>
                   </div>
                 </div>

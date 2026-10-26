@@ -108,7 +108,7 @@ const BAKERY_WA_PHONE = '6281398301616';
 const orderState = {
   cart: [],
   selectedCategory: 'all',
-  deliveryMethod: 'Kurir Instan (GoSend / GrabExpress)',
+  deliveryMethod: 'Kurir Instan Bandung (GoSend / GrabExpress)',
   customer: {
     name: '',
     phone: '',
