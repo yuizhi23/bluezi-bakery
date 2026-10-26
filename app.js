@@ -434,7 +434,9 @@ function attachModalTilt() {
 // ==========================================
 
 const CAT_DIALOGS = [
-  "Meow! Selamat datang di Bluez' Bakery! 🐾",
+  "Meow! Selamat datang di Bluezi Studio 🥐🐾",
+  "a little studio for cakes, pastries & sweet surprises ♡",
+  "Follow Instagram kami di @Bluezistudio yaa! 📸✨",
   "Semua roti kami dipanggang fresh tiap pagi lho! 🥖",
   "Coba Pizza Bread-nya, saus bolognese & kejunya lumer! 🍕",
   "Roti Abon ayamnya super fluffy & gurih berlimpah! ✨",
@@ -442,7 +444,7 @@ const CAT_DIALOGS = [
   "Sourdough cranberry cheese kami fermentasi alami 24 jam! 🍞",
   "Mau pesan cepat? Klik tombol WhatsApp di kiri ya! 💬",
   "Purrr... Senang kamu main sama aku! 💙",
-  "Nyam nyam! Aroma roti di Bluez' Studio wangi banget hari ini~ 🥐"
+  "Nyam nyam! Aroma roti di Bluezi Studio wangi banget hari ini~ 🥐"
 ];
 
 const CAT_WARNING_DIALOGS = [
