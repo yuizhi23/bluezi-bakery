@@ -2397,9 +2397,11 @@ function prevHamperSlide() {
 
 function startHamperAutoSlide(total) {
   stopHamperAutoSlide();
+  // Keep mobile view calm & stationary without sudden auto-sliding
+  if (window.innerWidth <= 768) return;
   hamperAutoTimer = setInterval(() => {
     goToHamperSlide(currentHamperSlide + 1);
-  }, 4500);
+  }, 5000);
 }
 
 function stopHamperAutoSlide() {
@@ -2421,20 +2423,32 @@ function setupHamperSliderEvents(total) {
     wrap.addEventListener('mouseenter', stopHamperAutoSlide);
     wrap.addEventListener('mouseleave', () => startHamperAutoSlide(total));
 
-    // Touch swipe support
+    // Smooth touch swipe support with vertical scroll protection
     let startX = 0;
-    let endX = 0;
+    let startY = 0;
+
     wrap.addEventListener('touchstart', (e) => {
       stopHamperAutoSlide();
-      startX = e.changedTouches[0].screenX;
+      if (e.touches && e.touches.length > 0) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+      }
     }, { passive: true });
 
     wrap.addEventListener('touchend', (e) => {
-      endX = e.changedTouches[0].screenX;
-      if (startX - endX > 45) {
-        nextHamperSlide();
-      } else if (endX - startX > 45) {
-        prevHamperSlide();
+      if (!e.changedTouches || e.changedTouches.length === 0) return;
+      const endX = e.changedTouches[0].clientX;
+      const endY = e.changedTouches[0].clientY;
+      const diffX = startX - endX;
+      const diffY = startY - endY;
+
+      // Only trigger if horizontal swipe is clearly dominant over vertical scrolling
+      if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY) * 1.3) {
+        if (diffX > 0) {
+          nextHamperSlide();
+        } else {
+          prevHamperSlide();
+        }
       }
       startHamperAutoSlide(total);
     }, { passive: true });
