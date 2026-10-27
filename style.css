@@ -2959,7 +2959,7 @@ body.scrapbook-theme {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   /* Prevent horizontal scrolling & body shifting */
   html, body {
     overflow-x: hidden !important;
@@ -4494,11 +4494,14 @@ body.scrapbook-theme {
 
 @media (max-width: 600px) {
   .cookies-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.65rem 0.55rem !important;
   }
   .cookies-board {
-    padding: 2.25rem 1.25rem;
+    padding: 1.8rem 0.95rem;
+  }
+  .cookie-card {
+    padding: 0.85rem 0.65rem !important;
   }
 }
 
