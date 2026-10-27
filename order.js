@@ -158,28 +158,147 @@ const BAKERY_PRODUCTS = [
     image: 'public/images/products/enhanced/double-choco-loaf.png?v=photoreal_v5'
   },
   {
-    id: 'bluezi-hampers',
-    name: 'Hampers & Parcel',
+    id: 'hamper-paket-a',
+    name: 'Parcel Paket A',
     category: 'hampers',
-    categoryLabel: 'Hampers (45k+)',
-    price: 45000,
-    priceFormatted: 'Start from Rp 45.000',
-    shortDesc: 'Paket hampers cantik pilihan toples cookies jar, tas ransel 2D, pouch kelinci, & snack tower mewah lengkap dengan pita satin dan greeting card elegan.',
+    categoryLabel: 'Parcel A (Min. 3)',
+    price: 40000,
+    priceFormatted: 'Rp 40.000',
+    shortDesc: 'Paket 6 item snack lengkap keranjang anyam kubah transparan, pita satin biru, & free kartu ucapan (*min. pembelian 3 pcs).',
+    image: 'public/images/hampers/hamper-dome-basket.jpg',
+    isHamper: true
+  },
+  {
+    id: 'hamper-paket-b',
+    name: 'Parcel Paket B',
+    category: 'hampers',
+    categoryLabel: 'Parcel B (Min. 5)',
+    price: 30000,
+    priceFormatted: 'Rp 30.000',
+    shortDesc: '1 bag snack anak pilihan dalam pouch kuping kelinci imut, free amplop THR 5k & kartu ucapan (*min. pembelian 5 pcs).',
+    image: 'public/images/hampers/hamper-bunny-pouch.jpg',
+    isHamper: true
+  },
+  {
+    id: 'hamper-paket-c',
+    name: 'Parcel Paket C',
+    category: 'hampers',
+    categoryLabel: 'Parcel C (Min. 4)',
+    price: 35000,
+    priceFormatted: 'Rp 35.000',
+    shortDesc: '1 bag snack anak pilihan dalam tas ransel pop-art kartun 2D unik & free kartu ucapan (*min. pembelian 4 pcs).',
+    image: 'public/images/hampers/hamper-2d-backpack.jpg',
+    isHamper: true
+  },
+  {
+    id: 'hamper-paket-d',
+    name: 'Parcel Paket D',
+    category: 'hampers',
+    categoryLabel: 'Parcel D (7 Item)',
+    price: 85000,
+    priceFormatted: 'Rp 85.000',
+    shortDesc: 'Paket parcel 7 item pilihan keluarga dalam kemasan nampan Idul Fitri elegan, free kartu ucapan, & bisa request isian.',
+    image: 'public/images/hampers/hamper-eid-compact.jpg',
+    isHamper: true
+  },
+  {
+    id: 'hamper-paket-e',
+    name: 'Parcel Paket E',
+    category: 'hampers',
+    categoryLabel: 'Parcel E (9 Item)',
+    price: 75000,
+    priceFormatted: 'Rp 75.000',
+    shortDesc: 'Paket parcel bertingkat 9 item dengan aneka wafer, stik cokelat & sirup segar, free kartu ucapan, & bisa request isian.',
+    image: 'public/images/hampers/hamper-eid-classic.jpg',
+    isHamper: true
+  },
+  {
+    id: 'hamper-paket-f',
+    name: 'Parcel Paket F',
+    category: 'hampers',
+    categoryLabel: 'Parcel F (10 Item)',
+    price: 110000,
+    priceFormatted: 'Rp 110.000',
+    shortDesc: 'Bingkisan Idul Fitri semarak 10 item berhias garland hijau rindang, biskuit & minuman, free kartu ucapan, & bisa request isian.',
+    image: 'public/images/hampers/hamper-eid-garland.jpg',
+    isHamper: true
+  },
+  {
+    id: 'hamper-paket-g',
+    name: 'Parcel Paket G',
+    category: 'hampers',
+    categoryLabel: 'Parcel G (11 Item)',
+    price: 170000,
+    priceFormatted: 'Rp 170.000',
+    shortDesc: 'Parcel tingkat tinggi megah 11 item lengkap dengan toples cookies cokelat, permen Yupi, Astor & bunga, free kartu ucapan, & bisa request isian.',
+    image: 'public/images/hampers/hamper-eid-tower-large.jpg',
+    isHamper: true
+  },
+  {
+    id: 'hamper-paket-premium',
+    name: 'Parcel Paket Premium',
+    category: 'hampers',
+    categoryLabel: 'Premium (14 Item)',
+    price: 260000,
+    priceFormatted: 'Rp 260.000',
+    shortDesc: 'Hampers tabung akrilik eksklusif 14 item premium, biskuit kaleng & Astor mewah, dekorasi lampu fairy lights, & free kartu ucapan.',
+    image: 'public/images/hampers/hamper-premium-cylinder.jpg',
+    isHamper: true
+  },
+  {
+    id: 'hamper-cookie-box',
+    name: 'Hampers Cookies Jar',
+    category: 'hampers',
+    categoryLabel: 'Cookies Hamper',
+    price: 50000,
+    priceFormatted: 'Rp 50.000',
+    shortDesc: 'Toples cookies jar kedap udara dengan kemasan box motif gingham hijau klasik & pita satin merah elegan.',
     image: 'public/images/hampers/hamper-cookie-box.jpg',
-    gallery: [
-      'public/images/hampers/hamper-cookie-box.jpg',
-      'public/images/hampers/hamper-bunny-pouch.jpg',
-      'public/images/hampers/hamper-mini-basket.jpg',
-      'public/images/hampers/hamper-2d-backpack.jpg',
-      'public/images/hampers/hamper-dome-basket.jpg',
-      'public/images/hampers/hamper-woven-handle.jpg',
-      'public/images/hampers/hamper-eid-compact.jpg',
-      'public/images/hampers/hamper-eid-classic.jpg',
-      'public/images/hampers/hamper-eid-mid.jpg',
-      'public/images/hampers/hamper-eid-tower-large.jpg',
-      'public/images/hampers/hamper-eid-garland.jpg',
-      'public/images/hampers/hamper-eid-floral.jpg'
-    ]
+    isHamper: true
+  },
+  {
+    id: 'hamper-mini-basket',
+    name: 'Hampers Mini Woven Basket',
+    category: 'hampers',
+    categoryLabel: 'Boutique Basket',
+    price: 45000,
+    priceFormatted: 'Rp 45.000',
+    shortDesc: 'Keranjang anyam natural estetik berpadu pita gingham biru khas Bluezi berisi camilan manis pilihan.',
+    image: 'public/images/hampers/hamper-mini-basket.jpg',
+    isHamper: true
+  },
+  {
+    id: 'hamper-deluxe-basket',
+    name: 'Hampers Deluxe Woven Basket',
+    category: 'hampers',
+    categoryLabel: 'Deluxe Basket',
+    price: 45000,
+    priceFormatted: 'Rp 45.000',
+    shortDesc: 'Keranjang anyam berhandle tangan berisi aneka biskuit, cokelat, dan minuman sari buah segar.',
+    image: 'public/images/hampers/hamper-woven-handle.jpg',
+    isHamper: true
+  },
+  {
+    id: 'hamper-eid-mid',
+    name: 'Parcel Eid Special',
+    category: 'hampers',
+    categoryLabel: 'Eid Special',
+    price: 45000,
+    priceFormatted: 'Rp 45.000',
+    shortDesc: 'Paket parcel Idul Fitri lengkap dengan sari buah segar dan biskuit keju renyah.',
+    image: 'public/images/hampers/hamper-eid-mid.jpg',
+    isHamper: true
+  },
+  {
+    id: 'hamper-eid-floral',
+    name: 'Parcel Eid Floral Deluxe',
+    category: 'hampers',
+    categoryLabel: 'Luxury Floral',
+    price: 45000,
+    priceFormatted: 'Rp 45.000',
+    shortDesc: 'Paket parcel deluxe dengan dekorasi bunga mawar peach, minuman dingin, dan biskuit kaleng.',
+    image: 'public/images/hampers/hamper-eid-floral.jpg',
+    isHamper: true
   }
 ];
 
@@ -279,7 +398,7 @@ function loadSavedCart() {
               qty: Math.max(1, parseInt(item.qty, 10) || 1)
             };
           }
-          if (item && (item.isHamper || (item.id && item.id.startsWith('hamper-')))) {
+          if (item && (item.isHamper || (item.id && item.id.startsWith('hamper-')) || item.id === 'bluezi-hampers')) {
             let shortHamperName = item.name || 'Hampers';
             if (shortHamperName.length > 25) {
               shortHamperName = shortHamperName.replace(/^Hampers:\s*/i, 'Hampers ').slice(0, 24).trim();
@@ -287,8 +406,8 @@ function loadSavedCart() {
             return {
               id: item.id,
               name: shortHamperName,
-              price: item.price || 45000,
-              image: item.thumb || item.image || 'public/images/hampers/hamper-cookie-box.jpg',
+              price: item.price || 30000,
+              image: item.thumb || item.image || 'public/images/hampers/hamper-dome-basket.jpg',
               qty: Math.max(1, parseInt(item.qty, 10) || 1),
               isHamper: true
             };
@@ -707,7 +826,7 @@ function validateAndSubmitOrder() {
   const subtotal = orderState.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
 
   // Compose WhatsApp Message
-  const hasHampers = orderState.cart.some(item => item.id === 'bluezi-hampers' || item.isHamper);
+  const hasHampers = orderState.cart.some(item => item.id === 'bluezi-hampers' || item.isHamper || (item.id && item.id.startsWith('hamper-')));
   let message = `*PESANAN BARU — BLUEZ' BAKERY & STUDIO*\n`;
   message += `━━━━━━━━━━━━━━━━━━━━━\n`;
   message += `*DATA PEMESAN:*\n`;
@@ -737,7 +856,7 @@ function validateAndSubmitOrder() {
   message += `━━━━━━━━━━━━━━━━━━━━━\n`;
   message += `*ESTIMASI SUBTOTAL: ${formatIDR(subtotal)}*\n`;
   if (hasHampers) {
-    message += `*Catatan Hampers:* Paket hampers start from 45k (mohon info ketersediaan varian toples cookies / box / snack)\n`;
+    message += `*Catatan Hampers:* Paket hampers start from 30k (mohon info ketersediaan varian parcel / toples cookies)\n`;
   }
   if (orderState.customer.notes) {
     message += `*Catatan Khusus:* ${orderState.customer.notes}\n`;

@@ -485,6 +485,14 @@ body.scrapbook-theme {
   font-style: normal;
 }
 
+.hero-header-split {
+  display: block;
+}
+
+.hero-cat-mobile-companion {
+  display: none;
+}
+
 /* Quick Facts Tags */
 .hero-doodle-tags {
   display: flex;
@@ -3067,18 +3075,19 @@ body.scrapbook-theme {
 
   /* Hero Section */
   .hero-section {
-    padding: 1.5rem 0 2.2rem;
+    padding: 1.25rem 0 1.8rem;
   }
 
   .hero-layout {
     grid-template-columns: 1fr;
-    gap: 1.8rem;
+    gap: 1rem;
   }
 
   .hero-paper-card {
-    padding: 1.7rem 1.15rem 1.4rem;
+    padding: 1.35rem 1rem 1.15rem;
     transform: none;
-    border-radius: 14px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   }
 
   .hero-paper-card:hover {
@@ -3086,38 +3095,138 @@ body.scrapbook-theme {
   }
 
   .washi-tape-top {
-    left: 25%;
-    width: 100px;
-    height: 20px;
+    left: 20%;
+    width: 90px;
+    height: 18px;
+    top: -9px;
+  }
+
+  /* Header Split: Text on Left, Cat Companion on Right (Side-by-side on Mobile) */
+  .hero-header-split {
+    display: grid;
+    grid-template-columns: 1fr 115px;
+    gap: 0.65rem;
+    align-items: center;
+    margin-bottom: 0.65rem;
+  }
+
+  .hero-text-block {
+    min-width: 0;
+  }
+
+  .hero-badge-tag {
+    font-size: 0.65rem;
+    padding: 0.22rem 0.55rem;
+    margin-bottom: 0.35rem;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
   }
 
   .hero-heading {
-    font-size: clamp(1.65rem, 6.8vw, 2.15rem);
-    line-height: 1.2;
-    margin-bottom: 0.85rem;
+    font-size: clamp(1.15rem, 4.8vw, 1.45rem);
+    line-height: 1.22;
+    margin-bottom: 0.35rem;
   }
 
   .hero-desc {
-    font-size: 0.95rem;
-    line-height: 1.55;
-    margin-bottom: 1.2rem;
+    font-size: 0.78rem;
+    line-height: 1.38;
+    margin-bottom: 0;
+    color: #374151;
+  }
+
+  /* Mobile Cat Companion: Beside Description! */
+  .hero-cat-mobile-companion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .cat-mobile-bubble {
+    background: #121c38;
+    color: #fceece;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    margin-bottom: 0.25rem;
+    white-space: nowrap;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.22);
+    border: 1px solid rgba(254, 240, 138, 0.5);
+    animation: floatBubble 2.5s infinite ease-in-out;
+  }
+
+  .cat-mobile-avatar-frame {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(254, 243, 199, 0.65) 0%, rgba(219, 234, 254, 0.35) 60%, transparent 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .cat-mobile-avatar-img {
+    width: 78px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.18));
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .cat-mobile-tap-badge {
+    font-size: 0.62rem;
+    font-weight: 800;
+    background: #e0f2fe;
+    color: #0369a1;
+    border: 1px solid #7dd3fc;
+    border-radius: 999px;
+    padding: 0.12rem 0.45rem;
+    margin-top: 0.25rem;
+    white-space: nowrap;
+  }
+
+  /* Hide huge empty 3D stage on mobile so cover stays compact and clean */
+  .hero-3d-stage {
+    display: none !important;
   }
 
   .hero-doodle-tags {
-    gap: 0.4rem;
-    margin-bottom: 1.3rem;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0.35rem;
+    padding: 0.5rem 0 0.35rem;
+    margin-bottom: 0.85rem;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .hero-doodle-tags::-webkit-scrollbar {
+    display: none;
   }
 
   .scrapbook-tag {
-    font-size: 0.75rem;
-    padding: 0.28rem 0.65rem;
+    flex-shrink: 0;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.28rem 0.62rem;
+    border-radius: 999px;
+    white-space: nowrap;
   }
 
   .hero-cta-group {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 0.5rem;
     width: 100%;
-    gap: 0.65rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
   }
 
   .btn-primary-3d,
@@ -3125,68 +3234,12 @@ body.scrapbook-theme {
     width: 100%;
     justify-content: center;
     text-align: center;
-    padding: 0.85rem 1.2rem;
-    font-size: 0.95rem;
-  }
-
-  /* Hero 3D Stage & Interactive Cat Mascot */
-  .hero-3d-stage {
-    height: 340px;
-    perspective: none;
-    overflow: hidden;
-  }
-
-  .hero-stage-inner {
-    transform: none !important;
-  }
-
-  .layer-mascot-main {
-    transform: none !important;
-  }
-
-  .cat-pedestal-glow {
-    width: 290px;
-    height: 290px;
-    max-width: 85vw;
-    max-height: 85vw;
-  }
-
-  .cat-pedestal-ring {
-    width: 240px;
-    height: 240px;
-  }
-
-  .interactive-cat-img {
-    width: 205px;
-    max-width: 72vw;
-  }
-
-  .cat-dialog-bubble {
-    max-width: 260px !important;
-    padding: 0.4rem 0.65rem !important;
-    margin-bottom: 0.35rem !important;
-    gap: 0.25rem !important;
-  }
-
-  .cat-dialog-bubble .bubble-text {
-    font-size: 0.76rem !important;
-    line-height: 1.25 !important;
-  }
-
-  .cat-dialog-bubble .bubble-counter {
-    font-size: 0.64rem !important;
-    padding: 0.12rem 0.45rem !important;
-  }
-
-  .btn-calm-cat {
-    font-size: 0.72rem !important;
-    padding: 0.22rem 0.6rem !important;
-    margin-top: 0 !important;
-  }
-
-  .cat-interact-badge {
-    font-size: 0.78rem;
-    padding: 0.35rem 0.85rem;
+    padding: 0.68rem 0.45rem;
+    font-size: 0.84rem;
+    font-weight: 800;
+    min-height: 44px;
+    border-radius: 10px;
+    white-space: nowrap;
   }
 
   /* Gallery Controls & Search Banner */
@@ -3243,22 +3296,31 @@ body.scrapbook-theme {
   }
 
   .products-editorial-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.4rem;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.65rem 0.55rem !important;
+  }
+
+  .product-3d-card.span-featured,
+  .product-3d-card.span-compact,
+  .product-3d-card.span-standard,
+  .product-3d-card.span-third {
+    grid-column: span 1 !important;
   }
 
   .product-3d-card {
-    perspective: none;
+    perspective: none !important;
+    min-width: 0 !important;
   }
 
   .card-3d-inner {
-    padding: 1.35rem 1.25rem 1.2rem;
+    padding: 0.75rem 0.6rem 0.65rem !important;
     transform: none !important;
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    flex: 1;
+    border-radius: 14px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    flex: 1 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
   }
 
   .product-3d-card:hover .card-3d-inner {
@@ -3266,74 +3328,119 @@ body.scrapbook-theme {
   }
 
   .card-washi {
-    width: 70px;
-    height: 18px;
+    width: 48px !important;
+    height: 12px !important;
+    top: -6px !important;
   }
 
   .card-floating-stage {
-    height: 200px;
-    margin-bottom: 0.5rem;
+    height: 115px !important;
+    margin-bottom: 0.35rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
   .card-bread-img {
-    max-height: 88%;
-    max-width: 88%;
-    object-fit: contain;
+    max-height: 90px !important;
+    max-width: 90px !important;
+    object-fit: contain !important;
     transform: none !important;
   }
 
   .product-3d-card:hover .card-bread-img {
-    transform: translateY(-4px) scale(1.02) !important;
+    transform: none !important;
+  }
+
+  .card-tag-badge {
+    font-size: 0.62rem !important;
+    padding: 0.15rem 0.45rem !important;
+    border-radius: 999px !important;
   }
 
   .card-title {
-    font-size: 1.18rem;
-    min-height: auto;
-    margin-bottom: 0.35rem;
+    font-size: 0.88rem !important;
+    font-weight: 800 !important;
+    line-height: 1.22 !important;
+    min-height: 2.25em !important;
+    margin-bottom: 0.25rem !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
   }
 
   .card-desc {
-    font-size: 0.88rem;
-    margin-bottom: 1rem;
-    flex: 1;
-    display: block;
+    font-size: 0.72rem !important;
+    line-height: 1.32 !important;
+    margin-bottom: 0.5rem !important;
+    color: #475569 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    flex: 1 !important;
   }
 
   .card-bottom-bar {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.65rem;
-    padding-top: 0.75rem;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.45rem !important;
+    padding-top: 0.45rem !important;
+    margin-top: auto !important;
+    border-top: 1px dashed var(--cream-border) !important;
   }
 
   .card-price-box {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: baseline;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+
+  .price-sub {
+    display: none !important;
   }
 
   .price-val {
-    font-size: 0.98rem;
-    white-space: nowrap;
+    font-size: 0.86rem !important;
+    font-weight: 800 !important;
+    color: #1e3a8a !important;
+    white-space: nowrap !important;
   }
 
   .card-actions {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 0.5rem;
-    width: 100%;
+    display: grid !important;
+    grid-template-columns: 1fr 1.25fr !important;
+    gap: 0.35rem !important;
+    width: 100% !important;
   }
 
   .btn-card-detail,
   .btn-add-bag {
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-    padding: 0.6rem 0.65rem;
-    font-size: 0.85rem;
-    min-height: 42px;
-    border-radius: 8px;
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 0.45rem 0.35rem !important;
+    font-size: 0.74rem !important;
+    font-weight: 700 !important;
+    min-height: 36px !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  .btn-add-bag {
+    font-weight: 800 !important;
+    background: #121c38 !important;
+    color: #fceece !important;
+    border: 1px solid rgba(252, 238, 206, 0.3) !important;
+  }
+
+  .btn-card-detail {
+    background: transparent !important;
+    color: #121c38 !important;
+    border: 1.5px solid #121c38 !important;
   }
 
   /* Story Section: Gorgeous 2x2 Photo Collage Grid */
@@ -3624,27 +3731,43 @@ body.scrapbook-theme {
 
 @media (max-width: 600px) {
   .products-editorial-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.6rem 0.5rem !important;
   }
 }
 
 @media (max-width: 480px) {
-  .hero-3d-stage {
-    height: 310px;
+  .hero-header-split {
+    grid-template-columns: 1fr 98px !important;
+    gap: 0.45rem !important;
   }
-  .interactive-cat-img {
-    width: 185px;
+  .cat-mobile-avatar-frame {
+    width: 82px !important;
+    height: 82px !important;
   }
-  .cat-pedestal-ring {
-    width: 215px;
-    height: 215px;
+  .cat-mobile-avatar-img {
+    width: 70px !important;
+  }
+  .products-editorial-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.55rem 0.45rem !important;
   }
   .card-floating-stage {
-    height: 175px;
+    height: 105px !important;
+  }
+  .card-bread-img {
+    max-height: 82px !important;
+    max-width: 82px !important;
   }
   .card-actions {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1.25fr !important;
+    gap: 0.3rem !important;
+  }
+  .btn-card-detail,
+  .btn-add-bag {
+    font-size: 0.7rem !important;
+    padding: 0.42rem 0.25rem !important;
+    min-height: 35px !important;
   }
   .story-img {
     height: 95px !important;

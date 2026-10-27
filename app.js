@@ -309,33 +309,138 @@ const PRODUCTS_DATA = [
     name: 'Hampers & Parcel',
     handwrittenName: 'Hampers Bluezi',
     category: 'hampers',
-    price: 45000,
-    priceFormatted: 'Start from Rp 45.000',
+    price: 30000,
+    priceFormatted: 'Start from Rp 30.000',
     tag: 'Special Gift',
     spanClass: 'span-featured',
-    shortDesc: 'Paket hampers cantik pilihan cookies jar, toples kaca, tas ransel 2D, pouch kelinci, & snack tower bertingkat mewah lengkap dengan pita satin.',
-    fullDesc: 'Koleksi hampers & parcel spesial dari Bluezi Bakery & Studio. Tersedia dalam aneka pilihan istimewa: toples cookies jar dengan box motif gingham hijau klasik, pouch kelinci imut, tas ransel 2D unik, keranjang anyam estetik, hingga parcel tower bertingkat untuk Idul Fitri, ulang tahun, dan momen spesial. Sudah termasuk pita satin elegan dan custom greeting card!',
+    shortDesc: 'Paket hampers cantik pilihan toples cookies jar, parcel Idul Fitri Paket A-G & Premium, pouch kelinci, tas 2D, & snack tower mewah.',
+    fullDesc: 'Koleksi hampers & parcel spesial dari Bluezi Bakery & Studio dengan acuan paket Idul Fitri & gift pilihan: Paket A (Rp 40.000), Paket B (Rp 30.000), Paket C (Rp 35.000), Paket D (Rp 85.000), Paket E (Rp 75.000), Paket F (Rp 110.000), Paket G (Rp 170.000), Paket Premium tabung akrilik lampu (Rp 260.000), toples cookies jar (Rp 50.000), serta hampers keranjang estetik (Rp 45.000). Lengkap dengan pita satin elegan dan free greeting card spesial!',
     images: {
-      cutout: 'public/images/hampers/hamper-cookie-box.jpg',
+      cutout: 'public/images/hampers/hamper-dome-basket.jpg',
       real1: 'public/images/hampers/hamper-eid-tower-large.jpg',
-      real2: 'public/images/hampers/hamper-woven-handle.jpg'
+      real2: 'public/images/hampers/hamper-cookie-box.jpg'
     },
     gallery: [
-      { src: 'public/images/hampers/hamper-cookie-box.jpg', title: 'Jar Cookies & Gingham Box Ribbon', shortTitle: 'Hampers Cookies Jar', price: 'Mulai Rp 45.000', tag: 'Favorite', desc: 'Toples cookies jar kedap udara dengan kemasan motif kotak gingham hijau & pita satin merah.' },
-      { src: 'public/images/hampers/hamper-bunny-pouch.jpg', title: 'Cute Bunny Ears Treat Pouch', shortTitle: 'Hampers Bunny Pouch', price: 'Mulai Rp 45.000', tag: 'Best Seller', desc: 'Pouch berpita dengan desain kuping kelinci super gemas untuk aneka camilan manis.' },
-      { src: 'public/images/hampers/hamper-mini-basket.jpg', title: 'Mini Woven Basket with Gingham Ribbon', shortTitle: 'Hampers Mini Basket', price: 'Mulai Rp 55.000', tag: 'Boutique Gift', desc: 'Keranjang anyam natural estetik berpadu pita gingham biru khas Bluezi.' },
-      { src: 'public/images/hampers/hamper-2d-backpack.jpg', title: 'Unique 2D Cartoon Backpack Gift Pouch', shortTitle: 'Hampers 2D Backpack', price: 'Mulai Rp 55.000', tag: 'Unique & Fun', desc: 'Kemasan tas ransel kartun 2D pop-art yang unik dan eye-catching.' },
-      { src: 'public/images/hampers/hamper-dome-basket.jpg', title: 'Dome Ribbon Woven Gift Basket', shortTitle: 'Hampers Dome Basket', price: 'Mulai Rp 75.000', tag: 'Elegant Pack', desc: 'Keranjang anyam dengan kubah transparan dan ikatan pita biru manis.' },
-      { src: 'public/images/hampers/hamper-woven-handle.jpg', title: 'Deluxe Woven Snack Basket', shortTitle: 'Hampers Deluxe Basket', price: 'Mulai Rp 85.000', tag: 'Deluxe Basket', desc: 'Keranjang anyam berhandle tangan berisi aneka biskuit, cokelat, dan minuman.' },
-      { src: 'public/images/hampers/hamper-eid-compact.jpg', title: 'Compact Eid Celebration Parcel', shortTitle: 'Parcel Eid Compact', price: 'Mulai Rp 75.000', tag: 'Eid Series', desc: 'Parcel Idul Fitri kompak dengan selempang emas Eid Mubarak & snack keluarga.' },
-      { src: 'public/images/hampers/hamper-eid-classic.jpg', title: 'Classic Eid Snack Tower', shortTitle: 'Parcel Eid Classic', price: 'Mulai Rp 85.000', tag: 'Eid Series', desc: 'Rangkaian parcel bertingkat dengan wafer, stik cokelat, dan biskuit gurih.' },
-      { src: 'public/images/hampers/hamper-eid-mid.jpg', title: 'Special Eid Snack & Beverage Parcel', shortTitle: 'Parcel Eid Special', price: 'Mulai Rp 95.000', tag: 'Eid Special', desc: 'Paket parcel Idul Fitri lengkap dengan minuman sari buah segar dan biskuit keju.' },
-      { src: 'public/images/hampers/hamper-eid-tower-large.jpg', title: 'Grand Eid Mubarak Celebration Tower', shortTitle: 'Parcel Eid Tower', price: 'Mulai Rp 125.000', tag: 'Grand Tower', desc: 'Parcel tingkat tinggi megah dengan toples kukis cokelat, permen Yupi, & bunga.' },
-      { src: 'public/images/hampers/hamper-eid-garland.jpg', title: 'Festive Garland Eid Hamper', shortTitle: 'Parcel Eid Garland', price: 'Mulai Rp 110.000', tag: 'Festive Pack', desc: 'Bingkisan Idul Fitri bernuansa hijau segar dengan hiasan garland semarak.' },
-      { src: 'public/images/hampers/hamper-eid-floral.jpg', title: 'Floral Celebration Deluxe Hamper', shortTitle: 'Parcel Eid Floral', price: 'Mulai Rp 135.000', tag: 'Luxury Floral', desc: 'Paket parcel deluxe dengan dekorasi bunga mawar peach, minuman dingin, dan kaleng biskuit.' }
+      {
+        src: 'public/images/hampers/hamper-dome-basket.jpg',
+        title: 'Parcel Paket A — Dome Basket Gift',
+        shortTitle: 'Parcel Paket A',
+        price: 'Rp 40.000',
+        numericPrice: 40000,
+        tag: 'Paket A (Min. 3)',
+        desc: 'Paket 6 item snack lengkap dengan keranjang anyam kubah transparan, pita satin biru, & free kartu ucapan (*min. pembelian 3).'
+      },
+      {
+        src: 'public/images/hampers/hamper-bunny-pouch.jpg',
+        title: 'Parcel Paket B — Cute Bunny Treat Pouch',
+        shortTitle: 'Parcel Paket B',
+        price: 'Rp 30.000',
+        numericPrice: 30000,
+        tag: 'Paket B (Min. 5)',
+        desc: '1 bag snack anak pilihan dalam pouch kuping kelinci imut, free amplop THR 5k & kartu ucapan (*min. pembelian 5).'
+      },
+      {
+        src: 'public/images/hampers/hamper-2d-backpack.jpg',
+        title: 'Parcel Paket C — 2D Cartoon Backpack',
+        shortTitle: 'Parcel Paket C',
+        price: 'Rp 35.000',
+        numericPrice: 35000,
+        tag: 'Paket C (Min. 4)',
+        desc: '1 bag snack anak pilihan dalam tas ransel pop-art kartun 2D unik & free kartu ucapan (*min. pembelian 4).'
+      },
+      {
+        src: 'public/images/hampers/hamper-eid-compact.jpg',
+        title: 'Parcel Paket D — Compact Eid Celebration',
+        shortTitle: 'Parcel Paket D',
+        price: 'Rp 85.000',
+        numericPrice: 85000,
+        tag: 'Paket D (7 Item)',
+        desc: 'Paket parcel 7 item pilihan keluarga, kemasan nampan Idul Fitri elegan, free kartu ucapan, & bisa request isian.'
+      },
+      {
+        src: 'public/images/hampers/hamper-eid-classic.jpg',
+        title: 'Parcel Paket E — Classic Eid Snack Tower',
+        shortTitle: 'Parcel Paket E',
+        price: 'Rp 75.000',
+        numericPrice: 75000,
+        tag: 'Paket E (9 Item)',
+        desc: 'Paket parcel bertingkat 9 item dengan aneka wafer, stik cokelat & sirup, free kartu ucapan, & bisa request isian.'
+      },
+      {
+        src: 'public/images/hampers/hamper-eid-garland.jpg',
+        title: 'Parcel Paket F — Festive Garland Eid Hamper',
+        shortTitle: 'Parcel Paket F',
+        price: 'Rp 110.000',
+        numericPrice: 110000,
+        tag: 'Paket F (10 Item)',
+        desc: 'Bingkisan Idul Fitri semarak 10 item berhias garland hijau rindang, biskuit & minuman, free kartu ucapan, & bisa request isian.'
+      },
+      {
+        src: 'public/images/hampers/hamper-eid-tower-large.jpg',
+        title: 'Parcel Paket G — Grand Eid Celebration Tower',
+        shortTitle: 'Parcel Paket G',
+        price: 'Rp 170.000',
+        numericPrice: 170000,
+        tag: 'Paket G (11 Item)',
+        desc: 'Parcel tingkat tinggi megah 11 item lengkap dengan toples cookies cokelat, permen Yupi, Astor & bunga, free kartu ucapan, & bisa request isian.'
+      },
+      {
+        src: 'public/images/hampers/hamper-premium-cylinder.jpg',
+        title: 'Parcel Paket Premium — Deluxe Cylinder Hamper',
+        shortTitle: 'Parcel Paket Premium',
+        price: 'Rp 260.000',
+        numericPrice: 260000,
+        tag: 'Premium (14 Item)',
+        desc: 'Hampers tabung akrilik eksklusif 14 item premium, biskuit Astor & kaleng mewah, dekorasi lampu fairy lights estetik, free kartu ucapan, & bisa request isian.'
+      },
+      {
+        src: 'public/images/hampers/hamper-cookie-box.jpg',
+        title: 'Jar Cookies & Gingham Box Ribbon',
+        shortTitle: 'Hampers Cookies Jar',
+        price: 'Rp 50.000',
+        numericPrice: 50000,
+        tag: 'Favorite Cookies',
+        desc: 'Toples cookies jar kedap udara dengan kemasan motif kotak gingham hijau & pita satin merah.'
+      },
+      {
+        src: 'public/images/hampers/hamper-mini-basket.jpg',
+        title: 'Mini Woven Basket with Gingham Ribbon',
+        shortTitle: 'Hampers Mini Basket',
+        price: 'Rp 45.000',
+        numericPrice: 45000,
+        tag: 'Boutique Gift',
+        desc: 'Keranjang anyam natural estetik berpadu pita gingham biru khas Bluezi.'
+      },
+      {
+        src: 'public/images/hampers/hamper-woven-handle.jpg',
+        title: 'Deluxe Woven Snack Basket',
+        shortTitle: 'Hampers Deluxe Basket',
+        price: 'Rp 45.000',
+        numericPrice: 45000,
+        tag: 'Deluxe Basket',
+        desc: 'Keranjang anyam berhandle tangan berisi aneka biskuit, cokelat, dan minuman.'
+      },
+      {
+        src: 'public/images/hampers/hamper-eid-mid.jpg',
+        title: 'Special Eid Snack & Beverage Parcel',
+        shortTitle: 'Parcel Eid Special',
+        price: 'Rp 45.000',
+        numericPrice: 45000,
+        tag: 'Eid Special',
+        desc: 'Paket parcel Idul Fitri lengkap dengan minuman sari buah segar dan biskuit keju.'
+      },
+      {
+        src: 'public/images/hampers/hamper-eid-floral.jpg',
+        title: 'Floral Celebration Deluxe Hamper',
+        shortTitle: 'Parcel Eid Floral',
+        price: 'Rp 45.000',
+        numericPrice: 45000,
+        tag: 'Luxury Floral',
+        desc: 'Paket parcel deluxe dengan dekorasi bunga mawar peach, minuman dingin, dan kaleng biskuit.'
+      }
     ],
     photoShape: 'round',
-    highlights: ['Harga Mulai Rp 45.000', 'Toples Cookies / Snack Tower / Pouch', 'Pita Satin Elegan & Hiasan Bunga', 'Free Custom Kartu Ucapan Spesial'],
+    highlights: ['Harga Mulai Rp 30.000', 'Toples Cookies / Paket A-G & Premium', 'Pita Satin Elegan & Hiasan Bunga', 'Free Custom Kartu Ucapan Spesial'],
     polaroidLabel: 'Gift & Parcel by Bluezi'
   }
 ];
@@ -855,6 +960,34 @@ function initInteractiveCat() {
       handleCatInteraction(e);
     }
   });
+
+  // Mobile Cat Companion Tap Interaction
+  const mobileCat = document.getElementById('heroCatMobileCompanion');
+  const mobileCatBubble = document.getElementById('catMobileBubbleText');
+  const mobileCatImg = document.getElementById('catMobileAvatarImg');
+
+  if (mobileCat) {
+    mobileCat.addEventListener('click', (e) => {
+      handleCatInteraction(e);
+      if (mobileCatBubble && bubbleText) {
+        let text = bubbleText.textContent || 'Meow! 🐾';
+        if (text.length > 26) text = text.slice(0, 24) + '... 🐾';
+        mobileCatBubble.textContent = text;
+      }
+      if (mobileCatImg) {
+        mobileCatImg.style.transform = 'scale(1.22) rotate(8deg)';
+        setTimeout(() => {
+          mobileCatImg.style.transform = 'scale(1) rotate(0deg)';
+        }, 220);
+      }
+    });
+    mobileCat.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        mobileCat.click();
+      }
+    });
+  }
 }
 
 // ==========================================
@@ -2313,6 +2446,7 @@ function addHamperToBag(slideIndex) {
   if (!hamperItem || !hamperItem.gallery) return;
   const slide = hamperItem.gallery[slideIndex] || hamperItem.gallery[0];
   const shortName = slide.shortTitle || `Hampers (${slide.tag || 'Spesial'})`;
+  const numericPrice = slide.numericPrice || parseInt(String(slide.price).replace(/[^0-9]/g, ''), 10) || 30000;
 
   const customHamperItem = {
     id: `hamper-${slideIndex}-${Date.now()}`,
