@@ -3174,37 +3174,36 @@ body.scrapbook-theme {
 
   .cat-mobile-avatar-frame {
     width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(254, 243, 199, 0.85) 0%, rgba(219, 234, 254, 0.55) 60%, rgba(255, 255, 255, 0.2) 100%);
+    height: 105px;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    border: 2px solid rgba(245, 158, 11, 0.35);
-    box-shadow: 0 6px 18px rgba(29, 44, 65, 0.12);
   }
 
   .cat-mobile-avatar-img {
-    width: 110px;
+    width: 115px;
     height: auto;
-    max-height: 110px;
+    max-height: 105px;
     object-fit: contain;
-    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.22));
+    filter: drop-shadow(0 3px 6px rgba(29, 44, 65, 0.2));
     transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   .cat-mobile-tap-badge {
     font-size: 0.68rem;
     font-weight: 800;
-    background: linear-gradient(135deg, #fef08a 0%, #fed7aa 100%);
-    color: #854d0e;
-    border: 1.5px solid #f59e0b;
+    background: #121c38;
+    color: #fceece;
+    border: 1px solid rgba(254, 240, 138, 0.6);
     border-radius: 999px;
     padding: 0.18rem 0.65rem;
     margin-top: 0.35rem;
     white-space: nowrap;
-    box-shadow: 0 2px 6px rgba(245, 158, 11, 0.25);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
   }
 
   /* Hide huge empty 3D stage on mobile so cover stays compact and clean */
@@ -3750,15 +3749,18 @@ body.scrapbook-theme {
     gap: 0.65rem !important;
   }
   .hero-cat-mobile-companion {
-    width: 122px !important;
+    width: 115px !important;
   }
   .cat-mobile-avatar-frame {
-    width: 110px !important;
-    height: 110px !important;
+    width: 108px !important;
+    height: 98px !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
   }
   .cat-mobile-avatar-img {
     width: 102px !important;
-    max-height: 102px !important;
+    max-height: 95px !important;
   }
   .products-editorial-grid {
     grid-template-columns: repeat(2, 1fr) !important;
