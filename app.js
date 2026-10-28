@@ -713,35 +713,34 @@ function attachModalTilt() {
 // ==========================================
 
 const CAT_DIALOGS = [
-  "Meow! Selamat datang di Bluezi Studio 🥐🐾",
-  "a little studio for cakes, pastries & sweet surprises ♡",
-  "📍 Hari Minggu ketemu kami di GBLA Bandung yaa! 🏟️✨",
-  "🗓️ Sistem pemesanan kami Pre-order every week! 🥐📦",
-  "Follow Instagram kami di @Bluezistudio yaa! 📸✨",
-  "Semua roti kami dipanggang fresh tiap pagi lho! 🥖",
-  "Coba Pizza Bread-nya, saus bolognese & kejunya lumer! 🍕",
-  "Roti Abon ayamnya super fluffy & gurih berlimpah! ✨",
-  "Lagi pengen manis? Choux Strawberry dingin segar banget! 🍓",
-  "Sourdough cranberry cheese kami fermentasi alami 24 jam! 🍞",
-  "Mau pesan cepat? Klik tombol WhatsApp di kiri ya! 💬",
-  "Purrr... Senang kamu main sama aku! 💙",
-  "Nyam nyam! Aroma roti di Bluezi Studio wangi banget hari ini~ 🥐"
+  "Meow! Selamat datang di Bluezi Studio",
+  "a little studio for cakes, pastries & sweet surprises",
+  "Hari Minggu ketemu kami di GBLA Bandung ya!",
+  "Sistem pemesanan kami Pre-order every week!",
+  "Follow Instagram kami di @Bluezistudio ya!",
+  "Semua roti kami dipanggang fresh tiap pagi lho!",
+  "Coba Pizza Bread-nya, saus bolognese & kejunya lumer!",
+  "Roti Abon ayamnya super fluffy & gurih berlimpah!",
+  "Lagi pengen manis? Choux Strawberry dingin segar banget!",
+  "Sourdough cranberry cheese kami fermentasi alami 24 jam!",
+  "Mau pesan cepat? Klik tombol WhatsApp di kiri ya!",
+  "Purrr... Senang kamu berkunjung ke Bluezi Studio!",
+  "Nyam nyam! Aroma roti di Bluezi Studio wangi banget hari ini~"
 ];
 
 const CAT_WARNING_DIALOGS = [
-  "Jangan toel terus dong, ntar ngambek lho! 😾",
-  "Meooww! Ekor aku kesenggol nih, udah yaa! 💢",
-  "Awas ya toel sekali lagi, aku pup beneran nih! 💥😾"
+  "Jangan toel terus dong, nanti ngambek lho!",
+  "Meooww! Ekor aku kesenggol nih, sudah ya!",
+  "Awas ya toel sekali lagi, aku ngambek beneran nih!"
 ];
 
 const CAT_ANGRY_DIALOGS = [
-  "MEOOWW!! Jangan diusik terus dong!! 💥💩",
-  "GRRRR!! Aku ngambek nih!! Nih terima pup!! 💩",
-  "HUWAARGH!! Ngambek berat!! Plop-plop!! 💢💩",
-  "POOP ATTACK!! 💥 Jangan toel-toel lagi!! 😾💩"
+  "MEOOWW! Jangan diusik terus dong!",
+  "GRRRR! Aku lagi ngambek nih!",
+  "HUWAARGH! Jangan toel-toel terus ya!"
 ];
 
-const CAT_PARTICLE_ICONS = ['🐾', '💙', '✨', '🥖', '🥐', '🍞', '🍕', '🍓', '❤️'];
+const CAT_PARTICLE_ICONS = ['✦', '✧', '★'];
 
 function initInteractiveCat() {
   const catCard = document.getElementById('interactiveCatCard');
@@ -792,27 +791,8 @@ function initInteractiveCat() {
   }
 
   function dropPoopOnFloor() {
-    if (!poopGround) return;
-    const poop = document.createElement('span');
-    poop.className = 'dropped-poop-item';
-    poop.textContent = '💩';
-    
-    // Spread around the cat's bottom area / pedestal
-    const left = 15 + Math.random() * 70;
-    const top = 30 + Math.random() * 55;
-    const rot = (Math.random() - 0.5) * 50;
-    const scale = 0.85 + Math.random() * 0.45;
-    
-    poop.style.left = `${left}%`;
-    poop.style.top = `${top}%`;
-    poop.style.transform = `scale(${scale}) rotate(${rot}deg)`;
-    poopGround.appendChild(poop);
-
-    // Keep max 16 poops to prevent clutter
-    const existing = poopGround.querySelectorAll('.dropped-poop-item:not(.cleanup)');
-    if (existing.length > 16) {
-      existing[0].remove();
-    }
+    // Kept clean without dropping emojis on the floor
+    return;
   }
 
   function calmCatDown(e) {
@@ -830,26 +810,20 @@ function initInteractiveCat() {
     if (bubble) bubble.classList.remove('bubble-angry-mode');
     if (btnCalmCat) btnCalmCat.style.display = 'none';
 
-    // Sweep clean all dropped poops
+    // Clear any dropped items
     if (poopGround) {
-      const poops = poopGround.querySelectorAll('.dropped-poop-item');
-      poops.forEach((p, idx) => {
-        p.classList.add('cleanup');
-        setTimeout(() => {
-          if (p.parentNode) p.parentNode.removeChild(p);
-        }, 350 + idx * 30);
-      });
+      poopGround.innerHTML = '';
     }
 
     if (bubbleText) {
-      bubbleText.textContent = "Nyam nyam nyam... 🥐 Rotinya enak banget! Maaf ya tadi ngambek & pup sembarangan hehe~ 🐾💙";
+      bubbleText.textContent = "Nyam nyam nyam... Rotinya enak banget! Terima kasih sudah menemani ya~";
     }
     if (petCounter) {
-      petCounter.textContent = `Sudah baikan! 🥐 Disapa ${petCount}x 🐾`;
+      petCounter.textContent = `Sudah baikan! Disapa ${petCount}x`;
     }
 
     if (particlesContainer) {
-      spawnCatParticles(particlesContainer, 8, ['🥐', '💙', '✨', '🥖', '❤️']);
+      spawnCatParticles(particlesContainer, 6, ['✦', '✧', '★']);
     }
 
     catImg.classList.remove('cat-bounce-active');
@@ -901,10 +875,10 @@ function initInteractiveCat() {
 
       dialogIdx = (dialogIdx + 1) % CAT_DIALOGS.length;
       if (bubbleText) bubbleText.textContent = CAT_DIALOGS[dialogIdx];
-      if (petCounter) petCounter.textContent = `Disapa ${petCount}x 🐾`;
+      if (petCounter) petCounter.textContent = `Disapa ${petCount}x`;
 
       if (particlesContainer) {
-        spawnCatParticles(particlesContainer, 5);
+        spawnCatParticles(particlesContainer, 4);
       }
       return;
     }
@@ -919,36 +893,31 @@ function initInteractiveCat() {
 
       const warnIdx = Math.min(streakCount - 5, CAT_WARNING_DIALOGS.length - 1);
       if (bubbleText) bubbleText.textContent = CAT_WARNING_DIALOGS[warnIdx];
-      if (petCounter) petCounter.textContent = `Awas Ngambek! 😾 (${streakCount}/8)`;
+      if (petCounter) petCounter.textContent = `Awas Ngambek! (${streakCount}/8)`;
 
       if (particlesContainer) {
-        spawnCatParticles(particlesContainer, 6, ['💢', '⚡', '😾', '🐾']);
+        spawnCatParticles(particlesContainer, 5, ['✦', '✧']);
       }
       return;
     }
 
-    // STATE 3: ANGRY RAGE & PUP SEMBARANGAN (Clicks 8+)
+    // STATE 3: ANGRY RAGE / NGAMBEK (Clicks 8+)
     isAngry = true;
     poopDropCount++;
 
     catImg.classList.add('cat-angry-rage');
     if (bubble) bubble.classList.add('bubble-angry-mode');
 
-    // Play angry hiss and funny cartoon plop sound!
+    // Play angry hiss sound
     sfx.playAngryHiss();
-    setTimeout(() => {
-      sfx.playPoop();
-    }, 120);
 
     const angryMsg = CAT_ANGRY_DIALOGS[Math.floor(Math.random() * CAT_ANGRY_DIALOGS.length)];
     if (bubbleText) bubbleText.textContent = angryMsg;
-    if (petCounter) petCounter.textContent = `Ngambek! 💩 (${poopDropCount} Pup)`;
+    if (petCounter) petCounter.textContent = `Sedang Ngambek! (${poopDropCount}x)`;
 
-    // Burst poop particles & drop physical poop on floor!
     if (particlesContainer) {
-      spawnCatParticles(particlesContainer, 7, ['💩', '💨', '💥', '💢']);
+      spawnCatParticles(particlesContainer, 5, ['✦', '✧', '★']);
     }
-    dropPoopOnFloor();
 
     // Show Apology/Calm button
     if (btnCalmCat) {
@@ -973,8 +942,8 @@ function initInteractiveCat() {
     mobileCat.addEventListener('click', (e) => {
       handleCatInteraction(e);
       if (mobileCatBubble && bubbleText) {
-        let text = bubbleText.textContent || 'Meow! 🐾';
-        if (text.length > 26) text = text.slice(0, 24) + '... 🐾';
+        let text = bubbleText.textContent || 'Meow!';
+        if (text.length > 26) text = text.slice(0, 24) + '...';
         mobileCatBubble.textContent = text;
       }
       if (mobileCatImg) {
