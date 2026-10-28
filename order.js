@@ -148,16 +148,6 @@ const BAKERY_PRODUCTS = [
     image: 'public/images/products/enhanced/cookie-double-dark.png'
   },
   {
-    id: 'box-souvenir-2-roti',
-    name: 'Box Souvenir (Isi 2 Roti)',
-    category: 'box',
-    categoryLabel: 'Box Isi 2',
-    price: 14000,
-    priceFormatted: 'Start from Rp 14.000',
-    shortDesc: 'Box kemasan kraft eksklusif isi 2 roti bebas pilih dengan clear dome lid & stiker segel resmi BLUEZ\' Studio.',
-    image: 'assets/souvenir_roti/box-packaging-berry-abon.jpg'
-  },
-  {
     id: 'double-choco-loaf',
     name: 'Double Choco Loaf',
     category: 'sourdough',

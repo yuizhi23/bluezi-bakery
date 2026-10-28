@@ -287,26 +287,6 @@ const PRODUCTS_DATA = [
     polaroidLabel: 'Double Choco Lava'
   },
   {
-    id: 'box-souvenir-2-roti',
-    name: 'Box Souvenir (Isi 2 Roti)',
-    handwrittenName: 'Souvenir Box Isi 2',
-    category: 'box',
-    price: 14000,
-    priceFormatted: 'Start from Rp 14.000',
-    tag: 'Packaging Isi 2',
-    spanClass: 'span-featured',
-    shortDesc: 'Kemasan kraft box souvenir eksklusif isi 2 roti bebas pilih dengan clear dome lid & stiker segel resmi BLUEZ\' Studio.',
-    fullDesc: 'Paket box souvenir roti eksklusif isi 2 roti dari BLUEZ\' Bakery. Dikemas cantik menggunakan kraft tray box ramah lingkungan, clear dome lid transparan berkualitas tinggi, alas cup fluted, dan stiker segel resmi BLUEZ\' Studio. Sangat pas untuk souvenir acara, gift spesial, bekal manis, atau hampers mini.',
-    images: {
-      cutout: 'assets/souvenir_roti/box-packaging-berry-abon.jpg',
-      real1: 'assets/souvenir_roti/box-packaging-abon-choux.jpg',
-      real2: 'assets/souvenir_roti/box-packaging-pizza-abon.jpg'
-    },
-    photoShape: 'round',
-    highlights: ['Bebas Pilih 2 Roti Favorit', 'Kemasan Kraft Box Eksklusif', 'Clear Dome Lid Transparan', 'Stiker Segel Resmi Bluez'],
-    polaroidLabel: 'Packaging Asli Isi 2 Roti'
-  },
-  {
     id: 'double-choco-loaf',
     name: 'Double Choco Loaf',
     handwrittenName: 'Dark Choco Sourdough',
@@ -1018,39 +998,6 @@ function renderGallery() {
   const container = document.getElementById('productsGrid');
   if (!container) return;
 
-  // Special handling when 'box' category is selected
-  if (state.currentFilter === 'box') {
-    container.innerHTML = `
-      <article class="product-3d-card span-featured" style="grid-column: 1 / -1; max-width: 860px; margin: 0 auto; width: 100%;">
-        <div class="card-3d-inner" style="padding: 2.2rem; background: linear-gradient(135deg, #fffdf8 0%, #fff7eb 100%); border: 2.5px solid #1D2C43; border-radius: 24px; box-shadow: 0 16px 36px rgba(29, 44, 67, 0.12);">
-          <div class="card-washi card-washi-left" aria-hidden="true"></div>
-          <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
-            <div style="flex: 1; min-width: 260px; text-align: center;">
-              <img src="assets/souvenir_roti/WhatsApp Image 2026-10-26 at 15.30.56.jpeg" alt="BLUEZ' Bakery Box" style="width: 100%; max-width: 320px; border-radius: 18px; border: 2px solid #1D2C43; box-shadow: 0 12px 28px rgba(29,44,67,0.18);">
-            </div>
-            <div style="flex: 1.3; min-width: 280px;">
-              <div style="display: inline-block; background: #1D2C43; color: #F3E2C8; font-size: 0.75rem; font-weight: 800; padding: 0.3rem 0.85rem; border-radius: 999px; margin-bottom: 0.75rem; letter-spacing: 0.05em;">SOUVENIR ROTI BLUEZ'</div>
-              <h3 style="font-family: var(--font-display, 'Outfit', serif); font-size: 1.85rem; color: #1D2C43; margin-bottom: 0.5rem; line-height: 1.2;">Build Your Own Bakery Box</h3>
-              <p style="color: #4a5d73; font-size: 0.98rem; line-height: 1.6; margin-bottom: 1rem;">
-                Pilih bebas 2 roti favoritmu dalam 1 box kemasan kraft eksklusif BLUEZ' Bakery lengkap dengan clear dome lid dan stiker segel resmi BLUEZ' Studio.
-              </p>
-              <div style="display: flex; gap: 0.75rem; align-items: center; margin-bottom: 1.35rem; flex-wrap: wrap;">
-                <span style="font-size: 1.25rem; font-weight: 800; color: #1D2C43;">Start from Rp 14.000</span>
-                <span style="background: #e0f2fe; color: #0369a1; padding: 0.2rem 0.65rem; border-radius: 999px; font-size: 0.78rem; font-weight: 700; border: 1px solid #bae6fd;">Special Packaging +Rp 2.000</span>
-              </div>
-              <div>
-                <button type="button" class="btn-primary-3d" onclick="scrollToBoxBuilder()" style="padding: 0.75rem 1.4rem; font-size: 0.92rem; display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;">
-                  <span>Rangkai Box Sekarang</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-    `;
-    return;
-  }
-
   // Filter products
   const filtered = PRODUCTS_DATA.filter((p) => {
     const matchesFilter = state.currentFilter === 'all' || p.category === state.currentFilter;
@@ -1276,12 +1223,6 @@ function closeProductModal() {
 // ==========================================
 
 function addToBagQuick(productId) {
-  if (productId === 'box-souvenir-2-roti') {
-    scrollToBoxBuilder();
-    showToast('Silakan pilih 2 roti favoritmu untuk mengisi box packaging ini!');
-    return;
-  }
-
   const product = PRODUCTS_DATA.find(p => p.id === productId);
   if (!product) return;
 
