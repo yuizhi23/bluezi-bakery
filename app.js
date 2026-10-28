@@ -1264,6 +1264,7 @@ function loadSavedCart() {
 function initBoxBuilder() {
   renderBoxBreadPicker();
   updateBoxBuilderUI();
+  switchBoxViewMode('sim');
 }
 
 function renderBoxBreadPicker() {
@@ -1967,6 +1968,8 @@ window.addCookieDirect = addCookieDirect;
 function scrollToBoxBuilder(onlyIfNotVisible = false) {
   const boxSec = document.getElementById('box-builder');
   if (!boxSec) return;
+
+  switchBoxViewMode('sim');
 
   const rect = boxSec.getBoundingClientRect();
   // If already visible in viewport, do NOT scroll!

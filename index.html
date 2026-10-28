@@ -288,79 +288,20 @@
                 <span class="box-packaging-indicator" id="previewPackagingBadge">Special Packaging (+Rp 2.000)</span>
               </div>
 
-              <!-- View Switcher Tabs: Foto Kemasan Asli vs Simulasi Roti -->
+              <!-- View Switcher Tabs: Simulasi Roti Box vs Foto Kemasan Asli -->
               <div class="box-preview-tabs" role="tablist">
-                <button type="button" class="box-tab-btn is-active" id="tabBoxRealPhoto" onclick="switchBoxViewMode('photo')" role="tab">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-                  <span>Foto Kemasan Asli (Isi 2)</span>
-                </button>
-                <button type="button" class="box-tab-btn" id="tabBoxSimulation" onclick="switchBoxViewMode('sim')" role="tab">
+                <button type="button" class="box-tab-btn is-active" id="tabBoxSimulation" onclick="switchBoxViewMode('sim')" role="tab">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
                   <span>Simulasi Roti Box</span>
                 </button>
+                <button type="button" class="box-tab-btn" id="tabBoxRealPhoto" onclick="switchBoxViewMode('photo')" role="tab">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                  <span>Foto Kemasan Asli (Isi 2)</span>
+                </button>
               </div>
 
-              <!-- VIEW 1: Authentic Real Photo Stage (Holding 2 breads in kraft box) -->
-              <div class="bakery-box-real-photo-card" id="boxRealPhotoVisual">
-                <div class="real-photo-badge-bar">
-                  <span class="real-photo-badge">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px; margin-right:4px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>FOTO ASLI SOUVENIR ROTI
-                  </span>
-                  <span class="real-photo-sticker-note">Kraft Box • Dome Lid • Stiker Segel</span>
-                </div>
-                
-                <div class="real-photo-frame">
-                  <img 
-                    id="boxRealPhotoMainImg" 
-                    src="assets/souvenir_roti/box-packaging-berry-abon.jpg" 
-                    alt="Packaging Roti Bluezi Isi 2 (Strawberry Bun & Roti Abon)"
-                    class="box-real-photo-img"
-                  >
-                  <div class="real-photo-overlay-tag">
-                    <span id="boxRealPhotoCaption">Contoh Box: Strawberry Bun Crumble + Roti Abon</span>
-                  </div>
-                </div>
-
-                <!-- 3 Photo Thumbnails Selector -->
-                <div class="box-photo-thumb-strip">
-                  <span class="thumb-strip-label">Lihat Variasi Isian Roti (Klik Foto):</span>
-                  <div class="thumb-strip-row">
-                    <button 
-                      type="button" 
-                      class="box-photo-thumb-btn active" 
-                      data-src="assets/souvenir_roti/box-packaging-berry-abon.jpg"
-                      onclick="selectBoxRealPhoto('assets/souvenir_roti/box-packaging-berry-abon.jpg', 'Strawberry Bun Crumble + Roti Abon')"
-                      title="Strawberry Bun Crumble + Roti Abon"
-                    >
-                      <img src="assets/souvenir_roti/box-packaging-berry-abon.jpg" alt="Strawberry Bun Crumble + Roti Abon">
-                      <span>Berry & Abon</span>
-                    </button>
-                    <button 
-                      type="button" 
-                      class="box-photo-thumb-btn" 
-                      data-src="assets/souvenir_roti/box-packaging-abon-choux.jpg"
-                      onclick="selectBoxRealPhoto('assets/souvenir_roti/box-packaging-abon-choux.jpg', 'Roti Abon + Choux au Craquelin')"
-                      title="Roti Abon + Choux au Craquelin"
-                    >
-                      <img src="assets/souvenir_roti/box-packaging-abon-choux.jpg" alt="Roti Abon + Choux au Craquelin">
-                      <span>Abon & Soes</span>
-                    </button>
-                    <button 
-                      type="button" 
-                      class="box-photo-thumb-btn" 
-                      data-src="assets/souvenir_roti/box-packaging-pizza-abon.jpg"
-                      onclick="selectBoxRealPhoto('assets/souvenir_roti/box-packaging-pizza-abon.jpg', 'Pizza Bread Sausage + Roti Abon')"
-                      title="Pizza Bread Sausage + Roti Abon"
-                    >
-                      <img src="assets/souvenir_roti/box-packaging-pizza-abon.jpg" alt="Pizza Bread Sausage + Roti Abon">
-                      <span>Pizza & Abon</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- VIEW 2: Realistic Bakery Box Packaging Stage (Interactive CSS Simulation) -->
-              <div class="bakery-box-card" id="bakeryBoxVisual" style="display: none;">
+              <!-- VIEW 1 (Utama): Realistic Bakery Box Packaging Stage (Interactive CSS Simulation) -->
+              <div class="bakery-box-card" id="bakeryBoxVisual">
                 <div class="kraft-box-outer">
                   <!-- Classic Blue-and-White Checkered Liner Trim -->
                   <div class="box-gingham-trim" aria-hidden="true"></div>
@@ -420,6 +361,65 @@
 
                 <!-- Ground Shadow Under Physical Box -->
                 <div class="box-ambient-shadow"></div>
+              </div>
+
+              <!-- VIEW 2: Authentic Real Photo Stage (Holding 2 breads in kraft box) -->
+              <div class="bakery-box-real-photo-card" id="boxRealPhotoVisual" style="display: none;">
+                <div class="real-photo-badge-bar">
+                  <span class="real-photo-badge">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px; margin-right:4px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>FOTO ASLI SOUVENIR ROTI
+                  </span>
+                  <span class="real-photo-sticker-note">Kraft Box • Dome Lid • Stiker Segel</span>
+                </div>
+                
+                <div class="real-photo-frame">
+                  <img 
+                    id="boxRealPhotoMainImg" 
+                    src="assets/souvenir_roti/box-packaging-berry-abon.jpg" 
+                    alt="Packaging Roti Bluezi Isi 2 (Strawberry Bun & Roti Abon)"
+                    class="box-real-photo-img"
+                  >
+                  <div class="real-photo-overlay-tag">
+                    <span id="boxRealPhotoCaption">Contoh Box: Strawberry Bun Crumble + Roti Abon</span>
+                  </div>
+                </div>
+
+                <!-- 3 Photo Thumbnails Selector -->
+                <div class="box-photo-thumb-strip">
+                  <span class="thumb-strip-label">Lihat Variasi Isian Roti (Klik Foto):</span>
+                  <div class="thumb-strip-row">
+                    <button 
+                      type="button" 
+                      class="box-photo-thumb-btn active" 
+                      data-src="assets/souvenir_roti/box-packaging-berry-abon.jpg"
+                      onclick="selectBoxRealPhoto('assets/souvenir_roti/box-packaging-berry-abon.jpg', 'Strawberry Bun Crumble + Roti Abon')"
+                      title="Strawberry Bun Crumble + Roti Abon"
+                    >
+                      <img src="assets/souvenir_roti/box-packaging-berry-abon.jpg" alt="Strawberry Bun Crumble + Roti Abon">
+                      <span>Berry & Abon</span>
+                    </button>
+                    <button 
+                      type="button" 
+                      class="box-photo-thumb-btn" 
+                      data-src="assets/souvenir_roti/box-packaging-abon-choux.jpg"
+                      onclick="selectBoxRealPhoto('assets/souvenir_roti/box-packaging-abon-choux.jpg', 'Roti Abon + Choux au Craquelin')"
+                      title="Roti Abon + Choux au Craquelin"
+                    >
+                      <img src="assets/souvenir_roti/box-packaging-abon-choux.jpg" alt="Roti Abon + Choux au Craquelin">
+                      <span>Abon & Soes</span>
+                    </button>
+                    <button 
+                      type="button" 
+                      class="box-photo-thumb-btn" 
+                      data-src="assets/souvenir_roti/box-packaging-pizza-abon.jpg"
+                      onclick="selectBoxRealPhoto('assets/souvenir_roti/box-packaging-pizza-abon.jpg', 'Pizza Bread Sausage + Roti Abon')"
+                      title="Pizza Bread Sausage + Roti Abon"
+                    >
+                      <img src="assets/souvenir_roti/box-packaging-pizza-abon.jpg" alt="Pizza Bread Sausage + Roti Abon">
+                      <span>Pizza & Abon</span>
+                    </button>
+                  </div>
+                </div>
               </div>
 
               <!-- Packaging Reference Info Note -->
