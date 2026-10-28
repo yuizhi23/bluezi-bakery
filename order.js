@@ -99,7 +99,7 @@ const BAKERY_PRODUCTS = [
   },
   {
     id: 'choux-craquelin',
-    name: 'Choux Craquelin',
+    name: 'Choux au Craquelin',
     category: 'sweet',
     categoryLabel: 'Sweet Cream',
     price: 8000,

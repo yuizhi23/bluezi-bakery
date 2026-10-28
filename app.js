@@ -189,8 +189,8 @@ const PRODUCTS_DATA = [
   },
   {
     id: 'choux-craquelin',
-    name: 'Choux Craquelin',
-    handwrittenName: 'Vanilla Craquelin Choux',
+    name: 'Choux au Craquelin',
+    handwrittenName: 'Choux au Craquelin',
     category: 'sweet',
     price: 8000,
     priceFormatted: 'Rp 8.000',
@@ -204,7 +204,7 @@ const PRODUCTS_DATA = [
     },
     photoShape: 'round',
     highlights: ['Topping Craquelin Garing', 'Silky Vanilla Custard', 'Dipanggang Fresh Harian', 'Pilihan Box Isi 6'],
-    polaroidLabel: 'Choux Craquelin Bluezi'
+    polaroidLabel: 'Choux au Craquelin Bluezi'
   },
   {
     id: 'cookie-classic-chocochip',
