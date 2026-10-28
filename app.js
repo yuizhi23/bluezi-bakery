@@ -92,21 +92,21 @@ const PRODUCTS_DATA = [
   {
     id: 'strawberry-cream-bun',
     name: 'Strawberry Cream Bun',
-    handwrittenName: 'Soes Vla Strawberry',
+    handwrittenName: 'Strawberry Butter Cream',
     category: 'sweet',
     price: 5000,
     priceFormatted: 'Rp 5.000',
     tag: 'Favorite',
     spanClass: 'span-standard',
-    shortDesc: 'Kulit soes choux renyah lembut berpadu vla strawberry manis dan potongan buah segar.',
-    fullDesc: 'Our soft, fluffy choux pastries come with sweet strawberry pieces, topped with a swirl of cream and fresh strawberry slices. Light, creamy, fruity, and made to satisfy your sweet cravings. Rasanya seimbang antara manis segar buah berry dan kelembutan vla susu premium.',
+    shortDesc: 'Kulit soes choux renyah lembut berpadu isian butter cream manis gurih dan potongan strawberry segar.',
+    fullDesc: 'Kulit choux pastry lembut dan renyah khas Bluezi yang diisi dengan butter cream manis-gurih lembut istimewa, dipadukan dengan selai strawberry manis dan potongan buah strawberry segar di atasnya. Cita rasa klasik bakery artisan yang tak pernah salah!',
     images: {
       cutout: 'public/images/products/enhanced/strawberry-cream-bun.png?v=photoreal_v5',
       real1: 'assets/real_photos/bluezi2/strawberry_cream_bluezi_box.jpg',
       real2: 'assets/real_photos/bluezi2/strawberry_cream_tray.jpg'
     },
     photoShape: 'round',
-    highlights: ['Buah Strawberry Segar', 'Krim Vla Susu Dingin', 'Kulit Choux Keemasan', 'Crumble Gurih Manis'],
+    highlights: ['Isian Butter Cream Lembut', 'Potongan Strawberry Segar', 'Selai Strawberry Manis', 'Kulit Choux Keemasan'],
     polaroidLabel: 'Choux showcase Bluezi'
   },
   {
@@ -130,21 +130,21 @@ const PRODUCTS_DATA = [
   {
     id: 'mango-cream-bun',
     name: 'Mango Cream Bun',
-    handwrittenName: 'Soes Mango Custard',
+    handwrittenName: 'Soes Vla Mango',
     category: 'sweet',
     price: 5000,
     priceFormatted: 'Rp 5.000',
     tag: 'Seasonal',
     spanClass: 'span-compact',
-    shortDesc: 'Soes choux istimewa dengan isian custard mangga tropis lembut dan topping potongan mangga segar manis.',
-    fullDesc: 'Smooth, fruity mango filling and fresh mango slices on top! Light, creamy, and fruity. Dibuat dengan mangga matang pilihan yang dipadu custard vanilla susu lembut. Pilihan camilan manis yang menyegarkan di hari santaimu.',
+    shortDesc: 'Soes choux istimewa dengan isian vla rasa mangga manis-lembut dan potongan mangga segar di atasnya.',
+    fullDesc: 'Soes choux renyah keemasan khas Bluezi dengan isian vla rasa mangga tropis manis dan lembut yang menyegarkan di setiap gigitan. Dipadukan dengan potongan buah mangga segar di atasnya. Pilihan camilan manis yang menyegarkan harimu!',
     images: {
       cutout: 'public/images/products/enhanced/mango-cream-bun.png?v=photoreal_v5',
       real1: 'assets/real_photos/bluezi2/strawberry_bun_crumble_top.jpg',
       real2: 'assets/real_photos/bluezi2/strawberry_bun_crumble2.jpg'
     },
     photoShape: 'round',
-    highlights: ['Topping Mangga Segar Manis', 'Smooth Mango Custard', 'Puff Renyah Ringan', 'Aroma Tropis Menyegarkan'],
+    highlights: ['Isian Vla Rasa Mangga', 'Potongan Mangga Segar', 'Kulit Soes Choux Renyah', 'Manis Dingin Tropis'],
     polaroidLabel: 'Manis buah alami'
   },
   {
@@ -169,15 +169,15 @@ const PRODUCTS_DATA = [
   },
   {
     id: 'double-choco-bread',
-    name: 'Double Choco Bread',
-    handwrittenName: 'Twisted Choco Swirl',
+    name: 'Twisted Double Choco',
+    handwrittenName: 'Twisted Double Choco',
     category: 'sweet',
     price: 5000,
     priceFormatted: 'Rp 5.000',
     tag: 'Best Seller',
     spanClass: 'span-standard',
-    shortDesc: 'Roti gulung cokelat lembut dengan lelehan pasta cokelat pekat di bagian tengah.',
-    fullDesc: 'Made with soft, fluffy chocolate dough and a rich chocolate filling tucked right in the center. Every bite brings you that perfect chocolatey goodness, with a tender texture that makes it hard to stop at just one. A twist of chocolate heaven for your sweet cravings.',
+    shortDesc: 'Roti brioche gulung cokelat lembut (twisted swirl) dengan lelehan pasta cokelat pekat di bagian tengah.',
+    fullDesc: 'Roti gulung twisted brioche lembut istimewa Bluezi dengan perpaduan adonan cokelat empuk dan lelehan pasta cokelat pekat di bagian tengahnya. Setiap gigitan menghadirkan limpahan cokelat yang nikmat dan memanjakan lidah para pecinta cokelat.',
     images: {
       cutout: 'public/images/products/enhanced/double-choco.png?v=photoreal_v5',
       real1: 'assets/real_photos/bluezi2/choco_swirl_top.jpg',
@@ -268,23 +268,43 @@ const PRODUCTS_DATA = [
   },
   {
     id: 'cookie-double-dark',
-    name: 'Double Dark Cookie',
-    handwrittenName: 'Double Dark Choco Lava',
+    name: 'Double Choco Cookie',
+    handwrittenName: 'Double Choco Lava',
     category: 'cookies',
     price: 12000,
     priceFormatted: 'Rp 12.000',
-    tag: 'Molten Lava',
+    tag: 'Double Choco',
     spanClass: 'span-standard',
-    shortDesc: 'Adonan double dark cocoa pekat berpadu isian lelehan molten chocolate lava premium yang lumer saat digigit.',
-    fullDesc: 'Kelezatan mutlak bagi para pecinta cokelat sejati! Adonan soft cookie dengan bubuk kakao hitam pekat premium yang menyimpan rahasia isian molten chocolate lava di bagian tengahnya. Setiap gigitan menghadirkan sensasi lelehan cokelat hangat yang melimpah dan decadent.',
+    shortDesc: 'Adonan double choco cocoa pekat berpadu isian lelehan molten chocolate lava premium yang lumer saat digigit.',
+    fullDesc: 'Kelezatan mutlak bagi para pecinta cokelat sejati! Adonan soft-baked cookie double choco dengan bubuk kakao pekat premium yang menyimpan rahasia isian molten chocolate lava di bagian tengahnya. Setiap gigitan menghadirkan sensasi lelehan cokelat hangat yang melimpah dan decadent.',
     images: {
       cutout: 'public/images/products/enhanced/cookie-double-dark.png',
       real1: 'assets/editorial/cookie-double-dark.png',
       real2: 'assets/editorial/cookie_double_choco_tray.jpg'
     },
     photoShape: 'round',
-    highlights: ['Double Dark Cocoa Dough', 'Molten Choco Lava Center', 'Sensasi Leleh Mewah', 'Cokelat Belgia Premium'],
-    polaroidLabel: 'Dark Choco Lava'
+    highlights: ['Double Choco Cocoa Dough', 'Molten Choco Lava Center', 'Sensasi Leleh Mewah', 'Cokelat Belgia Premium'],
+    polaroidLabel: 'Double Choco Lava'
+  },
+  {
+    id: 'box-souvenir-2-roti',
+    name: 'Box Souvenir (Isi 2 Roti)',
+    handwrittenName: 'Souvenir Box Isi 2',
+    category: 'box',
+    price: 14000,
+    priceFormatted: 'Start from Rp 14.000',
+    tag: 'Packaging Isi 2',
+    spanClass: 'span-featured',
+    shortDesc: 'Kemasan kraft box souvenir eksklusif isi 2 roti bebas pilih dengan clear dome lid & stiker segel resmi BLUEZ\' Studio.',
+    fullDesc: 'Paket box souvenir roti eksklusif isi 2 roti dari BLUEZ\' Bakery. Dikemas cantik menggunakan kraft tray box ramah lingkungan, clear dome lid transparan berkualitas tinggi, alas cup fluted, dan stiker segel resmi BLUEZ\' Studio. Sangat pas untuk souvenir acara, gift spesial, bekal manis, atau hampers mini.',
+    images: {
+      cutout: 'assets/souvenir_roti/box-packaging-berry-abon.jpg',
+      real1: 'assets/souvenir_roti/box-packaging-abon-choux.jpg',
+      real2: 'assets/souvenir_roti/box-packaging-pizza-abon.jpg'
+    },
+    photoShape: 'round',
+    highlights: ['Bebas Pilih 2 Roti Favorit', 'Kemasan Kraft Box Eksklusif', 'Clear Dome Lid Transparan', 'Stiker Segel Resmi Bluez'],
+    polaroidLabel: 'Packaging Asli Isi 2 Roti'
   },
   {
     id: 'double-choco-loaf',
@@ -1256,12 +1276,18 @@ function closeProductModal() {
 // ==========================================
 
 function addToBagQuick(productId) {
+  if (productId === 'box-souvenir-2-roti') {
+    scrollToBoxBuilder();
+    showToast('Silakan pilih 2 roti favoritmu untuk mengisi box packaging ini!');
+    return;
+  }
+
   const product = PRODUCTS_DATA.find(p => p.id === productId);
   if (!product) return;
 
   addToCart(product, 1);
   sfx.playPop();
-  openCart(); // Automatically open cart drawer so user sees items added!
+  triggerCartButtonBounce();
 }
 
 // ==========================================
@@ -1342,7 +1368,7 @@ function renderBoxBreadPicker() {
     return;
   }
 
-  const breads = PRODUCTS_DATA.filter(p => p.category !== 'hampers');
+  const breads = PRODUCTS_DATA.filter(p => p.category !== 'hampers' && p.category !== 'box');
   grid.innerHTML = breads.map(product => {
     return `
       <div class="box-bread-pick-card" id="pickCard-${product.id}">
@@ -1373,6 +1399,7 @@ function addBreadToBox(productId) {
 
   boxBuilderState.selectedBreads.push(product);
   sfx.playPop();
+  switchBoxViewMode('sim'); // Auto-switch to simulator view so customer sees the slot fill
 
   if (boxBuilderState.selectedBreads.length === 2) {
     sfx.playSuccess();
@@ -1558,10 +1585,10 @@ function addCustomBoxToCart() {
   state.cart.push(customBoxItem);
   saveCartToStorage();
   updateCartUI();
+  triggerCartButtonBounce();
 
   showToast(`1x Bakery Box (${formatIDR(boxPrice)}) ditambahkan ke keranjang.`);
   sfx.playSuccess();
-  openCart();
 
   // Reset builder for next box
   boxBuilderState.selectedBreads = [];
@@ -1585,6 +1612,7 @@ function addToCart(product, qty) {
 
   saveCartToStorage();
   updateCartUI();
+  triggerCartButtonBounce();
   showToast(`Ditambahkan ke keranjang: ${qty}x ${product.name}`);
 }
 
@@ -1594,9 +1622,11 @@ function updateCartUI() {
   const floatingSubtotal = document.getElementById('floatingCartSubtotal');
   const subtitleCount = document.getElementById('cartSubtitleCount');
   const emptyState = document.getElementById('cartEmptyState');
+  const itemsWrapper = document.getElementById('cartItemsWrapper');
   const itemsList = document.getElementById('cartItemsList');
   const subtotalEl = document.getElementById('cartSubtotal');
   const footerEl = document.getElementById('cartFooter');
+  const stickyActionEl = document.getElementById('cartStickyActionBar');
 
   const totalItems = state.cart.reduce((sum, item) => sum + item.qty, 0);
   const totalPrice = state.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
@@ -1607,13 +1637,17 @@ function updateCartUI() {
   if (subtitleCount) subtitleCount.textContent = `${totalItems} item dipilih`;
 
   if (state.cart.length === 0) {
-    emptyState.style.display = 'block';
-    itemsList.innerHTML = '';
-    subtotalEl.textContent = 'Rp 0';
-    footerEl.style.display = 'none';
+    if (emptyState) emptyState.style.display = 'block';
+    if (itemsWrapper) itemsWrapper.style.display = 'none';
+    if (itemsList) itemsList.innerHTML = '';
+    if (subtotalEl) subtotalEl.textContent = 'Rp 0';
+    if (footerEl) footerEl.style.display = 'none';
+    if (stickyActionEl) stickyActionEl.style.display = 'none';
   } else {
-    emptyState.style.display = 'none';
-    footerEl.style.display = 'block';
+    if (emptyState) emptyState.style.display = 'none';
+    if (itemsWrapper) itemsWrapper.style.display = 'block';
+    if (footerEl) footerEl.style.display = 'block';
+    if (stickyActionEl) stickyActionEl.style.display = 'block';
 
     itemsList.innerHTML = state.cart.map(item => {
       if (item.isBox && item.breads && item.breads.length >= 2) {
@@ -2238,7 +2272,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!state.activeModalProduct) return;
       addToCart(state.activeModalProduct, state.modalQty);
       closeProductModal();
-      openCart(); // Automatically open cart drawer on modal add!
+      triggerCartButtonBounce();
     });
   }
 
@@ -2478,7 +2512,7 @@ function addHamperToBag(slideIndex) {
   updateCartUI();
   showToast(`Ditambahkan ke keranjang: ${shortName}`);
   if (typeof sfx !== 'undefined' && sfx.playSuccess) sfx.playSuccess();
-  openCart();
+  triggerCartButtonBounce();
 }
 
 // Expose all functions to global window for seamless onclick attribute access
@@ -2509,4 +2543,51 @@ window.toggleBoxPackaging = toggleBoxPackaging;
 window.addCustomBoxToCart = addCustomBoxToCart;
 window.initBoxBuilder = initBoxBuilder;
 window.scrollToBoxBuilder = scrollToBoxBuilder;
+window.switchBoxViewMode = switchBoxViewMode;
+window.selectBoxRealPhoto = selectBoxRealPhoto;
+window.triggerCartButtonBounce = triggerCartButtonBounce;
+
+function triggerCartButtonBounce() {
+  const floatingBtn = document.getElementById('floatingCartBtn');
+  const countBadge = document.getElementById('floatingCartBadge');
+  const headerCart = document.getElementById('headerCartBtn') || document.getElementById('orderHeaderCart');
+  
+  [floatingBtn, countBadge, headerCart].forEach(el => {
+    if (!el) return;
+    el.classList.remove('cart-bump-animation');
+    void el.offsetWidth;
+    el.classList.add('cart-bump-animation');
+  });
+}
+
+function switchBoxViewMode(mode) {
+  const photoView = document.getElementById('boxRealPhotoVisual');
+  const simView = document.getElementById('bakeryBoxVisual');
+  const tabPhoto = document.getElementById('tabBoxRealPhoto');
+  const tabSim = document.getElementById('tabBoxSimulation');
+
+  if (mode === 'photo') {
+    if (photoView) photoView.style.display = 'block';
+    if (simView) simView.style.display = 'none';
+    if (tabPhoto) tabPhoto.classList.add('is-active');
+    if (tabSim) tabSim.classList.remove('is-active');
+  } else {
+    if (photoView) photoView.style.display = 'none';
+    if (simView) simView.style.display = 'block';
+    if (tabPhoto) tabPhoto.classList.remove('is-active');
+    if (tabSim) tabSim.classList.add('is-active');
+  }
+}
+
+function selectBoxRealPhoto(photoUrl, photoTitle) {
+  const mainImg = document.getElementById('boxRealPhotoMainImg');
+  const captionEl = document.getElementById('boxRealPhotoCaption');
+  if (mainImg) mainImg.src = photoUrl;
+  if (captionEl) captionEl.textContent = 'Contoh Box: ' + photoTitle;
+
+  document.querySelectorAll('.box-photo-thumb-btn').forEach(btn => {
+    const isTarget = btn.getAttribute('data-src') === photoUrl;
+    btn.classList.toggle('active', isTarget);
+  });
+}
 

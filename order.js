@@ -54,7 +54,7 @@ const BAKERY_PRODUCTS = [
     categoryLabel: 'Sweet Cream',
     price: 5000,
     priceFormatted: 'Rp 5.000',
-    shortDesc: 'Kulit choux pastry renyah lembut berpadu vla susu manis dingin dan potongan strawberry segar.',
+    shortDesc: 'Kulit choux pastry renyah lembut dengan isian butter cream manis gurih lembut dan potongan strawberry segar.',
     image: 'public/images/products/enhanced/strawberry-cream-bun.png?v=photoreal_v5'
   },
   {
@@ -74,7 +74,7 @@ const BAKERY_PRODUCTS = [
     categoryLabel: 'Sweet Cream',
     price: 5000,
     priceFormatted: 'Rp 5.000',
-    shortDesc: 'Choux pastry istimewa dengan isian custard mangga tropis lembut dan topping buah mangga manis.',
+    shortDesc: 'Choux pastry istimewa dengan isian vla rasa mangga tropis manis-lembut dan topping potongan mangga asli.',
     image: 'public/images/products/enhanced/mango-cream-bun.png?v=photoreal_v5'
   },
   {
@@ -89,12 +89,12 @@ const BAKERY_PRODUCTS = [
   },
   {
     id: 'double-choco-bread',
-    name: 'Double Choco Bread',
+    name: 'Twisted Double Choco',
     category: 'sweet',
     categoryLabel: 'Sweet Cream',
     price: 5000,
     priceFormatted: 'Rp 5.000',
-    shortDesc: 'Roti gulung brioche cokelat lembut (twisted swirl) dengan lelehan pasta cokelat pekat di tengah.',
+    shortDesc: 'Roti brioche gulung cokelat lembut (twisted swirl) dengan lelehan pasta cokelat pekat di tengah.',
     image: 'public/images/products/enhanced/double-choco.png?v=photoreal_v5'
   },
   {
@@ -139,13 +139,23 @@ const BAKERY_PRODUCTS = [
   },
   {
     id: 'cookie-double-dark',
-    name: 'Double Dark Cookie',
+    name: 'Double Choco Cookie',
     category: 'cookies',
     categoryLabel: 'Cookies',
     price: 12000,
     priceFormatted: 'Rp 12.000',
-    shortDesc: 'Adonan double dark cocoa pekat berpadu isian lelehan molten chocolate lava premium yang lumer saat digigit.',
+    shortDesc: 'Adonan double choco cocoa pekat berpadu isian lelehan molten chocolate lava premium yang lumer saat digigit.',
     image: 'public/images/products/enhanced/cookie-double-dark.png'
+  },
+  {
+    id: 'box-souvenir-2-roti',
+    name: 'Box Souvenir (Isi 2 Roti)',
+    category: 'box',
+    categoryLabel: 'Box Isi 2',
+    price: 14000,
+    priceFormatted: 'Start from Rp 14.000',
+    shortDesc: 'Box kemasan kraft eksklusif isi 2 roti bebas pilih dengan clear dome lid & stiker segel resmi BLUEZ\' Studio.',
+    image: 'assets/souvenir_roti/box-packaging-berry-abon.jpg'
   },
   {
     id: 'double-choco-loaf',

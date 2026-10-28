@@ -282,16 +282,85 @@
         <!-- Interactive 2-Column Builder Layout -->
         <div class="box-builder-grid">
 
-          <!-- Left Column: Realistic Physical Packaging Preview -->
+          <!-- Left Column: Realistic Physical Packaging Preview & Real Photo Showcase -->
           <div class="box-preview-col">
             <div class="box-preview-sticky">
               <div class="box-preview-title-row">
-                <span class="box-preview-tag">LIVE PACKAGING PREVIEW</span>
-                <span class="box-packaging-indicator" id="previewPackagingBadge">Standard Packaging (Rp 0)</span>
+                <span class="box-preview-tag">PACKAGING BLUEZ' (ISI 2 ROTI)</span>
+                <span class="box-packaging-indicator" id="previewPackagingBadge">Special Packaging (+Rp 2.000)</span>
               </div>
 
-              <!-- Realistic Bakery Box Packaging Stage -->
-              <div class="bakery-box-card" id="bakeryBoxVisual">
+              <!-- View Switcher Tabs: Foto Kemasan Asli vs Simulasi Roti -->
+              <div class="box-preview-tabs" role="tablist">
+                <button type="button" class="box-tab-btn is-active" id="tabBoxRealPhoto" onclick="switchBoxViewMode('photo')" role="tab">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                  <span>Foto Kemasan Asli (Isi 2)</span>
+                </button>
+                <button type="button" class="box-tab-btn" id="tabBoxSimulation" onclick="switchBoxViewMode('sim')" role="tab">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                  <span>Simulasi Roti Box</span>
+                </button>
+              </div>
+
+              <!-- VIEW 1: Authentic Real Photo Stage (Holding 2 breads in kraft box) -->
+              <div class="bakery-box-real-photo-card" id="boxRealPhotoVisual">
+                <div class="real-photo-badge-bar">
+                  <span class="real-photo-badge">📸 FOTO ASLI SOUVENIR ROTI</span>
+                  <span class="real-photo-sticker-note">Kraft Box • Dome Lid • Stiker Segel</span>
+                </div>
+                
+                <div class="real-photo-frame">
+                  <img 
+                    id="boxRealPhotoMainImg" 
+                    src="assets/souvenir_roti/box-packaging-berry-abon.jpg" 
+                    alt="Packaging Roti Bluezi Isi 2 (Strawberry Bun & Roti Abon)"
+                    class="box-real-photo-img"
+                  >
+                  <div class="real-photo-overlay-tag">
+                    <span id="boxRealPhotoCaption">Contoh Box: Strawberry Bun Crumble + Roti Abon</span>
+                  </div>
+                </div>
+
+                <!-- 3 Photo Thumbnails Selector -->
+                <div class="box-photo-thumb-strip">
+                  <span class="thumb-strip-label">Lihat Variasi Isian Roti (Klik Foto):</span>
+                  <div class="thumb-strip-row">
+                    <button 
+                      type="button" 
+                      class="box-photo-thumb-btn active" 
+                      data-src="assets/souvenir_roti/box-packaging-berry-abon.jpg"
+                      onclick="selectBoxRealPhoto('assets/souvenir_roti/box-packaging-berry-abon.jpg', 'Strawberry Bun Crumble + Roti Abon')"
+                      title="Strawberry Bun Crumble + Roti Abon"
+                    >
+                      <img src="assets/souvenir_roti/box-packaging-berry-abon.jpg" alt="Strawberry Bun Crumble + Roti Abon">
+                      <span>Berry & Abon</span>
+                    </button>
+                    <button 
+                      type="button" 
+                      class="box-photo-thumb-btn" 
+                      data-src="assets/souvenir_roti/box-packaging-abon-choux.jpg"
+                      onclick="selectBoxRealPhoto('assets/souvenir_roti/box-packaging-abon-choux.jpg', 'Roti Abon + Choux Craquelin')"
+                      title="Roti Abon + Choux Craquelin"
+                    >
+                      <img src="assets/souvenir_roti/box-packaging-abon-choux.jpg" alt="Roti Abon + Choux Craquelin">
+                      <span>Abon & Soes</span>
+                    </button>
+                    <button 
+                      type="button" 
+                      class="box-photo-thumb-btn" 
+                      data-src="assets/souvenir_roti/box-packaging-pizza-abon.jpg"
+                      onclick="selectBoxRealPhoto('assets/souvenir_roti/box-packaging-pizza-abon.jpg', 'Pizza Bread Sausage + Roti Abon')"
+                      title="Pizza Bread Sausage + Roti Abon"
+                    >
+                      <img src="assets/souvenir_roti/box-packaging-pizza-abon.jpg" alt="Pizza Bread Sausage + Roti Abon">
+                      <span>Pizza & Abon</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- VIEW 2: Realistic Bakery Box Packaging Stage (Interactive CSS Simulation) -->
+              <div class="bakery-box-card" id="bakeryBoxVisual" style="display: none;">
                 <div class="kraft-box-outer">
                   <!-- Classic Blue-and-White Checkered Liner Trim -->
                   <div class="box-gingham-trim" aria-hidden="true"></div>
@@ -845,7 +914,7 @@
               </div>
               <div class="tip-content">
                 <strong>Tips Menikmati:</strong>
-                <p id="modalServingTip">Nikmati hangat! Panaskan di toaster/oven 160°C selama 2-3 menit untuk kerenyahan maksimal.</p>
+                <p id="modalServingTip">Nikmati hangat! Panaskan di toaster/oven 160°C selama 1 menit aja untuk kerenyahan maksimal.</p>
               </div>
             </div>
 
@@ -924,50 +993,70 @@
         </button>
       </div>
 
-      <!-- Cart Item List -->
-      <div class="cart-body" id="cartBody">
-        <div class="cart-empty-state" id="cartEmptyState">
-          <div class="empty-cat-sticker">
-            <img src="assets/brand/cat_navy.png" alt="Bluezi Cat" class="empty-cat-img">
+      <!-- Unified Scrollable Body: Products at top, Order Form scrolls smoothly below! -->
+      <div class="cart-scrollable-container" id="cartScrollableContainer">
+        <!-- Cart Item List (Full prominence, not crammed in small box) -->
+        <div class="cart-body" id="cartBody">
+          <div class="cart-empty-state" id="cartEmptyState">
+            <div class="empty-cat-sticker">
+              <img src="assets/brand/cat_navy.png" alt="Bluezi Cat" class="empty-cat-img">
+            </div>
+            <h4>Keranjangmu masih kosong nih!</h4>
+            <p>Pilih roti favoritmu yang melayang di atas dan klik <em>Tambah ke Keranjang</em>.</p>
+            <button class="btn-primary-3d btn-sm" id="emptyCartCtaBtn" onclick="closeCart()">Mulai Belanja</button>
           </div>
-          <h4>Keranjangmu masih kosong nih!</h4>
-          <p>Pilih roti favoritmu yang melayang di atas dan klik <em>Tambah ke Keranjang</em>.</p>
-          <button class="btn-primary-3d btn-sm" id="emptyCartCtaBtn">Mulai Belanja</button>
+
+          <div class="cart-items-wrapper" id="cartItemsWrapper">
+            <div class="cart-section-badge-row">
+              <span class="cart-section-label">Daftar Roti Pilihan:</span>
+              <span class="cart-hint-pill">Klik ✕ untuk hapus</span>
+            </div>
+            <ul class="cart-items-list" id="cartItemsList">
+              <!-- Injected dynamically via JS -->
+            </ul>
+          </div>
         </div>
 
-        <ul class="cart-items-list" id="cartItemsList">
-          <!-- Injected dynamically via JS -->
-        </ul>
+        <!-- Cart Footer / Order Form (This scrolls smoothly below the products!) -->
+        <div class="cart-footer" id="cartFooter">
+          <div class="cart-subtotal-card">
+            <div class="cart-subtotal-row">
+              <span class="subtotal-label">Subtotal Roti:</span>
+              <span class="subtotal-amount" id="cartSubtotal">Rp 0</span>
+            </div>
+            <p class="cart-tax-note">*Harga belum termasuk ongkir kurir (dikonfirmasi via WhatsApp)</p>
+          </div>
+
+          <!-- Customer Details in Cart Drawer (Data Pemesan) -->
+          <div class="cart-customer-section">
+            <div class="cart-form-header">
+              <span class="cart-form-title">Data Pengiriman:</span>
+              <span class="cart-form-note">*Wajib diisi</span>
+            </div>
+            <div class="cart-customer-box">
+              <div class="cart-field-row">
+                <label for="cartCustName" class="cart-field-label">Nama Pemesan <span class="required-star">*</span></label>
+                <input type="text" id="cartCustName" placeholder="Contoh: Amanda Putri" class="cart-input-scrapbook">
+              </div>
+              <div class="cart-field-row">
+                <label for="cartCustPhone" class="cart-field-label">No. WhatsApp <span class="required-star">*</span></label>
+                <input type="tel" id="cartCustPhone" placeholder="Contoh: 081234567890" class="cart-input-scrapbook">
+              </div>
+              <div class="cart-field-row">
+                <label for="cartCustAddress" class="cart-field-label">Alamat Pengiriman <span class="required-star">*</span></label>
+                <textarea id="cartCustAddress" rows="2" placeholder="Jalan, kelurahan, patokan alamat..." class="cart-textarea-scrapbook"></textarea>
+              </div>
+              <div class="cart-field-row">
+                <label for="orderNoteInput" class="cart-field-label">Catatan Pesanan (opsional):</label>
+                <input type="text" id="orderNoteInput" placeholder="Contoh: Titip di pos satpam / Minta dipotong..." class="cart-input-scrapbook">
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Cart Footer / Checkout -->
-      <div class="cart-footer" id="cartFooter">
-        <div class="cart-subtotal-row">
-          <span class="subtotal-label">Subtotal Roti:</span>
-          <span class="subtotal-amount" id="cartSubtotal">Rp 0</span>
-        </div>
-        <p class="cart-tax-note">*Harga belum termasuk ongkir kurir (dikonfirmasi via WhatsApp)</p>
-
-        <!-- Customer Details in Cart Drawer -->
-        <div class="cart-customer-box">
-          <div class="cart-field-row">
-            <label for="cartCustName" class="cart-field-label">Nama Pemesan <span class="required-star">*</span></label>
-            <input type="text" id="cartCustName" placeholder="Contoh: Amanda Putri" class="cart-input-scrapbook">
-          </div>
-          <div class="cart-field-row">
-            <label for="cartCustPhone" class="cart-field-label">No. WhatsApp <span class="required-star">*</span></label>
-            <input type="tel" id="cartCustPhone" placeholder="Contoh: 081234567890" class="cart-input-scrapbook">
-          </div>
-          <div class="cart-field-row">
-            <label for="cartCustAddress" class="cart-field-label">Alamat Pengiriman <span class="required-star">*</span></label>
-            <textarea id="cartCustAddress" rows="2" placeholder="Jalan, kelurahan, patokan alamat..." class="cart-textarea-scrapbook"></textarea>
-          </div>
-          <div class="cart-field-row">
-            <label for="orderNoteInput" class="cart-field-label">Catatan Pesanan (opsional):</label>
-            <input type="text" id="orderNoteInput" placeholder="Contoh: Titip di pos satpam / Minta dipotong..." class="cart-input-scrapbook">
-          </div>
-        </div>
-
+      <!-- Sticky Action Bar at Bottom of Drawer -->
+      <div class="cart-sticky-action-bar" id="cartStickyActionBar">
         <button type="button" class="btn-checkout-wa" id="cartCheckoutWaBtn">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.652c1.746.953 3.71 1.456 5.711 1.458h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
