@@ -303,8 +303,11 @@ const PRODUCTS_DATA = [
     photoShape: 'oval',
     highlights: ['Artisan Dark Cocoa Dough', 'Generous Dark Choco Chips', 'Natural Wild Yeast Starter', 'Deep Chocolate Aroma'],
     polaroidLabel: 'Artisan chocolate batard'
-  },
-  {
+  }
+];
+
+// Standalone Hampers Data for dedicated Showcase Slider
+const BLUEZI_HAMPERS_DATA = {
     id: 'bluezi-hampers',
     name: 'Hampers & Parcel',
     handwrittenName: 'Hampers Bluezi',
@@ -442,8 +445,8 @@ const PRODUCTS_DATA = [
     photoShape: 'round',
     highlights: ['Harga Mulai Rp 30.000', 'Toples Cookies / Paket A-G & Premium', 'Pita Satin Elegan & Hiasan Bunga', 'Free Custom Kartu Ucapan Spesial'],
     polaroidLabel: 'Gift & Parcel by Bluezi'
-  }
-];
+  };
+
 
 // ==========================================
 // 2. STATE MANAGEMENT
@@ -2245,7 +2248,7 @@ function renderHampersSlider() {
   const counterEl = document.getElementById('hamperCounter');
   if (!track) return;
 
-  const hamperItem = PRODUCTS_DATA.find(p => p.id === 'bluezi-hampers');
+  const hamperItem = BLUEZI_HAMPERS_DATA;
   const slides = (hamperItem && hamperItem.gallery) ? hamperItem.gallery : [];
   if (slides.length === 0) return;
 
@@ -2323,7 +2326,7 @@ function renderHampersSlider() {
 function goToHamperSlide(index) {
   const track = document.getElementById('hamperTrack');
   const thumbStrip = document.getElementById('hamperThumbStrip');
-  const hamperItem = PRODUCTS_DATA.find(p => p.id === 'bluezi-hampers');
+  const hamperItem = BLUEZI_HAMPERS_DATA;
   const slides = (hamperItem && hamperItem.gallery) ? hamperItem.gallery : [];
   if (!track || slides.length === 0) return;
 
@@ -2357,14 +2360,14 @@ function goToHamperSlide(index) {
 }
 
 function nextHamperSlide() {
-  const hamperItem = PRODUCTS_DATA.find(p => p.id === 'bluezi-hampers');
+  const hamperItem = BLUEZI_HAMPERS_DATA;
   const total = hamperItem && hamperItem.gallery ? hamperItem.gallery.length : 12;
   goToHamperSlide(currentHamperSlide + 1);
   if (typeof sfx !== 'undefined' && sfx.playPop) sfx.playPop();
 }
 
 function prevHamperSlide() {
-  const hamperItem = PRODUCTS_DATA.find(p => p.id === 'bluezi-hampers');
+  const hamperItem = BLUEZI_HAMPERS_DATA;
   const total = hamperItem && hamperItem.gallery ? hamperItem.gallery.length : 12;
   goToHamperSlide(currentHamperSlide - 1);
   if (typeof sfx !== 'undefined' && sfx.playPop) sfx.playPop();
@@ -2431,7 +2434,7 @@ function setupHamperSliderEvents(total) {
 }
 
 function addHamperToBag(slideIndex) {
-  const hamperItem = PRODUCTS_DATA.find(p => p.id === 'bluezi-hampers');
+  const hamperItem = BLUEZI_HAMPERS_DATA;
   if (!hamperItem || !hamperItem.gallery) return;
   const slide = hamperItem.gallery[slideIndex] || hamperItem.gallery[0];
   const shortName = slide.shortTitle || `Hampers (${slide.tag || 'Spesial'})`;
