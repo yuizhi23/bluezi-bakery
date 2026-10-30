@@ -298,7 +298,7 @@ const PRODUCTS_DATA = [
     shortDesc: 'Roti sourdough artisan cokelat pekat dengan limpahan chocolate chips dan kerak renyah istimewa.',
     fullDesc: 'Naturally fermented artisan sourdough loaf made with premium dark cocoa and studded with decadent dark chocolate chips. A deep, sophisticated chocolate experience with a chewy crumb and crispy crust.',
     images: {
-      cutout: 'public/images/products/enhanced/double-choco-loaf.png?v=clean_v6'
+      cutout: 'public/images/products/enhanced/double-choco-loaf.png?v=clean_v7'
     },
     photoShape: 'oval',
     highlights: ['Artisan Dark Cocoa Dough', 'Generous Dark Choco Chips', 'Natural Wild Yeast Starter', 'Deep Chocolate Aroma'],
