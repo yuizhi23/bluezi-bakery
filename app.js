@@ -62,7 +62,7 @@ const PRODUCTS_DATA = [
     shortDesc: 'Roti gulung lembut bertabur abon gurih melimpah di kedua ujungnya, dipadu creamy mayo, irisan cabai, dan daun bawang.',
     fullDesc: 'Roti gulung lembut istimewa Bluezi bertabur limpahan abon gurih di kedua ujung sisinya. Dibuat dari adonan roti yang sangat empuk dan moist, dipadukan dengan olesan saus creamy mayo yang gurih legit, serta taburan irisan daun bawang dan cabai merah segar di bagian atas untuk aroma dan kelezatan yang kaya.',
     images: {
-      cutout: 'public/images/products/enhanced/floss-roll.png?v=photoreal_v5',
+      cutout: 'public/images/products/enhanced/floss-roll.png?v=clean_v8',
       real1: 'assets/editorial/floss_roll_tray.jpg'
     },
     photoShape: 'round',

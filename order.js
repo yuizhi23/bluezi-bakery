@@ -35,7 +35,7 @@ const BAKERY_PRODUCTS = [
     price: 7000,
     priceFormatted: 'Rp 7.000',
     shortDesc: 'Roti gulung empuk bertabur abon gurih melimpah di kedua ujungnya, dipadu creamy mayo, irisan cabai, dan daun bawang.',
-    image: 'public/images/products/enhanced/floss-roll.png?v=photoreal_v5'
+    image: 'public/images/products/enhanced/floss-roll.png?v=clean_v8'
   },
   {
     id: 'creamy-mushroom',
