@@ -155,7 +155,7 @@ const BAKERY_PRODUCTS = [
     price: 15000,
     priceFormatted: 'Rp 15.000',
     shortDesc: 'Roti sourdough artisan cokelat pekat berlimpah dark chocolate chips dengan kerak renyah istimewa.',
-    image: 'public/images/products/enhanced/double-choco-loaf.png?v=photoreal_v5'
+    image: 'public/images/products/enhanced/double-choco-loaf.png?v=clean_v6'
   }
 ];
 
