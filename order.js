@@ -55,7 +55,7 @@ const BAKERY_PRODUCTS = [
     price: 6000,
     priceFormatted: 'Rp 6.000',
     shortDesc: 'Kulit choux pastry renyah lembut dengan isian butter cream manis gurih lembut dan potongan strawberry segar.',
-    image: 'public/images/products/enhanced/strawberry-cream-bun.png?v=photoreal_v5'
+    image: 'public/images/products/enhanced/strawberry-cream-bun.png?v=clean_v8'
   },
   {
     id: 'strawberry-cream-cheese',
@@ -85,7 +85,7 @@ const BAKERY_PRODUCTS = [
     price: 15000,
     priceFormatted: 'Rp 15.000',
     shortDesc: 'Adonan sourdough fermentasi 24 jam dengan buah cranberry ruby manis-asam dan keju savory gurih.',
-    image: 'public/images/products/enhanced/cranberry-cheese-sourdough.png?v=photoreal_v5'
+    image: 'public/images/products/enhanced/cranberry-cheese-sourdough.png?v=clean_v8'
   },
   {
     id: 'double-choco-bread',
@@ -105,7 +105,7 @@ const BAKERY_PRODUCTS = [
     price: 8000,
     priceFormatted: 'Rp 8.000',
     shortDesc: 'Kulit soes choux garing keemasan dengan lapisan craquelin renyah dan isian silky vanilla custard dingin lembut.',
-    image: 'public/images/products/enhanced/choux-craquelin.png'
+    image: 'public/images/products/enhanced/choux-craquelin.png?v=clean_v8'
   },
   {
     id: 'cookie-classic-chocochip',

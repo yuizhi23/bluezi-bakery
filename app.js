@@ -101,7 +101,7 @@ const PRODUCTS_DATA = [
     shortDesc: 'Kulit soes choux renyah lembut berpadu isian butter cream manis gurih dan potongan strawberry segar.',
     fullDesc: 'Kulit choux pastry lembut dan renyah khas Bluezi yang diisi dengan butter cream manis-gurih lembut istimewa, dipadukan dengan selai strawberry manis dan potongan buah strawberry segar di atasnya. Cita rasa klasik bakery artisan yang tak pernah salah!',
     images: {
-      cutout: 'public/images/products/enhanced/strawberry-cream-bun.png?v=photoreal_v5',
+      cutout: 'public/images/products/enhanced/strawberry-cream-bun.png?v=clean_v8',
       real1: 'assets/real_photos/bluezi2/strawberry_cream_bluezi_box.jpg',
       real2: 'assets/real_photos/bluezi2/strawberry_cream_tray.jpg'
     },
@@ -159,7 +159,7 @@ const PRODUCTS_DATA = [
     shortDesc: 'Perpaduan asam-manis buah cranberry ruby dengan potongan keju gurih di dalam adonan sourdough artisan.',
     fullDesc: 'Our delicious sourdough brings together sweet, tangy cranberries and rich, savory cheese in every bite. With its signature sourdough flavor and the perfect balance of sweetness and creaminess, this one tastes like a piece of bakery heaven. Fermentasi alami 24 jam dengan kerak renyah bertabur tepung.',
     images: {
-      cutout: 'public/images/products/enhanced/cranberry-cheese-sourdough.png?v=photoreal_v5',
+      cutout: 'public/images/products/enhanced/cranberry-cheese-sourdough.png?v=clean_v8',
       real1: 'assets/real_photos/bluezi1/cranberry_sourdough_tray.jpg',
       real2: 'assets/editorial/cranberry_sourdough_tray.jpg'
     },
@@ -199,7 +199,7 @@ const PRODUCTS_DATA = [
     shortDesc: 'Kulit soes choux garing keemasan dengan lapisan craquelin renyah dan isian silky vanilla custard dingin lembut.',
     fullDesc: 'Choux pastry istimewa khas Bluezi dengan topping lapisan gula craquelin manis gurih yang merekah renyah saat dipanggang. Diisi melimpah dengan silky vanilla custard cream dingin yang lumer di mulut. Tekstur renyah di luar dan creamy lembut di dalam. Tersedia satuan dan pilihan box isi 6.',
     images: {
-      cutout: 'public/images/products/enhanced/choux-craquelin.png',
+      cutout: 'public/images/products/enhanced/choux-craquelin.png?v=clean_v8',
       real1: 'assets/editorial/choux_craquelin_box.jpg'
     },
     photoShape: 'round',
