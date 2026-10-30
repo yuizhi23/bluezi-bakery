@@ -179,7 +179,7 @@ const PRODUCTS_DATA = [
     shortDesc: 'Roti brioche gulung cokelat lembut (twisted swirl) dengan lelehan pasta cokelat pekat di bagian tengah.',
     fullDesc: 'Roti gulung twisted brioche lembut istimewa Bluezi dengan perpaduan adonan cokelat empuk dan lelehan pasta cokelat pekat di bagian tengahnya. Setiap gigitan menghadirkan limpahan cokelat yang nikmat dan memanjakan lidah para pecinta cokelat.',
     images: {
-      cutout: 'public/images/products/enhanced/double-choco.png?v=photoreal_v5',
+      cutout: 'public/images/products/enhanced/double-choco.png?v=clean_v8',
       real1: 'assets/real_photos/bluezi2/choco_swirl_top.jpg',
       real2: 'assets/editorial/choco_tray.jpg'
     },
@@ -298,7 +298,7 @@ const PRODUCTS_DATA = [
     shortDesc: 'Roti sourdough artisan cokelat pekat dengan limpahan chocolate chips dan kerak renyah istimewa.',
     fullDesc: 'Naturally fermented artisan sourdough loaf made with premium dark cocoa and studded with decadent dark chocolate chips. A deep, sophisticated chocolate experience with a chewy crumb and crispy crust.',
     images: {
-      cutout: 'public/images/products/enhanced/double-choco-loaf.png?v=clean_v7'
+      cutout: 'public/images/products/enhanced/double-choco-loaf.png?v=clean_v8'
     },
     photoShape: 'oval',
     highlights: ['Artisan Dark Cocoa Dough', 'Generous Dark Choco Chips', 'Natural Wild Yeast Starter', 'Deep Chocolate Aroma'],

@@ -95,7 +95,7 @@ const BAKERY_PRODUCTS = [
     price: 6000,
     priceFormatted: 'Rp 6.000',
     shortDesc: 'Roti brioche gulung cokelat lembut (twisted swirl) dengan lelehan pasta cokelat pekat di tengah.',
-    image: 'public/images/products/enhanced/double-choco.png?v=photoreal_v5'
+    image: 'public/images/products/enhanced/double-choco.png?v=clean_v8'
   },
   {
     id: 'choux-craquelin',
@@ -155,7 +155,7 @@ const BAKERY_PRODUCTS = [
     price: 15000,
     priceFormatted: 'Rp 15.000',
     shortDesc: 'Roti sourdough artisan cokelat pekat berlimpah dark chocolate chips dengan kerak renyah istimewa.',
-    image: 'public/images/products/enhanced/double-choco-loaf.png?v=clean_v7'
+    image: 'public/images/products/enhanced/double-choco-loaf.png?v=clean_v8'
   }
 ];
 
