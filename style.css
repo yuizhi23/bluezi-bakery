@@ -6856,8 +6856,16 @@ body.scrapbook-theme {
 /* RESPONSIVE DESIGN FOR BOX BUILDER */
 @media (max-width: 992px) {
   .box-builder-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.75rem;
+    width: 100%;
+    max-width: 100%;
+  }
+  .box-preview-col,
+  .box-controls-col {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
   }
   .box-preview-sticky {
     position: static;
@@ -6868,19 +6876,47 @@ body.scrapbook-theme {
 }
 
 @media (max-width: 640px) {
+  .box-builder-section {
+    padding: 2.5rem 0 1.5rem;
+    overflow-x: clip;
+  }
   .box-builder-board {
-    padding: 1.8rem 1.15rem;
-    border-radius: 20px;
+    padding: 1.35rem 0.75rem;
+    border-radius: 18px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   .box-builder-title {
-    font-size: 1.75rem;
+    font-size: 1.6rem;
   }
   .box-builder-subtitle {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+  }
+  .box-preview-tabs {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.35rem !important;
+    padding: 0.25rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .box-tab-btn {
+    white-space: normal !important;
+    font-size: 0.74rem !important;
+    padding: 0.45rem 0.35rem !important;
+    text-align: center !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1.25 !important;
   }
   .kraft-box-outer {
     height: 220px;
     padding: 8px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   .box-inner-tray {
     padding: 6px 8px;
@@ -6901,7 +6937,102 @@ body.scrapbook-theme {
   .sticker-logo {
     width: 68px;
   }
+  .special-packaging-toggle-card {
+    padding: 0.95rem 0.85rem;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .bread-picker-container {
+    padding: 1rem 0.75rem;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .bread-picker-title {
+    font-size: 1.05rem;
+  }
   .box-breads-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+    padding-right: 2px;
+  }
+  .box-bread-pick-card {
+    padding: 0.6rem 0.4rem;
+    min-width: 0;
+  }
+  .box-bread-pick-thumb {
+    width: 58px;
+    height: 58px;
+  }
+  .box-bread-pick-name {
+    font-size: 0.76rem;
+    min-height: 28px;
+  }
+  .box-bread-pick-price {
+    font-size: 0.78rem;
+    margin-bottom: 0.35rem;
+  }
+  .btn-pick-add-bread {
+    font-size: 0.7rem;
+    padding: 0.32rem 0.25rem;
+  }
+  .box-order-summary-card {
+    padding: 1.15rem 0.95rem;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .summary-card-title {
+    font-size: 1.05rem;
+    margin-bottom: 0.65rem;
+  }
+  .box-calc-list {
+    font-size: 0.84rem;
+    gap: 0.35rem;
+  }
+  .box-calc-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.4rem;
+    width: 100%;
+  }
+  .calc-label {
+    flex-shrink: 0;
+  }
+  .calc-price {
+    text-align: right;
+  }
+  .box-calc-row.grand-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.4rem;
+    padding-top: 0.25rem;
+  }
+  .calc-grand-label {
+    font-size: 0.92rem;
+    white-space: nowrap;
+  }
+  .calc-grand-price {
+    font-size: 1.25rem;
+    white-space: nowrap;
+    text-align: right;
+  }
+  .btn-add-box-to-cart {
+    padding: 0.75rem 1rem;
+    font-size: 0.92rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .box-cart-hint {
+    font-size: 0.74rem;
+    padding: 0.45rem 0.65rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 }
