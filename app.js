@@ -714,9 +714,9 @@ function attachModalTilt() {
 
 const CAT_DIALOGS = [
   "Meow! Selamat datang di Bluezi Studio",
-  "a little studio for cakes, pastries & sweet surprises",
-  "Hari Minggu ketemu kami di GBLA Bandung ya!",
-  "Sistem pemesanan kami Pre-order every week!",
+  "a little studio for breads, pastries & sweet surprises",
+  "Kunjungi kami di Bumi Langgeng, Jl. Pinus 3 ya!",
+  "Hari Minggu ketemu kami di GBLA Bandung!",
   "Follow Instagram kami di @Bluezistudio ya!",
   "Semua roti kami dipanggang fresh tiap pagi lho!",
   "Coba Pizza Bread-nya, saus bolognese & kejunya lumer!",
