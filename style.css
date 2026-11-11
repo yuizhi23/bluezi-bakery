@@ -1822,13 +1822,45 @@ body.scrapbook-theme {
 .story-scrapbook-board {
   background: var(--cream-base);
   color: var(--text-dark);
-  border-radius: 16px;
+  border-radius: 28px;
   padding: 3rem 2.8rem;
   position: relative;
   box-shadow: 
     0 15px 40px rgba(0, 0, 0, 0.45),
     0 30px 80px rgba(0, 0, 0, 0.3);
-  transform: rotate(0.4deg);
+  border: 2px solid rgba(29, 44, 67, 0.12);
+  transform: none;
+}
+
+/* Washi Divider linking Story narrative to Fresh Oven Gallery */
+.story-moments-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin: 3.5rem 0 2.5rem;
+  position: relative;
+}
+
+.story-moments-divider .divider-line {
+  flex: 1;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, #1D2C43, #1D2C43 8px, transparent 8px, transparent 16px);
+  opacity: 0.22;
+}
+
+.story-moments-divider .divider-stamp {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1D2C43;
+  background: #FFF9F0;
+  border: 1.5px solid #1D2C43;
+  padding: 0.35rem 1.1rem;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(29, 44, 67, 0.08);
 }
 
 .washi-tape-left {
@@ -3729,7 +3761,18 @@ body.scrapbook-theme {
   .story-scrapbook-board {
     padding: 1.8rem 1.15rem 1.5rem;
     transform: none;
-    border-radius: 14px;
+    border-radius: 18px;
+  }
+
+  .story-moments-divider {
+    margin: 2.2rem 0 1.6rem !important;
+    gap: 0.65rem !important;
+  }
+
+  .story-moments-divider .divider-stamp {
+    font-size: 0.68rem !important;
+    padding: 0.25rem 0.75rem !important;
+    letter-spacing: 0.05em !important;
   }
 
   .story-grid {
