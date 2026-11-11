@@ -2555,3 +2555,95 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
+
+/* ============================================================
+   SUNDAY AT GBLA — COUNTDOWN TIMER
+   Hitung mundur ke hari Minggu berikutnya jam 07:00 WIB
+   ============================================================ */
+
+(function initGBLACountdown() {
+  const bar     = document.getElementById('gblaCountdownBar');
+  const elDays  = document.getElementById('gblaCountDays');
+  const elHours = document.getElementById('gblaCountHours');
+  const elMins  = document.getElementById('gblaCountMins');
+  const elSecs  = document.getElementById('gblaCountSecs');
+  const label   = bar ? bar.querySelector('.gbla-countdown-label') : null;
+
+  if (!bar || !elDays) return;
+
+  /**
+   * Dapatkan target Sunday berikutnya jam 07:00 WIB (UTC+7).
+   * Kalau sekarang Minggu sebelum jam 14:00 WIB dianggap masih "live".
+   */
+  function getNextSunday() {
+    const now = new Date();
+    // Offset ke WIB (UTC+7)
+    const wibOffset = 7 * 60; // menit
+    const localOffset = -now.getTimezoneOffset(); // menit
+    const diffMs = (wibOffset - localOffset) * 60 * 1000;
+    const nowWIB = new Date(now.getTime() + diffMs);
+
+    const dayOfWeek = nowWIB.getUTCDay(); // 0 = Minggu
+    const hourWIB   = nowWIB.getUTCHours();
+    const minWIB    = nowWIB.getUTCMinutes();
+
+    // Kalau hari ini Minggu dan belum jam 14:00 WIB → masih "live"
+    if (dayOfWeek === 0 && (hourWIB < 14 || (hourWIB === 14 && minWIB === 0))) {
+      return null; // sinyal "live"
+    }
+
+    // Hitung hari ke Minggu berikutnya
+    let daysUntilSunday = (7 - dayOfWeek) % 7;
+    if (daysUntilSunday === 0) daysUntilSunday = 7; // sudah lewat hari ini (Minggu sore)
+
+    // Buat target: Minggu depan jam 07:00 WIB = 00:00 UTC
+    const targetWIB = new Date(nowWIB);
+    targetWIB.setUTCDate(nowWIB.getUTCDate() + daysUntilSunday);
+    targetWIB.setUTCHours(7, 0, 0, 0); // jam 07:00 WIB = UTC+7 → jam 00:00 UTC
+    // Convert back ke UTC
+    return new Date(targetWIB.getTime() - diffMs);
+  }
+
+  function pad(n) {
+    return String(n).padStart(2, '0');
+  }
+
+  function tick() {
+    const target = getNextSunday();
+
+    if (target === null) {
+      // Live sekarang — Minggu pagi
+      bar.classList.add('is-live');
+      bar.classList.remove('is-hidden');
+      elDays.textContent  = '00';
+      elHours.textContent = '00';
+      elMins.textContent  = '00';
+      elSecs.textContent  = '00';
+      return;
+    }
+
+    bar.classList.remove('is-live');
+
+    const diff = target.getTime() - Date.now();
+    if (diff <= 0) {
+      tick(); // recalculate
+      return;
+    }
+
+    const totalSecs = Math.floor(diff / 1000);
+    const days  = Math.floor(totalSecs / 86400);
+    const hours = Math.floor((totalSecs % 86400) / 3600);
+    const mins  = Math.floor((totalSecs % 3600) / 60);
+    const secs  = totalSecs % 60;
+
+    elDays.textContent  = pad(days);
+    elHours.textContent = pad(hours);
+    elMins.textContent  = pad(mins);
+    elSecs.textContent  = pad(secs);
+
+    bar.classList.remove('is-hidden');
+  }
+
+  tick();
+  setInterval(tick, 1000);
+})();

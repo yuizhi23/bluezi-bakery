@@ -17,7 +17,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/brand/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   
-  <link rel="stylesheet" href="style.css?v=box_responsive_v12">
+  <link rel="stylesheet" href="style.css?v=countdown_v13">
 </head>
 <body class="scrapbook-theme">
   <!-- Navy Paper Ambient Background -->
@@ -70,7 +70,71 @@
         </button>
       </div>
     </div>
+
+    <!-- Sunday GBLA Countdown Bar (bagian dari header sticky) -->
+    <div class="gbla-countdown-bar" id="gblaCountdownBar" aria-live="polite">
+      <div class="gbla-countdown-inner">
+        <span class="gbla-countdown-label">
+          <span class="gbla-dot" aria-hidden="true"></span>
+          Sunday at GBLA
+        </span>
+        <div class="gbla-countdown-blocks" id="gblaCountdownBlocks">
+          <div class="gbla-time-block">
+            <span class="gbla-time-num" id="gblaCountDays">--</span>
+            <span class="gbla-time-unit">hari</span>
+          </div>
+          <span class="gbla-time-sep" aria-hidden="true">:</span>
+          <div class="gbla-time-block">
+            <span class="gbla-time-num" id="gblaCountHours">--</span>
+            <span class="gbla-time-unit">jam</span>
+          </div>
+          <span class="gbla-time-sep" aria-hidden="true">:</span>
+          <div class="gbla-time-block">
+            <span class="gbla-time-num" id="gblaCountMins">--</span>
+            <span class="gbla-time-unit">mnt</span>
+          </div>
+          <span class="gbla-time-sep" aria-hidden="true">:</span>
+          <div class="gbla-time-block">
+            <span class="gbla-time-num" id="gblaCountSecs">--</span>
+            <span class="gbla-time-unit">dtk</span>
+          </div>
+        </div>
+        <a href="order.html" class="gbla-countdown-cta">Pesan Sekarang</a>
+      </div>
+    </div>
   </header>
+
+  <!-- Sunday GBLA Countdown Bar (sticky, menempel di bawah header) -->
+  <div class="gbla-countdown-bar" id="gblaCountdownBar" aria-live="polite">
+    <div class="gbla-countdown-inner">
+      <span class="gbla-countdown-label">
+        <span class="gbla-dot" aria-hidden="true"></span>
+        Sunday at GBLA
+      </span>
+      <div class="gbla-countdown-blocks" id="gblaCountdownBlocks">
+        <div class="gbla-time-block">
+          <span class="gbla-time-num" id="gblaCountDays">--</span>
+          <span class="gbla-time-unit">hari</span>
+        </div>
+        <span class="gbla-time-sep" aria-hidden="true">:</span>
+        <div class="gbla-time-block">
+          <span class="gbla-time-num" id="gblaCountHours">--</span>
+          <span class="gbla-time-unit">jam</span>
+        </div>
+        <span class="gbla-time-sep" aria-hidden="true">:</span>
+        <div class="gbla-time-block">
+          <span class="gbla-time-num" id="gblaCountMins">--</span>
+          <span class="gbla-time-unit">mnt</span>
+        </div>
+        <span class="gbla-time-sep" aria-hidden="true">:</span>
+        <div class="gbla-time-block">
+          <span class="gbla-time-num" id="gblaCountSecs">--</span>
+          <span class="gbla-time-unit">dtk</span>
+        </div>
+      </div>
+      <a href="order.html" class="gbla-countdown-cta">Pesan Sekarang</a>
+    </div>
+  </div>
 
   <!-- Hero Section with Floating Breads Showcase -->
   <section class="hero-section" id="hero">
@@ -1246,6 +1310,6 @@
     </div>
   </footer>
 
-  <script src="app.js?v=20261111_v12"></script>
+  <script src="app.js?v=20261111_v13"></script>
 </body>
 </html>
