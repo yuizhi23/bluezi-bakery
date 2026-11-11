@@ -386,7 +386,7 @@ function renderProductsList() {
     const currentImg = p.gallery && p.gallery.length > 0 ? p.gallery[currentSlideIdx] : p.image;
     const thumbHtml = p.gallery && p.gallery.length > 1 ? `
       <div class="order-thumb-slider">
-        <img src="${currentImg}" alt="${p.name}" class="order-product-thumb" id="orderThumb-${p.id}" loading="lazy">
+        <img src="${currentImg}" alt="${p.name}" class="order-product-thumb" id="orderThumb-${p.id}" loading="lazy" decoding="async">
         <div class="order-thumb-nav">
           <button type="button" class="order-thumb-arrow prev" onclick="event.stopPropagation(); slideOrderProductThumb('${p.id}', -1)" aria-label="Foto Sebelumnya">‹</button>
           <span class="order-thumb-counter" id="orderThumbCount-${p.id}">${currentSlideIdx + 1}/${p.gallery.length}</span>
@@ -395,7 +395,7 @@ function renderProductsList() {
       </div>
     ` : `
       <div class="order-product-thumb-box">
-        <img src="${p.image}" alt="${p.name}" class="order-product-thumb" loading="lazy">
+        <img src="${p.image}" alt="${p.name}" class="order-product-thumb" loading="lazy" decoding="async">
       </div>
     `;
 

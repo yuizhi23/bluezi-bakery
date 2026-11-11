@@ -655,7 +655,8 @@ function init3DPhysics() {
 function attachCardsTilt() {
   const cards = document.querySelectorAll('.product-3d-card');
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReducedMotion) return;
+  // Skip on touch screens or mobile to keep scrolling silky smooth without pointer calculations
+  if (prefersReducedMotion || window.innerWidth <= 768 || window.matchMedia('(pointer: coarse)').matches) return;
 
   cards.forEach((card) => {
     const inner = card.querySelector('.card-3d-inner');
@@ -1107,7 +1108,8 @@ function renderGallery() {
               src="${product.images.cutout}" 
               alt="${product.name}" 
               class="card-bread-img"
-              loading="eager"
+              loading="${idx < 3 ? 'eager' : 'lazy'}"
+              decoding="async"
               draggable="false"
             >
           </div>

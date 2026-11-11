@@ -106,11 +106,10 @@ body.scrapbook-theme {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* Ambient Deep Lighting */
+/* Ambient Deep Lighting (Optimized radial gradient - no expensive 120px blur shader) */
 .ambient-glow {
   position: fixed;
   border-radius: 50%;
-  filter: blur(120px);
   pointer-events: none;
   z-index: 0;
   opacity: 0.28;
@@ -119,7 +118,7 @@ body.scrapbook-theme {
 .ambient-glow-1 {
   width: 550px;
   height: 550px;
-  background: radial-gradient(circle, rgba(238, 220, 196, 0.14) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(238, 220, 196, 0.12) 0%, rgba(238, 220, 196, 0.04) 40%, transparent 70%);
   top: -100px;
   right: -50px;
 }
@@ -127,7 +126,7 @@ body.scrapbook-theme {
 .ambient-glow-2 {
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(36, 53, 78, 0.45) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(36, 53, 78, 0.35) 0%, rgba(36, 53, 78, 0.1) 45%, transparent 70%);
   bottom: 10%;
   left: -120px;
   opacity: 0.2;
@@ -7778,5 +7777,41 @@ body.scrapbook-theme {
 @media (max-width: 380px) {
   .gbla-countdown-label span.gbla-dot {
     display: none;
+  }
+}
+
+/* ==========================================================================
+   PERFORMANCE ACCELERATION FOR MOBILE & ALL DEVICES
+   ========================================================================== */
+
+/* 1. Off-screen content visibility: skips layout & paint until near viewport */
+.box-builder-section,
+.cookies-showcase-section,
+.hampers-editorial-section,
+.bakery-story-section,
+.order-cta-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 750px;
+}
+
+/* 2. Image rendering performance */
+img {
+  content-visibility: auto;
+}
+
+/* 3. Mobile GPU optimizations */
+@media (max-width: 768px) {
+  .site-header {
+    background: #0d172a !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .ambient-glow {
+    display: none !important;
+  }
+  /* Hardware accelerated smooth momentum scrolling */
+  html, body {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
   }
 }
