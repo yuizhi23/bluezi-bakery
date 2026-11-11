@@ -1617,6 +1617,40 @@ body.scrapbook-theme {
   gap: 0.5rem;
 }
 
+/* Quick Order via WhatsApp button — below card-actions */
+.btn-card-wa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.42rem;
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.85rem;
+  background: #25D366;
+  color: #ffffff;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.18s ease, transform 0.15s ease, box-shadow 0.18s ease;
+  box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
+}
+
+.btn-card-wa:hover {
+  background: #1db954;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 14px rgba(37, 211, 102, 0.42);
+}
+
+.btn-card-wa:active {
+  transform: translateY(0);
+}
+
+.btn-card-wa svg {
+  flex-shrink: 0;
+}
+
 .btn-card-detail {
   background: transparent;
   color: var(--brand-navy);
@@ -3566,6 +3600,13 @@ body.scrapbook-theme {
     background: transparent !important;
     color: #121c38 !important;
     border: 1.5px solid #121c38 !important;
+  }
+
+  .btn-card-wa {
+    font-size: 0.75rem !important;
+    padding: 0.42rem 0.5rem !important;
+    min-height: 34px !important;
+    border-radius: 8px !important;
   }
 
   /* Story Section: Gorgeous 2x2 Photo Collage Grid */
