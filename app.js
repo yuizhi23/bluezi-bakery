@@ -23,7 +23,7 @@ const PRODUCTS_DATA = [
       cutout: 'public/images/products/enhanced/pizza-bread.png?v=photoreal_v5',
       real1: 'assets/real_photos/bluezi2/pizza_bread_flat_top.jpg',
       real2: 'assets/real_photos/bluezi2/pizza_bread_bluezi_box.jpg',
-      real3: 'assets/real_photos/bluezi2/pizza_tray_display.jpg'
+      real3: 'assets/gallery/pizza_bread_tray_oven.jpg'
     },
     photoShape: 'round',
     highlights: ['Saus Bolognese Gurih', 'Sosis Sapi Pilihan', 'Paprika & Bawang Bombay', 'Keju Leleh Berlimpah', 'Taburan Oregano Wangi'],
@@ -44,7 +44,7 @@ const PRODUCTS_DATA = [
       cutout: 'public/images/products/enhanced/roti-abon.png?v=photoreal_v5',
       real1: 'assets/real_photos/bluezi2/roti_abon_closeup.jpg',
       real2: 'assets/real_photos/bluezi2/roti_abon_bluezi_box.jpg',
-      real3: 'assets/editorial/abon_tray.jpg'
+      real3: 'assets/gallery/roti_abon_tray_oven.jpg'
     },
     photoShape: 'round',
     highlights: ['Abon Ayam Gurih Melimpah', 'Creamy Sesame Mayo', 'Adonan Super Fluffy', 'Kemasan Paper Box Cantik'],
@@ -121,7 +121,8 @@ const PRODUCTS_DATA = [
     shortDesc: 'Roti empuk dengan isian cream cheese gurih manis, selai strawberry, dan taburan crumble lezat.',
     fullDesc: 'Soft, golden bun generously filled with rich cream cheese and sweet strawberry jam, topped with delightful strawberry crumble. Perfect harmony of creamy, cheesy, and fruity flavors.',
     images: {
-      cutout: 'public/images/products/enhanced/strawberry-cream-cheese.png?v=photoreal_v5'
+      cutout: 'public/images/products/enhanced/strawberry-cream-cheese.png?v=clean_v9',
+      real1: 'assets/gallery/assorted_buns_tray.jpg'
     },
     photoShape: 'round',
     highlights: ['Rich Cream Cheese Filling', 'Sweet Strawberry Jam', 'Crispy Strawberry Crumble', 'Soft Fluffy Brioche'],
@@ -2506,4 +2507,51 @@ function selectBoxRealPhoto(photoUrl, photoTitle) {
     btn.classList.toggle('active', isTarget);
   });
 }
+
+/* ==========================================================================
+   Bakery Moments Lightbox
+   ========================================================================== */
+function openGalleryLightbox(src, title, caption) {
+  const lb = document.getElementById('galleryLightbox');
+  const img = document.getElementById('lightboxImg');
+  const t = document.getElementById('lightboxTitle');
+  const c = document.getElementById('lightboxCaption');
+  if (!lb || !img) return;
+
+  img.src = src;
+  if (t) t.textContent = title || 'Momen Dapur Bluezi';
+  if (c) c.textContent = caption || '';
+
+  lb.classList.add('is-open');
+  lb.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+
+  if (typeof sfx !== 'undefined' && sfx.playPop) {
+    try { sfx.playPop(); } catch (e) {}
+  }
+}
+
+function closeGalleryLightbox(event) {
+  if (event && event.target && event.target.closest('.gallery-lightbox-dialog') && !event.target.closest('.gallery-lightbox-close')) {
+    return;
+  }
+  const lb = document.getElementById('galleryLightbox');
+  if (!lb) return;
+
+  lb.classList.remove('is-open');
+  lb.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+window.openGalleryLightbox = openGalleryLightbox;
+window.closeGalleryLightbox = closeGalleryLightbox;
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const lb = document.getElementById('galleryLightbox');
+    if (lb && lb.classList.contains('is-open')) {
+      closeGalleryLightbox();
+    }
+  }
+});
 

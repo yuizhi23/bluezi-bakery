@@ -65,7 +65,7 @@ const BAKERY_PRODUCTS = [
     price: 6000,
     priceFormatted: 'Rp 6.000',
     shortDesc: 'Roti empuk dengan isian cream cheese gurih manis, selai strawberry, dan crumble renyah.',
-    image: 'public/images/products/enhanced/strawberry-cream-cheese.png?v=photoreal_v5'
+    image: 'public/images/products/enhanced/strawberry-cream-cheese.png?v=clean_v9'
   },
   {
     id: 'mango-cream-bun',
