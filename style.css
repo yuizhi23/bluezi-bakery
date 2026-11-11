@@ -1287,6 +1287,118 @@ body.scrapbook-theme {
   flex: 1;
 }
 
+/* Share button — pojok kanan atas card */
+.btn-card-share {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.65rem;
+  z-index: 10;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1.5px solid rgba(29, 44, 67, 0.15);
+  border-radius: 50%;
+  color: #475569;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, transform 0.15s ease;
+  box-shadow: 0 2px 8px rgba(29, 44, 67, 0.1);
+}
+
+.btn-card-share:hover {
+  background: #1D2C43;
+  color: #F3E2C8;
+  border-color: #1D2C43;
+  transform: scale(1.1);
+}
+
+.btn-card-share:active {
+  transform: scale(0.96);
+}
+
+/* Share Toast Notification */
+.share-toast {
+  position: fixed;
+  bottom: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: #1D2C43;
+  color: #F3E2C8;
+  padding: 0.65rem 1rem;
+  border-radius: 999px;
+  box-shadow: 0 8px 28px rgba(29, 44, 67, 0.35);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+  animation: toastSlideUp 0.3s ease;
+  max-width: calc(100vw - 2rem);
+}
+
+.share-toast.is-hiding {
+  animation: toastSlideDown 0.35s ease forwards;
+}
+
+@keyframes toastSlideUp {
+  from { opacity: 0; transform: translateX(-50%) translateY(12px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes toastSlideDown {
+  from { opacity: 1; transform: translateX(-50%) translateY(0); }
+  to   { opacity: 0; transform: translateX(-50%) translateY(12px); }
+}
+
+.share-toast-msg {
+  flex: 1;
+  font-size: 0.78rem;
+  white-space: normal;
+  line-height: 1.3;
+}
+
+.share-toast-wa {
+  display: inline-flex;
+  align-items: center;
+  background: #25D366;
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: background 0.15s ease;
+}
+
+.share-toast-wa:hover {
+  background: #1db954;
+}
+
+.share-toast-close {
+  background: none;
+  border: none;
+  color: rgba(243, 226, 200, 0.6);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  flex-shrink: 0;
+  transition: color 0.15s ease;
+}
+
+.share-toast-close:hover {
+  color: #F3E2C8;
+}
+
 .product-3d-card:hover .card-3d-inner {
   box-shadow: 
     0 16px 36px rgba(20, 31, 46, 0.16),

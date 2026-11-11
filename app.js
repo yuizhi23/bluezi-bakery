@@ -977,6 +977,74 @@ function buildProductWaLink(product) {
   return `https://api.whatsapp.com/send?phone=${BLUEZI_WA}&text=${encodeURIComponent(msg)}`;
 }
 
+/**
+ * Share produk via Web Share API (mobile native) atau fallback copy + WA.
+ */
+async function shareProduct(productId) {
+  const product = PRODUCTS_DATA.find(p => p.id === productId);
+  if (!product) return;
+
+  const pageUrl = 'https://yuizhi23.github.io/bluezi-bakery/';
+  const shareTitle = `${product.name} — Bluezi Bakery`;
+  const shareText = `${product.name} (${product.priceFormatted}) dari Bluezi Bakery. Roti artisan homemade, fresh tiap Minggu di GBLA Bandung!`;
+
+  // Coba Web Share API (native mobile)
+  if (navigator.share) {
+    try {
+      await navigator.share({ title: shareTitle, text: shareText, url: pageUrl });
+      return;
+    } catch (err) {
+      if (err.name === 'AbortError') return; // user cancel
+    }
+  }
+
+  // Fallback: copy link ke clipboard + tawarin share ke WA
+  try {
+    await navigator.clipboard.writeText(`${shareText}\n${pageUrl}`);
+    showShareToast('Link disalin! Buka WA untuk share ke teman.', productId, shareText, pageUrl);
+  } catch {
+    // Clipboard juga gagal — langsung buka WA share
+    const waMsg = `${shareText}\n${pageUrl}`;
+    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(waMsg)}`, '_blank', 'noopener');
+  }
+}
+
+/**
+ * Toast kecil di pojok bawah setelah share/copy.
+ */
+function showShareToast(msg, productId, shareText, pageUrl) {
+  // Remove existing toast
+  const existing = document.getElementById('shareToast');
+  if (existing) existing.remove();
+
+  const waMsg = `${shareText}\n${pageUrl}`;
+  const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(waMsg)}`;
+
+  const toast = document.createElement('div');
+  toast.id = 'shareToast';
+  toast.className = 'share-toast';
+  toast.innerHTML = `
+    <span class="share-toast-msg">${msg}</span>
+    <a href="${waUrl}" target="_blank" rel="noopener" class="share-toast-wa">Share ke WA</a>
+    <button type="button" class="share-toast-close" onclick="document.getElementById('shareToast').remove()">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+        <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  `;
+  document.body.appendChild(toast);
+
+  // Auto-dismiss setelah 4 detik
+  setTimeout(() => {
+    if (document.getElementById('shareToast')) {
+      toast.classList.add('is-hiding');
+      setTimeout(() => toast.remove(), 350);
+    }
+  }, 4000);
+}
+
+window.shareProduct = shareProduct;
+
 function renderGallery() {
   const container = document.getElementById('productsGrid');
   if (!container) return;
@@ -1011,6 +1079,23 @@ function renderGallery() {
       <article class="product-3d-card ${span}" data-product-id="${product.id}" id="product-card-${product.id}">
         <div class="card-3d-inner">
           <div class="card-washi ${washiClass}" aria-hidden="true"></div>
+
+          <!-- Share button — pojok kanan atas -->
+          <button
+            type="button"
+            class="btn-card-share"
+            onclick="shareProduct('${product.id}')"
+            aria-label="Bagikan ${product.name}"
+            title="Bagikan produk ini"
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="18" cy="5" r="3"></circle>
+              <circle cx="6" cy="12" r="3"></circle>
+              <circle cx="18" cy="19" r="3"></circle>
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+            </svg>
+          </button>
 
           <!-- Floating Bakery Stage (Pure & Clean — Zero Overlap) -->
           <div class="card-floating-stage" onclick="openProductModal('${product.id}')" title="Klik untuk lihat detail ${product.name}">
