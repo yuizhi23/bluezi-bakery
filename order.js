@@ -25,7 +25,7 @@ const BAKERY_PRODUCTS = [
     price: 6000,
     priceFormatted: 'Rp 6.000',
     shortDesc: 'Roti lembut bertabur abon ayam gurih melimpah, dipadukan saus creamy sesame mayo istimewa.',
-    image: 'public/images/products/enhanced/roti-abon.png?v=clean_v9'
+    image: 'public/images/products/enhanced/roti-abon.png?v=clean_abon_real_v17'
   },
   {
     id: 'floss-roll',

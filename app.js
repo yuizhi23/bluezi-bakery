@@ -41,7 +41,7 @@ const PRODUCTS_DATA = [
     shortDesc: 'Roti lembut bertabur abon ayam gurih melimpah, dipadukan dengan saus creamy sesame mayo istimewa.',
     fullDesc: 'Soft, fluffy bread topped with generous chicken floss, filling with our creamy sesame mayo. Savory, creamy, and full of flavor in every bite. Disajikan dalam craft paper boat dengan kertas motif kotak-kotak biru khas Bluezi.',
     images: {
-      cutout: 'public/images/products/enhanced/roti-abon.png?v=clean_v9',
+      cutout: 'public/images/products/enhanced/roti-abon.png?v=clean_abon_real_v17',
       real1: 'assets/real_photos/bluezi2/roti_abon_closeup.jpg',
       real2: 'assets/real_photos/bluezi2/roti_abon_bluezi_box.jpg',
       real3: 'assets/gallery/roti_abon_tray_oven.jpg'
