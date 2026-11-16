@@ -170,10 +170,11 @@ const orderState = {
   selectedCategory: 'all',
   deliveryMethod: 'Kurir Instan Bandung (GoSend / GrabExpress)',
   customer: {
-    name: '',
-    phone: '',
-    address: '',
-    notes: ''
+    name: "",
+    phone: "",
+    address: "",
+    mapsLink: "",
+    notes: ""
   }
 };
 
@@ -300,20 +301,23 @@ function saveCartToStorage() {
 }
 
 function loadSavedCustomerData() {
-  orderState.customer.name = localStorage.getItem('bluezi_cust_name') || '';
-  orderState.customer.phone = localStorage.getItem('bluezi_cust_phone') || '';
-  orderState.customer.address = localStorage.getItem('bluezi_cust_address') || '';
-  orderState.customer.notes = localStorage.getItem('bluezi_cust_notes') || '';
+  orderState.customer.name = localStorage.getItem("bluezi_cust_name") || "";
+  orderState.customer.phone = localStorage.getItem("bluezi_cust_phone") || "";
+  orderState.customer.address = localStorage.getItem("bluezi_cust_address") || "";
+  orderState.customer.mapsLink = localStorage.getItem("bluezi_cust_maps") || "";
+  orderState.customer.notes = localStorage.getItem("bluezi_cust_notes") || "";
   orderState.deliveryMethod = localStorage.getItem('bluezi_delivery_method') || 'Kurir Instan (GoSend / GrabExpress)';
 
-  const nameInput = document.getElementById('custName');
-  const phoneInput = document.getElementById('custPhone');
-  const addrInput = document.getElementById('custAddress');
-  const notesInput = document.getElementById('custNotes');
+  const nameInput = document.getElementById("custName");
+  const phoneInput = document.getElementById("custPhone");
+  const addrInput = document.getElementById("custAddress");
+  const mapsInput = document.getElementById("custMapsLink");
+  const notesInput = document.getElementById("custNotes");
 
   if (nameInput) nameInput.value = orderState.customer.name;
   if (phoneInput) phoneInput.value = orderState.customer.phone;
   if (addrInput) addrInput.value = orderState.customer.address;
+  if (mapsInput) mapsInput.value = orderState.customer.mapsLink;
   if (notesInput) notesInput.value = orderState.customer.notes;
 
   // Set active delivery radio
@@ -331,11 +335,12 @@ function loadSavedCustomerData() {
 }
 
 function saveCustomerData() {
-  localStorage.setItem('bluezi_cust_name', orderState.customer.name);
-  localStorage.setItem('bluezi_cust_phone', orderState.customer.phone);
-  localStorage.setItem('bluezi_cust_address', orderState.customer.address);
-  localStorage.setItem('bluezi_cust_notes', orderState.customer.notes);
-  localStorage.setItem('bluezi_delivery_method', orderState.deliveryMethod);
+  localStorage.setItem("bluezi_cust_name", orderState.customer.name);
+  localStorage.setItem("bluezi_cust_phone", orderState.customer.phone);
+  localStorage.setItem("bluezi_cust_address", orderState.customer.address);
+  localStorage.setItem("bluezi_cust_maps", orderState.customer.mapsLink);
+  localStorage.setItem("bluezi_cust_notes", orderState.customer.notes);
+  localStorage.setItem("bluezi_delivery_method", orderState.deliveryMethod);
 }
 
 // ==========================================
@@ -643,23 +648,48 @@ function validateAndSubmitOrder() {
   }
 
   // 3. Validate Address
-  const address = (addrInput?.value || '').trim();
+  const address = (addrInput?.value || "").trim();
   if (!address || address.length < 8) {
     isValid = false;
-    if (addrInput) addrInput.classList.add('input-error');
+    if (addrInput) addrInput.classList.add("input-error");
     if (errorAddress) {
-      errorAddress.textContent = 'Mohon masukkan alamat lengkap pengiriman (beserta patokan)';
-      errorAddress.classList.add('visible');
+      errorAddress.textContent = "Mohon masukkan alamat lengkap pengiriman (beserta patokan)";
+      errorAddress.classList.add("visible");
     }
     if (!firstInvalidEl) firstInvalidEl = addrInput;
+  }
+
+  // 3b. Validate Google Maps Link (Wajib)
+  const mapsInput = document.getElementById("custMapsLink");
+  const mapsLink = (mapsInput?.value || "").trim();
+  const errorMaps = document.getElementById("errorMapsLink");
+  if (errorMaps) {
+    errorMaps.textContent = "";
+    errorMaps.classList.remove("visible");
+  }
+  if (mapsInput) mapsInput.classList.remove("input-error");
+
+  if (!mapsLink || (!mapsLink.includes("http") && !mapsLink.includes("maps") && !mapsLink.includes("goo.gl"))) {
+    isValid = false;
+    if (mapsInput) mapsInput.classList.add("input-error");
+    if (errorMaps) {
+      errorMaps.textContent = "Wajib tempelkan link titik lokasi Google Maps (contoh: https://maps.app.goo.gl/...)";
+      errorMaps.classList.add("visible");
+    }
+    if (!firstInvalidEl) firstInvalidEl = mapsInput;
   }
 
   // 4. Validate Products in Cart
   const totalCount = orderState.cart.reduce((sum, item) => sum + item.qty, 0);
   if (totalCount === 0) {
     isValid = false;
-    showOrderToast('Silakan pilih minimal 1 roti favoritmu pada menu di samping!', true);
-    const prodSection = document.getElementById('sectionPilihRoti');
+    showOrderToast("Silakan pilih minimal 1 roti favoritmu pada menu di samping!", true);
+    const prodSection = document.getElementById("sectionPilihRoti");
+    if (prodSection && !firstInvalidEl) firstInvalidEl = prodSection;
+  } else if (orderState.deliveryMethod && orderState.deliveryMethod.includes("20 pcs") && totalCount < 20) {
+    isValid = false;
+    showOrderToast(`Opsi "${orderState.deliveryMethod}" khusus untuk minimal pemesanan 20 pcs roti (saat ini keranjang Anda: ${totalCount} pcs). Silakan tambah roti lagi atau pilih Kurir Instan!`, true);
+    const prodSection = document.getElementById("sectionPilihRoti");
     if (prodSection && !firstInvalidEl) firstInvalidEl = prodSection;
   }
 
@@ -676,7 +706,8 @@ function validateAndSubmitOrder() {
   orderState.customer.name = name;
   orderState.customer.phone = phone;
   orderState.customer.address = address;
-  orderState.customer.notes = (notesInput?.value || '').trim();
+  orderState.customer.mapsLink = mapsLink;
+  orderState.customer.notes = (notesInput?.value || "").trim();
   saveCustomerData();
 
   // Calculate totals
@@ -690,6 +721,7 @@ function validateAndSubmitOrder() {
   message += `• *Nama:* ${name}\n`;
   message += `• *No. WhatsApp:* ${phone}\n`;
   message += `• *Alamat Pengiriman:* ${address}\n`;
+  message += `• *Titik Google Maps:* ${mapsLink}\n`;
   message += `• *Metode Pengiriman:* ${orderState.deliveryMethod}\n`;
   message += `━━━━━━━━━━━━━━━━━━━━━\n`;
   message += `*DAFTAR ITEM YANG DIPESAN (${totalCount} item):*\n`;
@@ -796,9 +828,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  bindInput('custName', 'name');
-  bindInput('custPhone', 'phone');
-  bindInput('custAddress', 'address');
+  bindInput("custName", "name");
+  bindInput("custPhone", "phone");
+  bindInput("custAddress", "address");
+  bindInput("custMapsLink", "maps");
   bindInput('custNotes', 'notes');
 
   // WhatsApp Submit Button

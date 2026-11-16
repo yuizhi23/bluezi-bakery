@@ -1780,10 +1780,11 @@ function closeCart() {
 }
 
 // Customer Data Storage Helper
-function saveCustomerData(name, phone, address) {
-  if (name) localStorage.setItem('bluezi_cust_name', name);
-  if (phone) localStorage.setItem('bluezi_cust_phone', phone);
-  if (address) localStorage.setItem('bluezi_cust_address', address);
+function saveCustomerData(name, phone, address, mapsLink) {
+  if (name) localStorage.setItem("bluezi_cust_name", name);
+  if (phone) localStorage.setItem("bluezi_cust_phone", phone);
+  if (address) localStorage.setItem("bluezi_cust_address", address);
+  if (mapsLink) localStorage.setItem("bluezi_cust_maps", mapsLink);
 }
 
 // Send Formatted Order to WhatsApp
@@ -1837,12 +1838,13 @@ function sendOrderToWhatsApp({ name, phone, address, note, delivery }) {
 
 // Cart Drawer Checkout -> Navigate to Dedicated Order Page
 function checkoutViaWhatsApp() {
-  const name = (document.getElementById('cartCustName')?.value || localStorage.getItem('bluezi_cust_name') || '').trim();
-  const phone = (document.getElementById('cartCustPhone')?.value || localStorage.getItem('bluezi_cust_phone') || '').trim();
-  const address = (document.getElementById('cartCustAddress')?.value || localStorage.getItem('bluezi_cust_address') || '').trim();
-  const note = (document.getElementById('orderNoteInput')?.value || '').trim();
+  const name = (document.getElementById("cartCustName")?.value || localStorage.getItem("bluezi_cust_name") || "").trim();
+  const phone = (document.getElementById("cartCustPhone")?.value || localStorage.getItem("bluezi_cust_phone") || "").trim();
+  const address = (document.getElementById("cartCustAddress")?.value || localStorage.getItem("bluezi_cust_address") || "").trim();
+  const mapsLink = (document.getElementById("cartCustMaps")?.value || localStorage.getItem("bluezi_cust_maps") || "").trim();
+  const note = (document.getElementById("orderNoteInput")?.value || "").trim();
 
-  saveCustomerData(name, phone, address);
+  saveCustomerData(name, phone, address, mapsLink);
   if (note) localStorage.setItem('bluezi_cust_notes', note);
 
   // Navigate to dedicated ordering page
@@ -1949,16 +1951,18 @@ function initOrderForm() {
   }
 
   // Restore saved details from localStorage
-  const savedName = localStorage.getItem('bluezi_cust_name') || '';
-  const savedPhone = localStorage.getItem('bluezi_cust_phone') || '';
-  const savedAddress = localStorage.getItem('bluezi_cust_address') || '';
+  const savedName = localStorage.getItem("bluezi_cust_name") || "";
+  const savedPhone = localStorage.getItem("bluezi_cust_phone") || "";
+  const savedAddress = localStorage.getItem("bluezi_cust_address") || "";
+  const savedMaps = localStorage.getItem("bluezi_cust_maps") || "";
 
   const orderName = document.getElementById('orderCustName');
   const cartName = document.getElementById('cartCustName');
   const orderPhone = document.getElementById('orderCustPhone');
   const cartPhone = document.getElementById('cartCustPhone');
   const orderAddr = document.getElementById('orderCustAddress');
-  const cartAddr = document.getElementById('cartCustAddress');
+  const cartAddr = document.getElementById("cartCustAddress");
+  const cartMaps = document.getElementById("cartCustMaps");
 
   if (orderName && savedName) orderName.value = savedName;
   if (cartName && savedName) cartName.value = savedName;
@@ -1966,6 +1970,12 @@ function initOrderForm() {
   if (cartPhone && savedPhone) cartPhone.value = savedPhone;
   if (orderAddr && savedAddress) orderAddr.value = savedAddress;
   if (cartAddr && savedAddress) cartAddr.value = savedAddress;
+  if (cartMaps && savedMaps) cartMaps.value = savedMaps;
+  if (cartMaps) {
+    cartMaps.addEventListener("input", (e) => {
+      localStorage.setItem("bluezi_cust_maps", e.target.value);
+    });
+  }
 
   const syncInputs = (src, dest, key) => {
     if (!src || !dest) return;

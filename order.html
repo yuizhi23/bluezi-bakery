@@ -152,6 +152,25 @@
               <div class="field-error-msg" id="errorAddress"></div>
             </div>
 
+            <!-- Titik Alamat Google Maps (Wajib Link) -->
+            <div class="order-form-group">
+              <label for="custMapsLink" class="order-field-label">
+                Titik Alamat Google Maps (Wajib Link) <span class="required-star">*</span>
+              </label>
+              <input 
+                type="url" 
+                id="custMapsLink" 
+                class="order-field-input" 
+                placeholder="Tempel link titik Google Maps di sini (contoh: https://maps.app.goo.gl/...)" 
+                required 
+                autocomplete="off"
+              >
+              <div class="field-hint-text" style="font-size:0.78rem; color:#64748b; margin-top:0.35rem; line-height:1.4;">
+                📍 <em>Buka Google Maps &gt; cari titik lokasi rumah &gt; klik Bagikan (Share) &gt; Salin link &gt; Tempel di sini</em>
+              </div>
+              <div class="field-error-msg" id="errorMapsLink"></div>
+            </div>
+
             <!-- Delivery Method Selection -->
             <div class="order-form-group">
               <label class="order-field-label">
@@ -199,7 +218,25 @@
                   </div>
                 </div>
 
-                <!-- Option 3: Luar Kota Chat Admin -->
+                <!-- Option 3: Pengantaran Khusus Min 20 pcs -->
+                <div class="delivery-card" data-value="Pengantaran Khusus (Minimal 20 pcs)">
+                  <input type="radio" name="orderDelivery" value="Pengantaran Khusus (Minimal 20 pcs)">
+                  <div class="delivery-card-left">
+                    <div class="delivery-icon-box">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 16v1a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h7l5 5v5z"></path><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle><path d="M15 6h5l3 5v5h-2"></path></svg>
+                    </div>
+                    <div class="delivery-text-info">
+                      <span class="delivery-name">Pengantaran Khusus (Min. 20 pcs)</span>
+                      <span class="delivery-desc">Khusus pesanan partai besar / acara / kantor (minimal 20 pcs), langsung diantar tim Bluezi</span>
+                    </div>
+                  </div>
+                  <div class="delivery-card-right">
+                    <span class="delivery-badge-tag" style="background:#ecfdf5; color:#065f46; border-color:#a7f3d0; font-weight:800;">Min. 20 Pcs</span>
+                    <div class="custom-radio-circle"></div>
+                  </div>
+                </div>
+
+                <!-- Option 4: Luar Kota Chat Admin -->
                 <div class="delivery-card" data-value="Luar Kota Bandung (Chat Admin WA)">
                   <input type="radio" name="orderDelivery" value="Luar Kota Bandung (Chat Admin WA)">
                   <div class="delivery-card-left">
@@ -403,6 +440,6 @@
   <div class="order-toast-container" id="orderToastContainer"></div>
 
   <!-- Order Page Logic Script -->
-  <script src="order.js?v=20261111_v19"></script>
+  <script src="order.js?v=20261116_v21"></script>
 </body>
 </html>
