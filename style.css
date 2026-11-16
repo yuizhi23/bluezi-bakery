@@ -1243,7 +1243,7 @@ body.scrapbook-theme {
 /* Standardized Balanced Catalog Grid */
 .products-editorial-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2.2rem 1.8rem;
   align-items: stretch;
 }
@@ -1255,6 +1255,7 @@ body.scrapbook-theme {
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-width: 0;
   transition: transform 0.3s ease;
 }
 
@@ -1695,11 +1696,19 @@ body.scrapbook-theme {
 .card-bottom-bar {
   margin-top: auto;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.8rem;
+  flex-direction: column;
+  gap: 0.55rem;
   padding-top: 0.85rem;
   border-top: 1.5px dashed var(--cream-border);
+  width: 100%;
+}
+
+.card-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  width: 100%;
 }
 
 .card-price-box {
@@ -3207,7 +3216,21 @@ body.scrapbook-theme {
    RESPONSIVE DESIGN & ACCESSIBILITY
    ========================================================================== */
 
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
+  .header-inner {
+    gap: 0.75rem !important;
+  }
+  .brand-sub {
+    display: none !important;
+  }
+  .nav-actions {
+    gap: 0.4rem !important;
+  }
+  .nav-link {
+    padding: 0.35rem 0.5rem !important;
+    font-size: 0.8rem !important;
+  }
+
   .hero-layout {
     grid-template-columns: 1fr;
     gap: 2.5rem;
@@ -3218,7 +3241,7 @@ body.scrapbook-theme {
   }
 
   .products-editorial-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .product-3d-card.span-featured,
@@ -3598,7 +3621,7 @@ body.scrapbook-theme {
   }
 
   .products-editorial-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 0.65rem 0.55rem !important;
   }
 
@@ -3691,6 +3714,14 @@ body.scrapbook-theme {
     padding-top: 0.45rem !important;
     margin-top: auto !important;
     border-top: 1px dashed var(--cream-border) !important;
+    width: 100% !important;
+  }
+
+  .card-price-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.35rem !important;
+    width: 100% !important;
   }
 
   .card-price-box {

@@ -1126,32 +1126,34 @@ function renderGallery() {
             <p class="card-desc">${product.shortDesc}</p>
 
             <div class="card-bottom-bar">
-              <div class="card-price-box">
-                <span class="price-sub">Harga Spesial</span>
-                <span class="price-val">${product.priceFormatted}</span>
-              </div>
+              <div class="card-price-row">
+                <div class="card-price-box">
+                  <span class="price-sub">Harga Spesial</span>
+                  <span class="price-val">${product.priceFormatted}</span>
+                </div>
 
-              <div class="card-actions">
-                <button 
-                  type="button" 
-                  class="btn-card-detail" 
-                  onclick="openProductModal('${product.id}')" 
-                  aria-label="Lihat detail ${product.name}"
-                >
-                  Lihat Detail
-                </button>
-                <button 
-                  type="button" 
-                  class="btn-add-bag" 
-                  onclick="addToBagQuick('${product.id}')" 
-                  aria-label="Tambah ${product.name} ke Keranjang"
-                >
-                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                  </svg>
-                  <span>Tambah</span>
-                </button>
+                <div class="card-actions">
+                  <button 
+                    type="button" 
+                    class="btn-card-detail" 
+                    onclick="openProductModal('${product.id}')" 
+                    aria-label="Lihat detail ${product.name}"
+                  >
+                    Lihat Detail
+                  </button>
+                  <button 
+                    type="button" 
+                    class="btn-add-bag" 
+                    onclick="addToBagQuick('${product.id}')" 
+                    aria-label="Tambah ${product.name} ke Keranjang"
+                  >
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <line x1="12" y1="5" x2="12" y2="19"></line>
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    <span>Tambah</span>
+                  </button>
+                </div>
               </div>
               <a
                 href="${buildProductWaLink(product)}"
