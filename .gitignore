@@ -8,6 +8,11 @@ batch_lift
 lift_extra
 test_lift
 
+# Video recordings & heavy previews
+*.mp4
+bluezi-demo*
+bluezi-preview*
+
 # Temporary scratch & build artifacts
 scratch/
 __pycache__/
